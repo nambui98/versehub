@@ -9,13 +9,17 @@ import {
   Grid,
   Paper,
   TextField,
+  Theme,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import { SectionTitle } from '../components';
 import { ArrowRightIcon } from '@/assets/index';
 import { Anchors } from '../constants';
 
 const HomePage: NextPage = () => {
+  const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+
   return (
     <BasicLayout>
       <Box
@@ -151,7 +155,14 @@ const HomePage: NextPage = () => {
             { src: '/assets/logo.png', title: 'Coming soon' },
             { src: '/assets/logo.png', title: 'Coming soon' },
           ].map(({ src, title }, key) => (
-            <Grid item key={key} sx={{ textAlign: 'center' }}>
+            <Grid
+              item
+              xs={6}
+              sm={6}
+              md={2}
+              key={key}
+              sx={{ textAlign: 'center' }}
+            >
               <Box sx={{ mb: 1 }}>
                 <img src={src} alt={`image-${key}`} width={52} height={59.03} />
               </Box>
@@ -165,29 +176,58 @@ const HomePage: NextPage = () => {
         <SectionTitle mt={20} align="center" bookmark={Anchors.Partners}>
           partners
         </SectionTitle>
-        <Grid container spacing={6.5} justifyContent="center">
-          {[
-            '/assets/partners/google-sense.svg',
-            '/assets/partners/apple-google.svg',
-            '/assets/partners/android.svg',
-            '/assets/partners/google-domains.svg',
-            '/assets/partners/google-station.svg',
-          ].map((path, key) => (
-            <Grid item md={12 / 5} sm={12} key={key}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 6.5,
-                }}
-              >
-                <img height={32} src={path} alt={key + 'image'} />
-                <img height={32} src={path} alt={key + 'image'} />
-                <img height={32} src={path} alt={key + 'image'} />
-              </Box>
-            </Grid>
-          ))}
-        </Grid>
+        {mobile ? (
+          <Grid container spacing={6.5} justifyContent="center">
+            {[
+              { src: '/assets/logo.png', title: 'Coming soon' },
+              { src: '/assets/logo.png', title: 'Coming soon' },
+              { src: '/assets/logo.png', title: 'Coming soon' },
+              { src: '/assets/logo.png', title: 'Coming soon' },
+              { src: '/assets/logo.png', title: 'Coming soon' },
+              { src: '/assets/logo.png', title: 'Coming soon' },
+              { src: '/assets/logo.png', title: 'Coming soon' },
+              { src: '/assets/logo.png', title: 'Coming soon' },
+            ].map(({ src, title }, key) => (
+              <Grid item xs={6} sm={6} key={key} sx={{ textAlign: 'center' }}>
+                <Box sx={{ mb: 1 }}>
+                  <img
+                    src={src}
+                    alt={`image-${key}`}
+                    width={52}
+                    height={59.03}
+                  />
+                </Box>
+                <Typography align="center" variant="h3">
+                  {title}
+                </Typography>
+              </Grid>
+            ))}
+          </Grid>
+        ) : (
+          <Grid container spacing={6.5} justifyContent="center">
+            {[
+              '/assets/partners/google-sense.svg',
+              '/assets/partners/apple-google.svg',
+              '/assets/partners/android.svg',
+              '/assets/partners/google-domains.svg',
+              '/assets/partners/google-station.svg',
+            ].map((path, key) => (
+              <Grid item md={12 / 5} sm={12} key={key}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 6.5,
+                  }}
+                >
+                  <img height={32} src={path} alt={key + 'image'} />
+                  <img height={32} src={path} alt={key + 'image'} />
+                  <img height={32} src={path} alt={key + 'image'} />
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        )}
 
         <SectionTitle bookmark={Anchors.Team} mt={20}>
           our team
@@ -204,7 +244,7 @@ const HomePage: NextPage = () => {
               ['Front end Developer', 'Ricky Smith'],
               ['Social Media Manager', 'Ricky Smith'],
             ].map(([role, name], key) => (
-              <Grid item md={3} sm={6} xs={12} key={key}>
+              <Grid item md={3} sm={6} xs={6} key={key}>
                 <Box
                   sx={{
                     display: 'flex',
