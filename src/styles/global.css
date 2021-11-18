@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy/Gilroy.woff2') format('woff2'),
+    url('/fonts/Gilroy/Gilroy.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Blackpast DEMO';
+  src: url('/fonts/Blackpast/BlackpastDEMO.woff2') format('woff2'),
+    url('/fonts/Blackpast/BlackpastDEMO.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
