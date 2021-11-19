@@ -13,5 +13,5 @@ export const navigations = [
   { label: 'Partners', value: 'partners' },
   { label: 'Team', value: 'team' },
   // { label: 'Jobs', value: 'jobs' },
-  { label: 'Contact', value: 'contact' },
+  // { label: 'Contact', value: 'contact' },
 ];

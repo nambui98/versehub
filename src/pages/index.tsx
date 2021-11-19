@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
-
 import { BasicLayout } from '@/layouts/BasicLayout';
 import {
   Box,
@@ -11,6 +10,7 @@ import {
   TextField,
   Theme,
   Typography,
+  Link,
   useMediaQuery,
 } from '@mui/material';
 import { SectionTitle } from '../components';
@@ -64,23 +64,25 @@ const HomePage: NextPage = () => {
           <Typography variant="h1" color="#fff" my={2}>
             blockchain technology
           </Typography>
-          <span>into the lives of individuals and businesses</span>
+          <span>into individual lives and businesses</span>
         </Typography>
 
-        <Button
-          sx={{
-            borderRadius: 10,
-            fontSize: 22,
-            fontWeight: 700,
-            lineHeight: '27.24px',
-            background:
-              'linear-gradient(103.69deg, #390468 21.05%, #FD42FF 145.15%)',
-            py: 3,
-            px: 5,
-          }}
-        >
-          DISCOVER
-        </Button>
+        <Link href="#services">
+          <Button
+            sx={{
+              borderRadius: 10,
+              fontSize: 22,
+              fontWeight: 700,
+              lineHeight: '27.24px',
+              background:
+                'linear-gradient(103.69deg, #390468 21.05%, #FD42FF 145.15%)',
+              py: 3,
+              px: 5,
+            }}
+          >
+            EXPLORE
+          </Button>
+        </Link>
       </Box>
 
       <Container>
@@ -150,10 +152,9 @@ const HomePage: NextPage = () => {
         </SectionTitle>
         <Grid container spacing={6.5} justifyContent="center">
           {[
-            { src: '/assets/logo.png', title: 'Coming soon' },
-            { src: '/assets/logo.png', title: 'Coming soon' },
-            { src: '/assets/logo.png', title: 'Coming soon' },
-            { src: '/assets/logo.png', title: 'Coming soon' },
+            { src: '/assets/nextverse-logo.png', title: 'Coming soon' },
+
+
           ].map(({ src, title }, key) => (
             <Grid
               item
@@ -164,7 +165,7 @@ const HomePage: NextPage = () => {
               sx={{ textAlign: 'center' }}
             >
               <Box sx={{ mb: 1 }}>
-                <img src={src} alt={`image-${key}`} width={52} height={59.03} />
+                <img src={src} alt={`image-${key}`} height={59.03} />
               </Box>
               <Typography align="center" variant="h3">
                 {title}
@@ -206,11 +207,7 @@ const HomePage: NextPage = () => {
         ) : (
           <Grid container spacing={6.5} justifyContent="center">
             {[
-              '/assets/partners/google-sense.svg',
-              '/assets/partners/apple-google.svg',
-              '/assets/partners/android.svg',
-              '/assets/partners/google-domains.svg',
-              '/assets/partners/google-station.svg',
+              '/assets/partners/icetealabs_logo_square.png',
             ].map((path, key) => (
               <Grid item md={12 / 5} sm={12} key={key}>
                 <Box
@@ -220,29 +217,26 @@ const HomePage: NextPage = () => {
                     gap: 6.5,
                   }}
                 >
-                  <img height={32} src={path} alt={key + 'image'} />
-                  <img height={32} src={path} alt={key + 'image'} />
-                  <img height={32} src={path} alt={key + 'image'} />
+                  <img src={path} alt={key + 'image'} />
                 </Box>
               </Grid>
             ))}
           </Grid>
         )}
 
-        <SectionTitle bookmark={Anchors.Team} mt={20}>
+        <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
           our team
         </SectionTitle>
         <Container maxWidth="lg">
           <Grid container spacing={3}>
             {[
-              ['CEO', 'Jerry Helfer'],
-              ['Product Designer', 'Mary Freund'],
-              ['Content Manager', 'Kurt Bates'],
-              ['UX Designer', 'Daniel Hamilton'],
-              ['Marketing Manager', 'Stephanie Nicol'],
-              ['System Administrator', 'David Elson'],
-              ['Front end Developer', 'Ricky Smith'],
-              ['Social Media Manager', 'Ricky Smith'],
+              ['CEO/Founder', 'Quy Vu'],
+              ['CTO', 'Canh Ho'],
+              ['Game Designer', 'Jolly'],
+              ['Software Engineer', 'Tuyen Nguyen'],
+              ['Marketing Lead', 'Biba Nguyen'],
+              ['Software Engineer', 'Hung Nguyen'],
+              ['3D Artist', 'Hung Nguyen'],
             ].map(([role, name], key) => (
               <Grid item md={3} sm={6} xs={6} key={key}>
                 <Box
@@ -251,7 +245,7 @@ const HomePage: NextPage = () => {
                     flexDirection: 'column',
                   }}
                 >
-                  <Box
+                  {/* <Box
                     sx={{
                       paddingTop: '100%',
                       backgroundPosition: 'center',
@@ -260,7 +254,7 @@ const HomePage: NextPage = () => {
                     style={{
                       backgroundImage: `url(/assets/teams/${key + 7}.png)`,
                     }}
-                  />
+                  /> */}
 
                   <Typography variant="h3" fontSize={24} mt={3} mb={1.5}>
                     {name}
@@ -274,7 +268,7 @@ const HomePage: NextPage = () => {
           </Grid>
         </Container>
 
-        <Container
+        {/* <Container
           sx={{
             mt: 20,
             border: (theme) => `1px solid ${theme.palette.primary.main}`,
@@ -347,7 +341,7 @@ const HomePage: NextPage = () => {
               }}
             />
           </Container>
-        </Container>
+        </Container> */}
       </Container>
     </BasicLayout>
   );

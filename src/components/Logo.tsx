@@ -1,5 +1,5 @@
-import { Box, BoxProps, Typography } from '@mui/material';
-export interface LogoProps extends BoxProps {}
+import { Box, BoxProps, Typography, Link } from '@mui/material';
+export interface LogoProps extends BoxProps { }
 
 export const Logo: React.FC<LogoProps> = (props) => {
   return (
@@ -9,9 +9,11 @@ export const Logo: React.FC<LogoProps> = (props) => {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/assets/logo.png" alt="logo" height={42} width={36.64} />
-      <Typography component="h1" variant="h6" fontFamily="'Blackpast DEMO'">
-        versahub
-      </Typography>
+      <Link href="#">
+        <Typography component="h1" variant="h6" fontFamily="'Blackpast DEMO'">
+          versehub
+        </Typography>
+      </Link>
     </Box>
   );
 };

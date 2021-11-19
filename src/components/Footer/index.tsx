@@ -9,7 +9,7 @@ import {
 } from '@/assets/index';
 import { Logo } from '..';
 import React from 'react';
-export interface FooterProps {}
+export interface FooterProps { }
 
 export const Footer: React.FC<FooterProps> = () => {
   return (
@@ -28,10 +28,10 @@ export const Footer: React.FC<FooterProps> = () => {
               }}
             >
               {[
-                [
-                  LocationIcon,
-                  '71 Knighthead point, London, England, E14, BSS',
-                ],
+                // [
+                //   LocationIcon,
+                //   '71 Knighthead point, London, England, E14, BSS',
+                // ],
                 [MailOutlineIcon, 'info@versehub.io'],
               ].map(([icon, txt], key) => (
                 <Typography
@@ -64,7 +64,7 @@ export const Footer: React.FC<FooterProps> = () => {
         </Grid>
       </Container>
 
-      <Box bgcolor="primary.main">
+      {/* <Box bgcolor="primary.main">
         <Container
           sx={{
             py: 3,
@@ -93,7 +93,7 @@ export const Footer: React.FC<FooterProps> = () => {
             )}
           </Box>
         </Container>
-      </Box>
+      </Box> */}
     </Box>
   );
 };
