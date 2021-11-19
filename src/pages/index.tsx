@@ -92,22 +92,22 @@ const HomePage: NextPage = () => {
             {
               src: '/assets/missions/image1.png',
               title: 'Game NFT & Metaverse',
-              desc: 'The first true metaverse game on blockchain which have the ecosystem and experience as close as possible to real life but still providing the unlimited creativity',
+              desc: 'The first true metaverse game on blockchain which has an ecosystem and provides a real user experience as close as in real life while still allows unlimited creativities',
             },
             {
               src: '/assets/missions/image2.png',
               title: 'Communication & Decentralized Financial Solution',
-              desc: 'Communication, managing assets, sharing ideas and information... Everything about crypto in one place, ready for exploring.',
+              desc: 'Our products bring a combined solution for communication, asset management, and co-working. Everything crypto-related in one place, ready for exploring.',
             },
             {
               src: '/assets/missions/image3.png',
-              title: 'Web 3',
-              desc: 'We believe that web3 is <something big> and we are working hard to research and contribute to the development of web3 technology.',
+              title: 'Web3',
+              desc: 'We believe web3 will be the game-chaging technology in the internet industry and we are working hard to research and contribute to its development.',
             },
             {
               src: '/assets/missions/image4.png',
               title: 'Incubation & Advisory',
-              desc: 'Provide strategic advice, technical and financial support, ease researching and development for small or new teams/projects, help them get into the blockchain industry faster and get better results',
+              desc: 'We provide strategic advices, tecnically and financially support other teams and projects for their R&D, help them get into the blockchain industry faster and get better results.',
             },
           ].map(({ src, title, desc }, index) => (
             <Grid item md={3} key={index}>
