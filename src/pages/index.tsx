@@ -92,7 +92,7 @@ const HomePage: NextPage = () => {
             {
               src: '/assets/missions/image1.png',
               title: 'Game NFT & Metaverse',
-              desc: 'The first true metaverse game on blockchain which has an ecosystem and provides a real user experience as close as in real life while still allows unlimited creativities',
+              desc: 'The first true metaverse game on the blockchain which has an ecosystem and provides a real user experience as close to real life experiences with unlimited possibilities.',
             },
             {
               src: '/assets/missions/image2.png',
@@ -102,12 +102,12 @@ const HomePage: NextPage = () => {
             {
               src: '/assets/missions/image3.png',
               title: 'Web3',
-              desc: 'We believe web3 will be the game-chaging technology in the internet industry and we are working hard to research and contribute to its development.',
+              desc: 'We believe Web3 will be a game-chaging technology of the internet and we are working hard to research and contribute to its development.',
             },
             {
               src: '/assets/missions/image4.png',
               title: 'Incubation & Advisory',
-              desc: 'We provide strategic advices, tecnically and financially support other teams and projects for their R&D, help them get into the blockchain industry faster and get better results.',
+              desc: 'We provide strategic, technical, and financial support to other teams and projects for their R&D, while helping them adopt blockchain for better results.',
             },
           ].map(({ src, title, desc }, index) => (
             <Grid item md={3} key={index}>
