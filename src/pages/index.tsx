@@ -224,7 +224,7 @@ const HomePage: NextPage = () => {
           </Grid>
         )}
 
-        <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
+        {/* <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
           our team
         </SectionTitle>
         <Container maxWidth="lg">
@@ -245,7 +245,7 @@ const HomePage: NextPage = () => {
                     flexDirection: 'column',
                   }}
                 >
-                  {/* <Box
+                  <Box
                     sx={{
                       paddingTop: '100%',
                       backgroundPosition: 'center',
@@ -254,7 +254,7 @@ const HomePage: NextPage = () => {
                     style={{
                       backgroundImage: `url(/assets/teams/${key + 7}.png)`,
                     }}
-                  /> */}
+                  />
 
                   <Typography variant="h3" fontSize={24} mt={3} mb={1.5}>
                     {name}
@@ -266,7 +266,7 @@ const HomePage: NextPage = () => {
               </Grid>
             ))}
           </Grid>
-        </Container>
+        </Container> */}
 
         {/* <Container
           sx={{
