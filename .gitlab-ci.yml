@@ -5,9 +5,6 @@ deploy-to-vercel:
   stage: deploy
   image: node:13.10.1-alpine3.10
 
-  environment:
-    name: vercel/dev
-
   script:
     - npm i vercel
     - DEPLOYMENT_URL=$(./node_modules/.bin/vercel --name $CI_PROJECT_NAME --confirm -t $VERCEL_TOKEN)
