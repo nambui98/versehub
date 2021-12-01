@@ -180,26 +180,18 @@ const HomePage: NextPage = () => {
         {mobile ? (
           <Grid container spacing={6.5} justifyContent="center">
             {[
-              { src: '/assets/logo.png', title: 'Coming soon' },
-              { src: '/assets/logo.png', title: 'Coming soon' },
-              { src: '/assets/logo.png', title: 'Coming soon' },
-              { src: '/assets/logo.png', title: 'Coming soon' },
-              { src: '/assets/logo.png', title: 'Coming soon' },
-              { src: '/assets/logo.png', title: 'Coming soon' },
-              { src: '/assets/logo.png', title: 'Coming soon' },
-              { src: '/assets/logo.png', title: 'Coming soon' },
-            ].map(({ src, title }, key) => (
+              { src: '/assets/partners/icetealabs_logo_square.png' },
+            ].map(({ src }, key) => (
               <Grid item xs={6} sm={6} key={key} sx={{ textAlign: 'center' }}>
-                <Box sx={{ mb: 1 }}>
+                <Box sx={{ mb: 3 }}>
                   <img
                     src={src}
                     alt={`image-${key}`}
-                    width={52}
-                    height={59.03}
+                    width={152}
+                    height={159.03}
                   />
                 </Box>
                 <Typography align="center" variant="h3">
-                  {title}
                 </Typography>
               </Grid>
             ))}

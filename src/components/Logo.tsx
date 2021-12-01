@@ -10,7 +10,7 @@ export const Logo: React.FC<LogoProps> = (props) => {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="/assets/logo.png" alt="logo" height={42} width={36.64} />
       <Link href="#">
-        <Typography component="h1" variant="h6" fontFamily="'Blackpast DEMO'">
+        <Typography color="white" component="h1" variant="h6" fontFamily="'Blackpast DEMO'">
           versehub
         </Typography>
       </Link>

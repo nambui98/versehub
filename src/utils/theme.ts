@@ -20,7 +20,6 @@ const theme = createTheme({
   typography: {
     fontFamily: 'Gilroy',
     h1: {
-      color: '#FFFFFF',
       fontSize: 70,
       fontFamily: 'Blackpast DEMO',
       lineHeight: 1.193,

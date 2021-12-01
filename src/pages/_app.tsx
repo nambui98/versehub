@@ -23,9 +23,13 @@ export default function MyApp(props: MyAppProps) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <meta name="author" content="VerseHub" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.versehub.org/" />
-        <link rel="icon" href="https://www.nextverse.org/_next/static/image/public/images/logo.7b626cd8061d4ced1228210285b76c90.png" />
-        <link rel="apple-touch-icon" href="https://www.nextverse.org/_next/static/image/public/images/logo.7b626cd8061d4ced1228210285b76c90.png" />
+        <meta property="og:url" content="https://versehub.io/" />
+        <meta property="og:title" content="VerseHub" />
+        <meta property="og:descrition" content="We bring blockchain technology into individual lives and businesses" />
+        <meta property="og:image" content="/assets/missions/image2.png" />
+
+        <link rel="icon" href="/assets/versehub_favicon.png" />
+        <link rel="apple-touch-icon" href="/assets/versehub_favicon.png" />
       </Head>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
