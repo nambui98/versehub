@@ -21,12 +21,20 @@ export default function MyApp(props: MyAppProps) {
       <Head>
         <title>VerseHub</title>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <meta name="author" content="VerseHub" />
-        <meta property="og:type" content="website" />
         <meta property="og:url" content="https://versehub.io/" />
         <meta property="og:title" content="VerseHub" />
         <meta property="og:description" content="We bring blockchain technology into individual lives and businesses" />
         <meta property="og:image" content="/assets/og_image.png" />
+
+        
+        <meta name="twitter:card" content="summary" />
+        <meta property="twitter:title"              
+        content="VerseHub" />
+        <meta property="twitter:description"        
+        content="We bring blockchain technology into individual lives and businesses" />
+        <meta property="twitter:image"              
+        content="assets/twitter_image.png" />
+
 
         <link rel="icon" href="/assets/versehub_favicon.png" />
         <link rel="apple-touch-icon" href="/assets/versehub_favicon.png" />
