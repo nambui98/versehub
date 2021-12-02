@@ -33,7 +33,7 @@ export default function MyApp(props: MyAppProps) {
         <meta property="twitter:description"        
         content="We bring blockchain technology into individual lives and businesses" />
         <meta property="twitter:image"              
-        content="assets/twitter_image.png" />
+        content="assets/tw_image.png" />
 
 
         <link rel="icon" href="/assets/versehub_favicon.png" />
