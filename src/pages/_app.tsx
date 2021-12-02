@@ -26,7 +26,7 @@ export default function MyApp(props: MyAppProps) {
         <meta property="og:url" content="https://versehub.io/" />
         <meta property="og:title" content="VerseHub" />
         <meta property="og:description" content="We bring blockchain technology into individual lives and businesses" />
-        <meta property="og:image" content="/assets/missions/image2.png" />
+        <meta property="og:image" content="/assets/og_image.png" />
 
         <link rel="icon" href="/assets/versehub_favicon.png" />
         <link rel="apple-touch-icon" href="/assets/versehub_favicon.png" />
