@@ -102,7 +102,7 @@ const HomePage: NextPage = () => {
             {
               src: '/assets/missions/image3.png',
               title: 'Web3',
-              desc: 'We believe Web3 will be a game-chaging technology of the internet and we are working hard to research and contribute to its development.',
+              desc: 'We believe Web3 will be a game-changing technology of the internet and we are working hard to research and contribute to its development.',
             },
             {
               src: '/assets/missions/image4.png',
