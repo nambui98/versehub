@@ -1,4 +1,6 @@
-
+stage:
+  - dev
+  - prod
 
 deploy-to-vercel-prod:
   stage: prod
