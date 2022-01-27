@@ -3,7 +3,7 @@ export const Anchors = {
   Products: 'products',
   Partners: 'partners',
   Team: 'team',
-  // Jobs: 'jobs',
+  Jobs: 'jobs',
   Contact: 'contact',
 };
 
@@ -12,6 +12,11 @@ export const navigations = [
   { label: 'Products', value: 'products' },
   { label: 'Partners', value: 'partners' },
   { label: 'Team', value: 'team' },
-  // { label: 'Jobs', value: 'jobs' },
-  // { label: 'Contact', value: 'contact' },
+  { label: 'Jobs', value: 'jobs' },
+  { label: 'Contact', value: 'contact' },
+];
+
+export const secondLayoutNavigation = [
+  { label: 'Jobs', href: '/jobs' },
+  { label: 'Contact us', href: '/contact' },
 ];
