@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
+import Link from 'next/link';
 import { BasicLayout } from '@/layouts/BasicLayout';
 import {
   Box,
@@ -10,10 +11,10 @@ import {
   TextField,
   Theme,
   Typography,
-  Link,
+  // Link,
   useMediaQuery,
 } from '@mui/material';
-import { SectionTitle } from '../components';
+import { SectionTitle, ContactForm } from '../components';
 import { ArrowRightIcon } from '@/assets/index';
 import { Anchors } from '../constants';
 
@@ -67,7 +68,7 @@ const HomePage: NextPage = () => {
           <span>into individual lives and businesses</span>
         </Typography>
 
-        <Link href="#services">
+        <Link href="#services" passHref>
           <Button
             sx={{
               borderRadius: 10,
@@ -216,7 +217,7 @@ const HomePage: NextPage = () => {
           </Grid>
         )}
 
-        {/* <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
+        <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
           our team
         </SectionTitle>
         <Container maxWidth="lg">
@@ -258,82 +259,41 @@ const HomePage: NextPage = () => {
               </Grid>
             ))}
           </Grid>
-        </Container> */}
-
-        {/* <Container
-          sx={{
-            mt: 20,
-            border: (theme) => `1px solid ${theme.palette.primary.main}`,
-            borderRadius: 4,
-            backgroundColor: 'rgba(252, 0, 255, 0.03)',
-            overflow: 'hidden',
-          }}
-        >
-          <Container
-            maxWidth="lg"
-            sx={{
-              py: 6.5,
-              position: 'relative',
-            }}
-          >
-            <SectionTitle bookmark={Anchors.Contact}>contact us</SectionTitle>
-
-            <Box
-              component="form"
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 2,
-                maxWidth: { sm: '100%', md: 375 },
-              }}
-            >
-              <TextField fullWidth placeholder="Your name" variant="outlined" />
-
-              <TextField
-                fullWidth
-                placeholder="Your email"
-                variant="outlined"
-              />
-
-              <TextField
-                fullWidth
-                placeholder="Tell us how we can help..."
-                variant="outlined"
-                multiline
-                rows={6}
-              />
-
-              <Button
-                variant="text"
-                size="large"
-                type="submit"
-                sx={{
-                  justifyContent: 'flex-start',
-                  alignSelf: 'flex-start',
-                  color: '#fff',
-
-                  '& svg': { color: 'primary.light' },
-                }}
-                endIcon={<ArrowRightIcon />}
-              >
-                Send message
-              </Button>
-            </Box>
-
-            <Box
-              component="img"
-              src={'/assets/bg2.svg'}
-              sx={{
-                pointerEvents: 'none',
-                top: -59.58,
-                right: -193.12,
-                transform: 'rotate(-25.37deg)',
-                display: { sm: 'none', xs: 'none', md: 'block' },
-                position: 'absolute',
-              }}
-            />
-          </Container>
-        </Container> */}
+        </Container>
+				
+				<Container maxWidth="lg" sx={{mt: 20}}>
+					<Grid container spacing={8}>
+						<Grid item sm={12} lg={7}>
+							<SectionTitle bookmark={Anchors.Jobs} mb={1}>
+								join our journey
+							</SectionTitle>
+							<Typography variant="h3" fontSize={24} mb={8} fontWeight="bold">
+								Excellent products need excellent people. Our pioneering team is looking for new members to join the fleet. 
+							</Typography>
+							<Typography fontSize={24}>
+								VerseHub is powered by people with long term perspectives and big ideas, it is a diverse group of problem solvers and innovators who share the same desire of building great products. Come join us and become who you would want to be, contribute to the belonging and inclusive company culture while together working on the mission of bringing cutting-edge technologies such as Virtual Reality, Web3.0 into individual lives and businesses.
+							</Typography>
+						</Grid>
+						<Grid item sm={12} lg={5}>
+							<img src="https://placekitten.com/500/500" alt="Image" width="100%"/>
+						</Grid>
+					</Grid>
+					<Grid container justifyContent="center" alignItems="center" sx={{mt: 10}}>
+						<Link href="/jobs" passHref>
+							<Button sx={{
+								background: "rgba(196, 196, 196, 0.3)", 
+								borderRadius: "30px", 
+								px: 6, 
+								py: 3,
+								fontSize: "24px",
+								fontWeight: "bold"
+							}}>
+								Explore roles
+							</Button>
+						</Link>
+					</Grid>
+				</Container>
+				<ContactForm/>
       </Container>
     </BasicLayout>
   );
