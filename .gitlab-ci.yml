@@ -1,12 +1,24 @@
 stages:
   - deploy
 
-deploy-to-vercel:
+deploy-to-vercel-prod:
   stage: deploy
   image: node:13.10.1-alpine3.10
 
   script:
     - npm i vercel
     - DEPLOYMENT_URL=$(./node_modules/.bin/vercel --name $CI_PROJECT_NAME --confirm -t $VERCEL_TOKEN)
+    # promote to the vercel's production
+    - ./node_modules/.bin/vercel --prod -t $VERCEL_TOKEN
+
+deploy-to-vercel-dev:
+  stage: deploy
+  image: node:13.10.1-alpine3.10
+  rules:
+    when: manual
+
+  script:
+    - npm i vercel
+    - DEPLOYMENT_URL=$(./node_modules/.bin/vercel --name versehub-dev --confirm -t $VERCEL_TOKEN)
     # promote to the vercel's production
     - ./node_modules/.bin/vercel --prod -t $VERCEL_TOKEN
