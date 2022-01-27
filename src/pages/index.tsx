@@ -217,7 +217,7 @@ const HomePage: NextPage = () => {
           </Grid>
         )}
 
-        <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
+        {/* <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
           our team
         </SectionTitle>
         <Container maxWidth="lg">
@@ -260,7 +260,7 @@ const HomePage: NextPage = () => {
             ))}
           </Grid>
         </Container>
-				
+
 				<Container maxWidth="lg" sx={{mt: 20}}>
 					<Grid container spacing={8}>
 						<Grid item sm={12} lg={7}>
@@ -292,7 +292,7 @@ const HomePage: NextPage = () => {
 							</Button>
 						</Link>
 					</Grid>
-				</Container>
+				</Container> */}
 				<ContactForm/>
       </Container>
     </BasicLayout>
