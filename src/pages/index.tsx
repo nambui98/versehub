@@ -219,7 +219,7 @@ const HomePage: NextPage = () => {
           </Grid>
         )}
 
-        <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
+        {/* <SectionTitle align="center" bookmark={Anchors.Team} mt={20}>
           our team
         </SectionTitle>
         <Container maxWidth="lg">
@@ -277,7 +277,6 @@ const HomePage: NextPage = () => {
 							</Typography>
 						</Grid>
 						<Grid item sm={12} lg={5}>
-							{/* <img src="https://placekitten.com/500/500" alt="Image" width="100%"/> */}
 							<Grid container justifyContent="center" alignItems="center">
 								<BusinessCenterIcon sx={{ fontSize: 350 }} />
 							</Grid>
@@ -297,7 +296,7 @@ const HomePage: NextPage = () => {
 							</Button>
 						</Link>
 					</Grid>
-				</Container>
+				</Container> */}
 				<ContactForm/>
       </Container>
     </BasicLayout>
