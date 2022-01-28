@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay } from "swiper";
@@ -154,6 +154,30 @@ function CoreValues() {
 function Opportunities({ data }: any) {
 	const { departments, locations } = countDepartmentsAndLocations(data);
 	const [roles, setRoles] = useState([...data]);
+	const [currentDepartment, setCurrentDepartment] = useState(departments[0].title);
+	const [currentLocation, setCurrentLocation] = useState(locations.map(el => el.title));
+
+	useEffect(() => {
+		setRoles(
+			data.filter((el: any) => 
+				(currentDepartment === 'All' || el.department === currentDepartment) &&
+				currentLocation.includes(el.location)
+			)
+		);
+		return () => {};
+	}, [data, currentDepartment, currentLocation]);
+
+	function handleDepartmentClick(title: string) {
+		setCurrentDepartment(title);
+	}
+
+	function handleLocationChange(title: string, checked: boolean) {
+		if (checked)
+			setCurrentLocation([...currentLocation, title]);
+		else	
+			setCurrentLocation(currentLocation.filter((el: string) => el !== title))
+	}
+
 	return (
 		<Grid container>
 			<SectionTitle>Opportunities</SectionTitle>
@@ -167,8 +191,9 @@ function Opportunities({ data }: any) {
 							<Button
 								key={el.title}
 								variant="text"
+								onClick={() => handleDepartmentClick(el.title)}
 								sx={{
-									color: "#fff",
+									color: currentDepartment === el.title ? "primary" : "#fff",
 									p: 0,
 									justifyContent: "start",
 									textTransform: "none",
@@ -186,7 +211,9 @@ function Opportunities({ data }: any) {
 						{locations.map((el: any) => (
 							<FormControlLabel
 								key={el.title}
-								control={<Checkbox defaultChecked />}
+								control={
+									<Checkbox defaultChecked onChange={(e) => handleLocationChange(el.title, e.target.checked)}/>
+								}
 								label={el.title}
 								sx={{
 									"& span": { fontSize: 24 },
