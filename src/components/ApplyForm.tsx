@@ -7,12 +7,30 @@ export const ApplyForm = ({ jobName }: any) => {
 	const [textEmail, setTextEmail] = useState("");
 	const [textPhone, setTextPhone] = useState("");
 	const [textLocation, setTextLocation] = useState("");
+	const [fileResume, setFileResume] = useState<any>(null);
 	const [errorFirst, setErrorFirst] = useState(false);
 	const [errorLast, setErrorLast] = useState(false);
 	const [errorEmail, setErrorEmail] = useState(false);
 	const [errorPhone, setErrorPhone] = useState(false);
 	const [errorLocation, setErrorLocation] = useState(false);
+	const [errorResume, setErrorResume] = useState('');
 	const [showSnack, setShowSnack] = useState(false);
+
+	const onFileChange = (event: any) => {
+		setFileResume(null);
+		const file = event.target.files[0];
+		if (!file.type || !file.type.includes('pdf')) {
+			setErrorResume('Unsupported media type');
+			setTimeout(() => setErrorResume(''), 2000);
+			return;
+		}
+		if (!file.size || file.size > 1024 * 1024) { // 1MB
+			setErrorResume('Payload too large');
+			setTimeout(() => setErrorResume(''), 2000);
+			return;
+		}
+		setFileResume(file);
+	}
 
 	const handleSubmit = async (event: any) => {
 		event.preventDefault();
@@ -22,8 +40,8 @@ export const ApplyForm = ({ jobName }: any) => {
 			return;
 		}
 		if (!textLast) {
-			setErrorFirst(true);
-			setTimeout(() => setErrorFirst(false), 2000);
+			setErrorLast(true);
+			setTimeout(() => setErrorLast(false), 2000);
 			return;
 		}
 		if (!textEmail || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(textEmail)) {
@@ -41,19 +59,25 @@ export const ApplyForm = ({ jobName }: any) => {
 			setTimeout(() => setErrorLocation(false), 2000);
 			return;
 		}
+		if (!fileResume) {
+			setErrorResume('Empty');
+			setTimeout(() => setErrorResume(''), 2000);
+			return;
+		}
+		const formData = new FormData();
+		formData.append('jobName', jobName);
+		formData.append('firstName', textFirst);
+		formData.append('lastName', textLast);
+		formData.append('email', textEmail);
+		formData.append('phone', textPhone);
+		formData.append('location', textLocation);
+		formData.append('resume', fileResume, fileResume.name);
 		const response = await fetch("/api/apply", {
 			method: "POST",
-			body: JSON.stringify({
-				jobName,
-				firstName: textFirst,
-				lastName: textLast,
-				email: textEmail,
-				phone: textPhone,
-				location: textLocation,
-			}),
-			headers: {
-				"Content-Type": "application/json",
-			},
+			body: formData,
+			// headers: {
+			// 	"Content-Type": "multipart/form-data",
+			// },
 		});
 		setShowSnack(true);
 		setTextFirst('');
@@ -61,6 +85,7 @@ export const ApplyForm = ({ jobName }: any) => {
 		setTextEmail('');
 		setTextPhone('');
 		setTextLocation('');
+		setFileResume(null);
 	};
 
 	return (
@@ -133,6 +158,27 @@ export const ApplyForm = ({ jobName }: any) => {
 						error={errorLocation}
 						helperText={errorLocation && 'Incorrect location'}
 					/>
+					<Grid container spacing={4} alignItems="stretch">
+						<Grid item xs>
+							<TextField
+								fullWidth
+								required
+								InputProps={{
+									readOnly: true,
+								}}
+								label="Resume/CV"
+								value={fileResume && fileResume.name || ''}
+								error={errorResume !== ''}
+								helperText={errorResume}
+							/>
+						</Grid>
+						<Grid item xs="auto">
+							<Button variant="contained" component="label" sx={{height: '100%'}}>
+								Upload File
+								<input type="file" hidden accept=".pdf" onChange={onFileChange} />
+							</Button>
+						</Grid>
+					</Grid>
 					<Grid container justifyContent="center">
 						<Button type="submit" sx={{
 							background: "rgba(196, 196, 196, 0.3)", 

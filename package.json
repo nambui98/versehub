@@ -14,6 +14,7 @@
     "@mui/icons-material": "^5.3.1",
     "@mui/material": "^5.1.0",
     "babel-plugin-inline-react-svg": "^2.0.1",
+    "formidable": "^2.0.1",
     "googleapis": "^92.0.0",
     "lodash": "^4.17.21",
     "next": "12.0.4",
@@ -23,6 +24,7 @@
     "swiper": "^7.4.1"
   },
   "devDependencies": {
+    "@types/formidable": "^2.0.4",
     "@types/lodash": "^4.14.177",
     "@types/node": "16.11.7",
     "@types/react": "17.0.35",
