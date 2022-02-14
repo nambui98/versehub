@@ -131,8 +131,10 @@ export const Header: React.FC<HeaderProps> = () => {
     <>
       <AppBar
         sx={{
-          backgroundColor: (theme) =>
-            trigger ? theme.palette.background.default : 'transparent',
+          background: (theme) => trigger 
+						? theme.palette.background.default 
+						// ? `linear-gradient(${theme.palette.background.default}, transparent)`
+						: 'transparent',
           transition: 'background 0.2s ',
         }}
         color="transparent"
@@ -141,10 +143,14 @@ export const Header: React.FC<HeaderProps> = () => {
       >
         <Toolbar>
           <Container
+						disableGutters
+						maxWidth={false}
             sx={{
+							py: { xs: 2, md: 5 },
+							px: { xs: 5, lg: 10 },
               display: 'flex',
               justifyContent: 'space-between',
-              gap: 2,
+              // gap: 2,
             }}
           >
             <Logo />
@@ -154,7 +160,7 @@ export const Header: React.FC<HeaderProps> = () => {
               type="h"
             />
 
-            <div style={{ width: 155.648 }} />
+            {/* <div style={{ width: 155.648 }} /> */}
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -181,12 +187,22 @@ export const Header: React.FC<HeaderProps> = () => {
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: '100vw',
-            background: (theme) => theme.palette.background.default,
+            // background: (theme) => theme.palette.background.default,
+            backgroundColor: (theme) => theme.palette.background.default,
+						backgroundImage: 'url("/assets/bg3.svg")',
+						backgroundRepeat: 'no-repeat',
+						backgroundSize: 'cover',
+						backgroundPosition: 'bottom',
           },
         }}
       >
-        <Container>
-          <Toolbar sx={{ justifyContent: 'space-between', mb: 8 }}>
+        <Container sx={{ px: 0 }}>
+          <Toolbar sx={{ 
+						justifyContent: 'space-between', 
+						mb: 12.5,
+						px: 4,
+						pt: 4,
+					}}>
             <Logo />
 
             <IconButton

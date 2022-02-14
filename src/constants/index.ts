@@ -20,3 +20,19 @@ export const secondLayoutNavigation = [
   { label: 'Jobs', href: '/jobs' },
   { label: 'Contact us', href: '/contact' },
 ];
+
+export const FOOTER = {
+	location: { icon: '/assets/footer/location.svg', desc: '71 Knighthead point, London, England, E14, BSS' },
+	mail: { icon: '/assets/footer/mail.svg', desc: 'info@versehub.io' },
+	social: [
+		{ icon: '/assets/footer/linkedIn.svg', href: '#' },
+		{ icon: '/assets/footer/twitter.svg', href: '#' },
+		{ icon: '/assets/footer/facebook.svg', href: '#' },
+		{ icon: '/assets/footer/medium.svg', href: '#' },
+	],
+	links: [
+		{ desc: 'Privacy Policy', href: '#' },
+		{ desc: 'Terms & Conditions', href: '#' },
+		{ desc: 'Cookie Policy', href: '#' },
+	],
+}

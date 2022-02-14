@@ -33,6 +33,11 @@ const theme = createTheme({
       fontSize: 24,
       lineHeight: 1.23791666667,
     },
+		subtitle1: {
+			fontFamily: 'Blackpast DEMO',
+			fontWeight: 400,
+			lineHeight: 1.193,
+    },
   },
   components: {
     MuiPaper: {

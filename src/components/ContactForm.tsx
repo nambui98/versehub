@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Container, TextField, Snackbar, Alert } from "@mui/material";
+import { Box, Button, Grid, Container, TextField, Snackbar, Alert } from "@mui/material";
 import { SectionTitle } from "../components";
 import { ArrowRightIcon } from "../assets/index";
 import { Anchors } from "../constants";
@@ -51,10 +51,12 @@ export const ContactForm = () => {
 		<Container
 			id={Anchors.Contact}
 			sx={{
-				mt: 20,
 				border: (theme) => `1px solid ${theme.palette.primary.main}`,
 				borderRadius: 4,
-				backgroundColor: "rgba(252, 0, 255, 0.03)",
+				backgroundColor: "rgba(66, 0, 255, 0.03)",
+				backgroundImage: "url(/assets/bg_form.svg)",
+				backgroundRepeat: 'no-repeat',
+				backgroundSize: 'contain',
 				overflow: "hidden",
 			}}
 		>
@@ -63,82 +65,134 @@ export const ContactForm = () => {
 					Sent
 				</Alert>
 			</Snackbar>
-			<Container
-				maxWidth="lg"
-				sx={{
-					py: 6.5,
-					position: "relative",
-				}}
-			>
-				<SectionTitle>contact us</SectionTitle>
-				<Box
-					component="form"
-					onSubmit={handleSubmit}
-					sx={{
-						display: "flex",
-						flexDirection: "column",
-						gap: 2,
-						maxWidth: { sm: "100%", md: 375 },
-					}}
-				>
-					<TextField
-						fullWidth
-						placeholder="Your name"
-						variant="outlined"
-						value={textName}
-						onChange={(e) => setTextName(e.target.value)}
-						error={errorName}
-						helperText={errorName && 'Empty name'}
-					/>
-					<TextField
-						fullWidth
-						placeholder="Your email"
-						variant="outlined"
-						value={textEmail}
-						onChange={(e) => setTextEmail(e.target.value)}
-						error={errorEmail}
-						helperText={errorEmail && 'Incorrect email'}
-					/>
-					<TextField
-						fullWidth
-						placeholder="Tell us how we can help..."
-						variant="outlined"
-						multiline
-						rows={6}
-						value={textMessage}
-						onChange={(e) => setTextMessage(e.target.value)}
-						error={errorMessage}
-						helperText={errorMessage && 'Empty message'}
-					/>
-					<Button
-						variant="text"
-						size="large"
-						type="submit"
+			<Grid container px={{ xs: 5, sm: 10, md: 20 }} py={12.5}>
+				<Grid item xs={12} md={6}>
+					<SectionTitle>contact us</SectionTitle>
+				</Grid>
+				<Grid item xs={12} md={6}>
+					<Box
+						component="form"
+						onSubmit={handleSubmit}
 						sx={{
-							justifyContent: "flex-start",
-							alignSelf: "flex-start",
-							color: "#fff",
-
-							"& svg": { color: "primary.light" },
+							display: "flex",
+							flexDirection: "column",
+							gap: 2,
+							// maxWidth: { sm: "100%", md: 375 },
 						}}
-						endIcon={<ArrowRightIcon />}
 					>
-						Send message
-					</Button>
-				</Box>
-				<Box
+						<Box sx={{
+							width: '100%',
+							p: '1px',
+							borderRadius: '8px',
+							background: 'linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)',
+						}}>
+							<TextField
+								fullWidth
+								placeholder="Your name"
+								variant="outlined"
+								value={textName}
+								onChange={(e) => setTextName(e.target.value)}
+								error={errorName}
+								helperText={errorName && 'Empty name'}
+								sx={{
+									background: '#1B062A',
+									borderRadius: '8px',
+									'& .MuiInputBase-input': {
+										fontSize: 18,
+										color: '#7B648D',
+										padding: '18px 24px',
+									},
+								}}
+							/>
+						</Box>
+						<Box sx={{
+							width: '100%',
+							p: '1px',
+							borderRadius: '8px',
+							background: 'linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)',
+						}}>
+							<TextField
+								fullWidth
+								placeholder="Your email"
+								variant="outlined"
+								value={textEmail}
+								onChange={(e) => setTextEmail(e.target.value)}
+								error={errorEmail}
+								helperText={errorEmail && 'Incorrect email'}
+								sx={{
+									background: '#1B062A',
+									borderRadius: '8px',
+									'& .MuiInputBase-input': {
+										fontSize: 18,
+										color: '#7B648D',
+										padding: '18px 24px',
+									},
+								}}
+							/>
+						</Box>
+						<Box sx={{
+							width: '100%',
+							p: '1px',
+							borderRadius: '8px',
+							background: 'linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)',
+						}}>
+							<TextField
+								fullWidth
+								placeholder="Tell us how we can help..."
+								variant="outlined"
+								multiline
+								rows={6}
+								value={textMessage}
+								onChange={(e) => setTextMessage(e.target.value)}
+								error={errorMessage}
+								helperText={errorMessage && 'Empty message'}
+								sx={{
+									background: '#1B062A',
+									borderRadius: '8px',
+									'& .MuiInputBase-input': {
+										fontSize: 18,
+										color: '#7B648D',
+										padding: '18px 24px',
+									},
+									'& .MuiInputBase-root': {
+										padding: 0
+									}
+								}}
+							/>
+						</Box>
+						<Button
+							variant="contained"
+							size="large"
+							type="submit"
+							sx={{
+								// justifyContent: "flex-start",
+								// alignSelf: "flex-start",
+								color: "#fff",
+								fontSize: { xs: 18, sm: 24 },
+								py: 1,
+								background: 'linear-gradient(94.2deg, #6603E4 26.45%, #C624FF 84.03%)',
+								borderRadius: '80px',
+								// "& svg": { color: "primary.light" },
+							}}
+							endIcon={<ArrowRightIcon />}
+						>
+							Send message
+						</Button>
+					</Box>
+				</Grid>
+				{/* <Box
 					component="img"
-					src={"/assets/bg2.svg"}
+					src={"/assets/bg_form.svg"}
 					sx={{
 						pointerEvents: "none",
 						top: -59.58,
 						right: -193.12,
-						transform: "rotate(-25.37deg)",
+						// transform: "rotate(-25.37deg)",
 						display: { sm: "none", xs: "none", md: "block" },
 						position: "absolute",
 					}}
-				/>
-			</Container>
+				/> */}
+			</Grid>
 		</Container>
 	);
 }

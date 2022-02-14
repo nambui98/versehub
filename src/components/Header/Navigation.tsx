@@ -1,4 +1,4 @@
-import { Link, Box, Tabs, Tab } from '@mui/material';
+import { Link, Box } from '@mui/material';
 import React from 'react';
 import { navigations as items } from '@/constants/index';
 import { ArrowRightIcon } from '@/assets/index';
@@ -31,10 +31,13 @@ export const Navigation: React.FC<NavigationProps> = ({
               px: 3.25,
               color:
                 value === activeState
-                  ? 'primary.main'
+                  // ? 'primary.main'
+									? '#A89AFF'
                   : 'rgba(255, 255, 255, 0.8)',
               fontSize: 18,
               lineHeight: '21.09px',
+							textDecoration: value === activeState ? 'underline #8470FF 3px' : 'none',
+							textUnderlinePosition: 'under',
             }}
             key={value}
           >
@@ -52,10 +55,29 @@ export const Navigation: React.FC<NavigationProps> = ({
         flexDirection: 'column',
         alignItems: 'flex-start',
         justifyContent: 'stretch',
-        gap: 4,
+        // gap: 4,
       }}
     >
       {items.map(({ label, value }) => (
+				// <Button
+				// 	key={value}
+				// 	variant="text"
+				// 	href={`#${value}`}
+				// 	onClick={handleClick(value)}
+				// 	sx={{
+        //     // display: 'flex',
+        //     // alignItems: 'center',
+				// 		color: '#fff',
+        //     fontSize: 24,
+        //     lineHeight: '28px',
+        //     pl: 4,
+        //     gap: 3,
+				// 		background: activeState ? '#7000FF' : 'transparent',
+        //   }}
+				// >
+				// 	{value === activeState ? <ArrowRightIcon /> : <Box minWidth={24} />}
+        // 	<span>{label}</span>
+				// </Button>
         <Link
           href={`#${value}`}
           color="#fff"
@@ -65,8 +87,11 @@ export const Navigation: React.FC<NavigationProps> = ({
             alignItems: 'center',
             fontSize: 24,
             lineHeight: '28px',
-            pl: 4,
+            py: 2,
+						px: 6,
             gap: 3,
+						backgroundColor: value === activeState ? '#7000FF' : 'unset',
+						width: '100%',
           }}
           key={value}
         >
