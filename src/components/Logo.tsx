@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Box, BoxProps, Typography } from '@mui/material';
-export interface LogoProps extends BoxProps { colored: boolean }
+export interface LogoProps extends BoxProps { colored?: boolean }
 
 export const Logo: React.FC<LogoProps> = (props) => {
 	const logoSrc = props.colored ? '/assets/logo_text_color.png' : '/assets/logo_text.png';
