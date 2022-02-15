@@ -16,7 +16,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { SectionTitle, ContactForm, AnimatedArrow } from '@/components/index';
-import { BANNER, SERVICE, PRODUCT, PARTNER, TEAM, JOB } from '@/constants/home';
+import { BANNER, SERVICE, PRODUCT, PARTNER, TEAM, JOB, OFFICE } from '@/constants/home';
 import { Anchors } from '../constants';
 
 
@@ -283,6 +283,43 @@ const HomePage: NextPage = () => {
 					</Container>
 				</Stack>
 
+				<Stack px={{ xs: 0, md: 10 }}>
+					<SectionTitle align="center">
+						{OFFICE.title}
+					</SectionTitle>
+					<Container>
+						<Grid container spacing={{xs: 1.5, sm: 3}} rowSpacing={{xs: 1.5, sm: 3}}>
+							{OFFICE.items.map(({ src, title, subtitle }, idx) => (
+								<Grid item key={title} xs={6} md={3}>
+									<Box sx={{
+										width: "100%",
+										height: 0,
+										overflow: "hidden",
+										paddingTop: { xs: "100%", md: "200%" },
+										position: "relative",
+										borderRadius: 2,
+										backgroundImage: `linear-gradient(180deg, rgba(64, 54, 72, 0) 67.9%, rgba(0, 0, 0, 0.9) 100%), url(${src})`,
+										backgroundRepeat: 'no-repeat',
+										backgroundSize: 'cover',
+										backgroundPosition: 'center',
+										mixBlendMode: 'normal',
+									}}>
+										<Box sx={{
+											position: 'absolute',
+											bottom: 0,
+											px: { xs: 2, sm: 4, md: 2, lg: 6},
+											py: { xs: 1, sm: 2, md: 2, lg: 4},
+										}}>
+											<Typography fontSize={{ xs: 22, sm: 24, md: 22, lg: 24 }} lineHeight={1} fontWeight="bold" color="#FFF">{title}</Typography>
+											<Typography fontSize={{ xs: 12, sm: 16, md: 14, lg: 16 }} lineHeight={1} color="rgba(255, 255, 255, 0.8)">{subtitle}</Typography>
+										</Box>
+									</Box>
+								</Grid>
+							))}
+						</Grid>
+					</Container>
+				</Stack>
+
 				<Stack justifyContent="center" alignItems="center" px={{ xs: 0, md: 10 }}>
 					<SectionTitle align="center" bookmark={Anchors.Team}>
 						{TEAM.title}
@@ -314,7 +351,7 @@ const HomePage: NextPage = () => {
 												height: "100%"
 											}}/>
 										</Box>
-										<Typography align="center">
+										<Box sx={{textAlign: 'center'}}>
 											<Typography
 												fontSize={{xs: 16, sm: 24, md: 16, lg: 24}}
 												fontWeight={700}
@@ -325,7 +362,7 @@ const HomePage: NextPage = () => {
 												letterSpacing="0.1rem"
 												color="#714E9D"
 											>{title}</Typography>
-										</Typography>
+										</Box>
 									</Stack>
 								</Grid>
 							))}

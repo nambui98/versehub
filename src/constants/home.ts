@@ -59,7 +59,7 @@ export const PARTNER = {
 }
 
 export const TEAM = {
-	title: 'our team',
+	title: 'our core team',
 	items: [
 		{ src: '/assets/teams/profile1.png', name: 'Quy Vu', title: 'CEO' },
 		{ src: '/assets/teams/profile2.png', name: 'Canh Ho', title: 'CTO' },
@@ -69,6 +69,16 @@ export const TEAM = {
 		{ src: '/assets/teams/profile6.png', name: 'Tuyen Nguyen', title: 'HEAD OF VR/3D R&D' },
 		{ src: '/assets/teams/profile7.png', name: 'Duyet Duong', title: 'ART DIRECTOR' },
 		{ src: '/assets/teams/profile8.png', name: 'Biba', title: 'Business Analyst' },
+	]
+}
+
+export const OFFICE = {
+	title: 'our office',
+	items: [
+		{ src: '/assets/offices/office1.png', title: 'Malta', subtitle: 'Headquarters' },
+		{ src: '/assets/offices/office2.png', title: 'UK', subtitle: 'London' },
+		{ src: '/assets/offices/office3.png', title: 'Singapore', subtitle: 'Singapore' },
+		{ src: '/assets/offices/office4.png', title: 'Vietnam', subtitle: 'Hanoi' },
 	]
 }
 
