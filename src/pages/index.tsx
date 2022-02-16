@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { NextPage } from 'next';
 import Link from 'next/link';
-import { BasicLayout } from '@/layouts/BasicLayout';
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -15,7 +15,8 @@ import {
   // Link,
   useMediaQuery,
 } from '@mui/material';
-import { SectionTitle, ContactForm, AnimatedArrow } from '@/components/index';
+import { BasicLayout } from '@/layouts/BasicLayout';
+import { SectionTitle, ContactForm, AnimatedArrow, ProfileDialog } from '@/components/index';
 import { BANNER, SERVICE, PRODUCT, PARTNER, TEAM, JOB, OFFICE } from '@/constants/home';
 import { Anchors } from '../constants';
 
@@ -23,8 +24,26 @@ import { Anchors } from '../constants';
 const HomePage: NextPage = () => {
   const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
 
+	const [openProfile, setOpenProfile] = useState(false);
+	const [profile, setProfile] = useState({
+		name: '', title: '', desc: []
+	});
+
+  const handleClickProfile = (data: any) => {
+		if (data && data.name && data.title && data.desc) {
+			setProfile(data);
+    	setOpenProfile(true);
+		}
+  };
+
+  const handleCloseProfile = () => {
+    setOpenProfile(false);
+  };
+
   return (
     <BasicLayout>
+			<ProfileDialog open={openProfile} onClose={handleCloseProfile} data={profile} />
+
       <Box
         sx={{
           height: '100vh',
@@ -288,30 +307,41 @@ const HomePage: NextPage = () => {
 						{TEAM.title}
 					</SectionTitle>
 					<Container>
-						<Grid container spacing={{xs: 1.5, sm: 2.5, md: 5}} rowSpacing={6}>
-							{TEAM.items.map(({ src, name, title }, key) => (
-								<Grid item xs={6} md={3} key={key}>
+						<Grid 
+							container 
+							spacing={{xs: 1.5, sm: 2.5, md: 5}} 
+							rowSpacing={{ xs: 6 }} 
+							columns={{ xs: 12, sm: 12, md: 12, lg: 15 }}
+							justifyContent="center" 
+							// alignItems="center"
+						>
+							{TEAM.items.map(({ src, name, title, desc }, key) => (
+								<Grid item xs={6} sm={6} md={3} lg={3} key={key}>
 									<Stack spacing={2.5} justifyContent="center" alignItems="center">
-										<Box sx={{
-											width: "100%",
-											height: 0,
-											overflow: "hidden",
-											paddingTop: "100%",
-											position: "relative",
-											borderRadius: 4,
-											'&:hover': {
-												'img': {
-													transform: 'scale(1.1)',
-													transition: 'all .5s',
-												}
-											}
-										}}>
+										<Box 
+											onClick={() => handleClickProfile({ name, title, desc })}
+											sx={{
+												width: "100%",
+												height: 0,
+												overflow: "hidden",
+												paddingTop: "100%",
+												position: "relative",
+												borderRadius: 4,
+												'&:hover': {
+													'img': {
+														transform: 'scale(1.1)',
+														transition: 'all .5s',
+													}
+												},
+												cursor: desc && desc.length ? 'pointer' : 'unset'
+											}}
+										>
 											<img src={src} alt={`image-${key}`} style={{
 												position: "absolute",
 												top: 0,
 												left: 0,
 												width: "100%",
-												height: "100%"
+												height: "100%",
 											}}/>
 										</Box>
 										<Box sx={{textAlign: 'center'}}>
