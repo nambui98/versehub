@@ -18,6 +18,7 @@ export const navigations = [
 
 export const secondLayoutNavigation = [
   { label: 'Jobs', href: '/jobs' },
+  { label: 'Blogs', href: '/blogs' },
   { label: 'Contact us', href: '/contact' },
 ];
 

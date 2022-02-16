@@ -28,7 +28,7 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 import { SecondLayout } from "@/layouts/SecondLayout";
 import { SectionTitle } from "@/components/SectionTitle";
-import { ourMission, coreValues } from "@/constants/jobs";
+import { MISSION, VALUES, BENEFIT } from "@/constants/jobs";
 import { getJobList } from "@/utils/spreadsheets";
 
 SwiperCore.use([Pagination, Autoplay]);
@@ -46,35 +46,34 @@ const JobsPage: NextPage = ({ jobs }: any) => {
 		<SecondLayout>
 			<Box
         sx={{
-          height: '50vh',
+          // height: '100vh',
+          // minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
           position: 'relative',
           overflow: 'hidden',
+					backgroundImage: 'url(/assets/bg3.svg)',
+					backgroundRepeat: 'no-repeat',
+					backgroundSize: 'cover',
+					backgroundPosition: 'bottom',
+					mb: 20,
         }}
       >
-				<Box
-					component="img"
-					src={'/assets/bg1.svg'}
-					sx={{
-						pointerEvents: 'none',
-						width: 1672.74,
-						height: 1242.1,
-						top: -317,
-						left: 'calc(50% + 48px)',
-						opacity: 0.4,
-						right: -24,
-						transform: 'translateX(-50%) rotate(20.99deg)',
-						position: 'absolute',
-					}}
-				/>
-			</Box>
+				<Box sx={{
+					mt: 11,
+					width: '100%',
+					height: '100%',
+				}}>
+					<img src="/assets/jobs/banner.png" alt="banner" width={'100%'}/>
+				</Box>
+      </Box>
 			<Container>
 				<Stack spacing={20}>
 					<OurMission />
 					<CoreValues />
+					<Benefits />
 					<Opportunities data={jobs} />
 				</Stack>
 			</Container>
@@ -86,15 +85,24 @@ export default JobsPage;
 
 function OurMission() {
 	return (
-		<Grid container direction="column">
-			<SectionTitle>Our mission</SectionTitle>
-			<Stack spacing={2} sx={{ px: 4 }}>
-				{ourMission.map((el: string, idx: number) => (
-					<Typography key={idx} fontSize={24}>
-						{el}
-					</Typography>
-				))}
-			</Stack>
+		<Grid container spacing={8}>
+			<Grid item sm={12} lg={7}>
+				<SectionTitle mb={4}>
+					{MISSION.title}
+				</SectionTitle>
+				<Stack spacing={1}>
+					{MISSION.desc.map((content: string, idx: number) => (
+						<Typography key={idx} fontSize={18}>
+							{content}
+						</Typography>
+					))}
+				</Stack>
+			</Grid>
+			<Grid item sm={12} lg={5}>
+				<Grid container justifyContent="center" alignItems="center">
+					<img src={MISSION.src} alt={MISSION.title} width="100%"/>
+				</Grid>
+			</Grid>
 		</Grid>
 	);
 }
@@ -104,29 +112,36 @@ function CoreValues() {
 		<Grid container>
 			<Swiper
 				// centeredSlides={true}
-				// pagination={{"clickable": true}}
-				autoplay={{
-					delay: 3000,
-					disableOnInteraction: false,
-				}}
+				pagination={{"clickable": true}}
+				// autoplay={{
+				// 	delay: 3000,
+				// 	disableOnInteraction: false,
+				// }}
 			>
-				{coreValues.map((el: any, idx: number) => (
+				{VALUES.map((el: any, idx: number) => (
 					<SwiperSlide key={idx}>
-						<Container>
-							<Grid container spacing={4}>
-								<Grid item sm={12} md={5}>
-									<Grid container justifyContent="center" alignItems="center">
-										{idx === 0 && <PeopleAltIcon sx={{ fontSize: 350 }} />}
-										{idx === 1 && <CategoryIcon sx={{ fontSize: 350 }} />}
-										{idx === 2 && (
-											<AutoAwesomeMosaicIcon sx={{ fontSize: 350 }} />
-										)}
-									</Grid>
+						<Box sx={{ 
+							width: '100%', 
+							background: '#494662',
+							borderRadius: 2, 
+							overflow: 'hidden',
+						}}>
+							<Grid container columns={11}>
+								<Grid item sm={11} md={5}>
+									{/* <img src="/assets/jobs/core_value.png" alt="values" width="100%"/> */}
+									<Box sx={{
+										width: '100%',
+										height: '100%',
+										minHeight: '450px',
+										backgroundImage: 'url(/assets/jobs/core_value.png)',
+										backgroundRepeat: 'no-repeat',
+										backgroundSize: 'cover',
+										backgroundPosition: 'right',
+									}}/>
 								</Grid>
-								<Grid item sm={12} md={7}>
-									<Typography textAlign="right">Core values</Typography>
+								<Grid item sm={11} md={6} px={10} py={12.5}>
+									{/* <Typography textAlign="right">Core values</Typography> */}
 									<Typography
-										textAlign="right"
 										variant="h2"
 										fontSize={40}
 										mt={1}
@@ -136,19 +151,44 @@ function CoreValues() {
 									</Typography>
 									<Stack spacing={1}>
 										{el.content.map((text: string, idx: number) => (
-											<Typography key={idx} textAlign="right" fontSize={24}>
+											<Typography key={idx} fontSize={18}>
 												{text}
 											</Typography>
 										))}
 									</Stack>
 								</Grid>
 							</Grid>
-						</Container>
+						</Box>
 					</SwiperSlide>
 				))}
 			</Swiper>
 		</Grid>
 	);
+}
+
+function Benefits() {
+	return (
+		<Grid container direction={'column'} justifyContent={'center'} alignItems={'center'}>
+			<Typography variant="h2" fontSize={40} align="center">{BENEFIT.title}</Typography>
+			<Box sx={{ width: '100%', maxWidth: '840px', mt: 3.75, mb: 15 }}>
+				<Typography fontSize={18} align="center">{BENEFIT.desc}</Typography>
+			</Box>
+			<Box sx={{ width: '100%', maxWidth: '900px' }}>
+				<Grid container spacing={5}>
+					{BENEFIT.items.map(({ src, desc }, idx) => (
+						<Grid key={idx} item xs={6} sm={6} md={4}>
+							<Stack spacing={1} justifyContent={'center'} alignItems={'center'} sx={{ height: '100%' }}>
+								<img src={src} alt={desc} width="100px"/>
+								<Typography fontSize={18} align="center">
+									{desc.split('\n').join(' ')}
+								</Typography>
+							</Stack>
+						</Grid>
+					))}
+				</Grid>
+			</Box>
+		</Grid>
+	)
 }
 
 function Opportunities({ data }: any) {

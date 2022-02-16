@@ -1,4 +1,13 @@
-export const coreValues = [
+export const MISSION = {
+	title: 'our mission',
+	src: '/assets/journey.png',
+	desc: [
+		`We aim to win the future  by contributing to the growth of Web3.0 - the Third Generation of the Internet.`,
+		`By creating an exceptional metaverse that allow people to collaborate, create, exchange, and take ownership of their digital identity and assets, we reshape the way people approach social communication.`
+	]
+}
+
+export const VALUES = [
 	{
 		title: "Our people",
 		content: [
@@ -21,13 +30,15 @@ export const coreValues = [
 	},
 ]
 
-export const ourMission = [
-  "We bring VR web3 blockchain technology to everyone",
-	"Contribute to the growth of web3 community by supporting new projects teams",
-	"Reshape the future of social communications"
-]
-
-export const benefit = [
-	"Tăng Lương linh động 2 lần/ năm",
-	"Sở hữu gói private sale, thưởng token team"
-]
+export const BENEFIT = {
+	title: 'benefits',
+	desc: `There's life at work and life outside of work. We want everyone to be healthy, travel often, get time to give back, and have the all the resources and support they need.`,
+	items: [
+		{ src: '/assets/jobs/benefit1.png', desc: `Comprehensive health\n& social insurance` },
+		{ src: '/assets/jobs/benefit2.png', desc: `Entertainment` },
+		{ src: '/assets/jobs/benefit3.png', desc: `Vacation twice a year` },
+		{ src: '/assets/jobs/benefit4.png', desc: `Salary review twice a year` },
+		{ src: '/assets/jobs/benefit5.png', desc: `Flexible working hours\n(9am - 6pm)` },
+		{ src: '/assets/jobs/benefit6.png', desc: `Learning and development` },
+	]
+}

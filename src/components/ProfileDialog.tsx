@@ -66,8 +66,8 @@ export const ProfileDialog = ({ open, onClose, data }: any) => {
 				}}>
 					{title}
 				</Box>
-				{desc.map(((el: string) => (
-					<Typography color="#fff" fontSize={{xs: 14, md: 16}} lineHeight={{xs: "20px", md: "24px"}}>
+				{desc.map(((el: string, idx: number) => (
+					<Typography key={idx} color="#fff" fontSize={{xs: 14, md: 16}} lineHeight={{xs: "20px", md: "24px"}}>
 						{'- ' + el}
 					</Typography>
 				)))}

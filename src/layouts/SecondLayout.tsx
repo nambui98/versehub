@@ -56,13 +56,19 @@ function Header() {
 			>
 				<Toolbar>
 					<Container
-						sx={{
-							display: 'flex',
-							justifyContent: 'space-between',
-							gap: 2,
-						}}
+						maxWidth={false}
+            sx={{
+							// mt: { xs: 2, md: 5 },
+							// py: { xs: 2, md: 5 },
+							px: { xs: 5, lg: 10 },
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              // gap: 2,
+            }}
 					>
 						<Logo />
+						{/* <Box sx={{ height: '140px' }}/> */}
 						<Navigation />
 						<IconButton
               color="inherit"
@@ -125,7 +131,7 @@ function Navigation({ mobile }: any) {
 				<Link key={el.label} href={el.href} passHref>
 					<Button variant="text" fullWidth={mobile} sx={{
 						color: "#fff",
-						fontSize: "24px",
+						fontSize: 18,
 						textTransform: "none",
 						borderRadius: 0,
 						'&:hover': {
