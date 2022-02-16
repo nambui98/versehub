@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Box, Button, Grid, Container, TextField, Snackbar, Alert } from "@mui/material";
+import {
+	Box,
+	Button,
+	Grid,
+	Container,
+	TextField,
+	Snackbar,
+	Alert,
+} from "@mui/material";
 import { SectionTitle } from "../components";
 import { ArrowRightIcon } from "../assets/index";
 import { Anchors } from "../constants";
@@ -42,26 +50,34 @@ export const ContactForm = () => {
 			},
 		});
 		setShowSnack(true);
-		setTextName('');
-		setTextEmail('');
-		setTextMessage('');
+		setTextName("");
+		setTextEmail("");
+		setTextMessage("");
 	};
 
 	return (
 		<Container
-			id={Anchors.Contact}
+			// id={Anchors.Contact}
 			sx={{
 				border: (theme) => `1px solid ${theme.palette.primary.main}`,
 				borderRadius: 4,
 				backgroundColor: "rgba(66, 0, 255, 0.03)",
 				backgroundImage: "url(/assets/bg_form.svg)",
-				backgroundRepeat: 'no-repeat',
-				backgroundSize: 'contain',
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "contain",
 				overflow: "hidden",
 			}}
 		>
-			<Snackbar open={showSnack} onClose={() => setShowSnack(false)} autoHideDuration={2000}>
-				<Alert severity="success" onClose={() => setShowSnack(false)} sx={{ width: '100%' }}>
+			<Snackbar
+				open={showSnack}
+				onClose={() => setShowSnack(false)}
+				autoHideDuration={2000}
+			>
+				<Alert
+					severity="success"
+					onClose={() => setShowSnack(false)}
+					sx={{ width: "100%" }}
+				>
 					Sent
 				</Alert>
 			</Snackbar>
@@ -80,12 +96,14 @@ export const ContactForm = () => {
 							// maxWidth: { sm: "100%", md: 375 },
 						}}
 					>
-						<Box sx={{
-							width: '100%',
-							p: '1px',
-							borderRadius: '8px',
-							background: 'linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)',
-						}}>
+						<Box
+							sx={{
+								width: "100%",
+								p: "1px",
+								borderRadius: "8px",
+								background: "linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)",
+							}}
+						>
 							<TextField
 								fullWidth
 								placeholder="Your name"
@@ -93,24 +111,26 @@ export const ContactForm = () => {
 								value={textName}
 								onChange={(e) => setTextName(e.target.value)}
 								error={errorName}
-								helperText={errorName && 'Empty name'}
+								helperText={errorName && "Empty name"}
 								sx={{
-									background: '#1B062A',
-									borderRadius: '8px',
-									'& .MuiInputBase-input': {
+									background: "#1B062A",
+									borderRadius: "8px",
+									"& .MuiInputBase-input": {
 										fontSize: 18,
-										color: '#7B648D',
-										padding: '18px 24px',
+										color: "#7B648D",
+										padding: "18px 24px",
 									},
 								}}
 							/>
 						</Box>
-						<Box sx={{
-							width: '100%',
-							p: '1px',
-							borderRadius: '8px',
-							background: 'linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)',
-						}}>
+						<Box
+							sx={{
+								width: "100%",
+								p: "1px",
+								borderRadius: "8px",
+								background: "linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)",
+							}}
+						>
 							<TextField
 								fullWidth
 								placeholder="Your email"
@@ -118,24 +138,26 @@ export const ContactForm = () => {
 								value={textEmail}
 								onChange={(e) => setTextEmail(e.target.value)}
 								error={errorEmail}
-								helperText={errorEmail && 'Incorrect email'}
+								helperText={errorEmail && "Incorrect email"}
 								sx={{
-									background: '#1B062A',
-									borderRadius: '8px',
-									'& .MuiInputBase-input': {
+									background: "#1B062A",
+									borderRadius: "8px",
+									"& .MuiInputBase-input": {
 										fontSize: 18,
-										color: '#7B648D',
-										padding: '18px 24px',
+										color: "#7B648D",
+										padding: "18px 24px",
 									},
 								}}
 							/>
 						</Box>
-						<Box sx={{
-							width: '100%',
-							p: '1px',
-							borderRadius: '8px',
-							background: 'linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)',
-						}}>
+						<Box
+							sx={{
+								width: "100%",
+								p: "1px",
+								borderRadius: "8px",
+								background: "linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)",
+							}}
+						>
 							<TextField
 								fullWidth
 								placeholder="Tell us how we can help..."
@@ -145,18 +167,18 @@ export const ContactForm = () => {
 								value={textMessage}
 								onChange={(e) => setTextMessage(e.target.value)}
 								error={errorMessage}
-								helperText={errorMessage && 'Empty message'}
+								helperText={errorMessage && "Empty message"}
 								sx={{
-									background: '#1B062A',
-									borderRadius: '8px',
-									'& .MuiInputBase-input': {
+									background: "#1B062A",
+									borderRadius: "8px",
+									"& .MuiInputBase-input": {
 										fontSize: 18,
-										color: '#7B648D',
-										padding: '18px 24px',
+										color: "#7B648D",
+										padding: "18px 24px",
 									},
-									'& .MuiInputBase-root': {
-										padding: 0
-									}
+									"& .MuiInputBase-root": {
+										padding: 0,
+									},
 								}}
 							/>
 						</Box>
@@ -170,8 +192,9 @@ export const ContactForm = () => {
 								color: "#fff",
 								fontSize: { xs: 18, sm: 24 },
 								py: 1,
-								background: 'linear-gradient(94.2deg, #6603E4 26.45%, #C624FF 84.03%)',
-								borderRadius: '80px',
+								background:
+									"linear-gradient(94.2deg, #6603E4 26.45%, #C624FF 84.03%)",
+								borderRadius: "80px",
 								// "& svg": { color: "primary.light" },
 							}}
 							endIcon={<ArrowRightIcon />}
@@ -195,4 +218,4 @@ export const ContactForm = () => {
 			</Grid>
 		</Container>
 	);
-}
+};
