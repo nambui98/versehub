@@ -57,7 +57,7 @@ export const ContactForm = () => {
 
 	return (
 		<Container
-			// id={Anchors.Contact}
+			id={Anchors.Contact}
 			sx={{
 				border: (theme) => `1px solid ${theme.palette.primary.main}`,
 				borderRadius: 4,

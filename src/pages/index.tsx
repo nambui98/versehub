@@ -62,7 +62,7 @@ const HomePage: NextPage = () => {
 				data={profile}
 			/>
 			<Banner />
-			<Stack spacing={{ xs: 22.5, lg: 0 }} mt={23}>
+			<Stack spacing={{ xs: 22.5 }} mt={23}>
 				<Services />
 				<ProductsPartners data={{ ...PRODUCT, anchor: Anchors.Products }} />
 				<ProductsPartners data={{ ...PARTNER, anchor: Anchors.Partners }} />
@@ -173,15 +173,15 @@ function StackWrapper({ children, bookmark, styles }: any) {
 
 	return (
 		<Box
-			id={(match1200 && bookmark) || ""}
+			// id={(match1200 && bookmark) || ""}
 			sx={{
-				minHeight: { xs: "unset", lg: "100vh" },
+				// minHeight: { xs: "unset", lg: "100vh" },
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "center",
 				alignItems: "center",
 			}}
-			style={match1440 ? { ...styles } : null}
+			// style={match1440 ? { ...styles } : null}
 		>
 			<Container>{children}</Container>
 		</Box>
@@ -248,8 +248,8 @@ function Services() {
 
 function ProductsPartners({ data }: any) {
 	return (
-		// <StackWrapper bookmark={data.anchor}>
-		<StackWrapper bookmark={data.anchor} styles={{ marginTop: "-160px" }}>
+		<StackWrapper bookmark={data.anchor}>
+			{/* <StackWrapper bookmark={data.anchor} styles={{ marginTop: "-160px" }}> */}
 			<SectionTitle
 				bookmark={data.anchor}
 				align="center"
@@ -287,7 +287,7 @@ function ProductsPartners({ data }: any) {
 									sx={{
 										width: "100%",
 										height: "100%",
-										py: { xs: 2, md: active ? 4 : 6 },
+										py: { xs: active ? 2 : 3, md: active ? 4 : 6 },
 										borderRadius: 2,
 										background: active
 											? "linear-gradient(180deg, #2D0B4E 0%, #160328 100%)"
@@ -470,8 +470,9 @@ function Jobs() {
 						</Grid>
 					</Grid>
 					<Grid item sm={12} lg={7}>
-						{/* <SectionTitle bookmark={Anchors.Jobs} mb={1}> */}
-						<SectionTitle mb={1}>{JOB.title}</SectionTitle>
+						<SectionTitle bookmark={Anchors.Jobs} mb={1}>
+							{JOB.title}
+						</SectionTitle>
 						<Typography
 							variant="subtitle1"
 							fontSize={14}
