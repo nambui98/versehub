@@ -491,7 +491,7 @@ function Jobs() {
 								justifyContent: { xs: "center", md: "flex-start" },
 							}}
 						>
-							<Link href="/jobs" passHref>
+							<Link href="/#jobs" passHref>
 								<Box
 									component="a"
 									sx={{
