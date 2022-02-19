@@ -168,8 +168,8 @@ function Banner() {
 }
 
 function StackWrapper({ children, bookmark, styles }: any) {
-	const match1200 = useMediaQuery("(min-width:1200px)");
-	const match1440 = useMediaQuery("(min-width:1440px)");
+	// const match1200 = useMediaQuery("(min-width:1200px)");
+	// const match1440 = useMediaQuery("(min-width:1440px)");
 
 	return (
 		<Box
@@ -491,32 +491,33 @@ function Jobs() {
 								justifyContent: { xs: "center", md: "flex-start" },
 							}}
 						>
-							<Link href="/#jobs" passHref>
+							{/* <Link href="/jobs" passHref> */}
+							<Box
+								component="a"
+								href="/jobs"
+								sx={{
+									display: "inline-block",
+									textDecoration: "none",
+									p: "2px",
+									borderRadius: 7.5,
+									background:
+										"linear-gradient(180deg, rgba(112, 0, 255, 0.7) 0%, rgba(252, 0, 255, 0.7) 100%)",
+								}}
+							>
 								<Box
-									component="a"
 									sx={{
-										display: "inline-block",
-										textDecoration: "none",
-										p: "2px",
+										px: 7,
+										py: 3,
 										borderRadius: 7.5,
-										background:
-											"linear-gradient(180deg, rgba(112, 0, 255, 0.7) 0%, rgba(252, 0, 255, 0.7) 100%)",
+										background: "#000",
 									}}
 								>
-									<Box
-										sx={{
-											px: 7,
-											py: 3,
-											borderRadius: 7.5,
-											background: "#000",
-										}}
-									>
-										<Typography fontSize={22} fontWeight={700} color="#fff">
-											Explore roles
-										</Typography>
-									</Box>
+									<Typography fontSize={22} fontWeight={700} color="#fff">
+										Explore roles
+									</Typography>
 								</Box>
-							</Link>
+							</Box>
+							{/* </Link> */}
 						</Box>
 					</Grid>
 				</Grid>

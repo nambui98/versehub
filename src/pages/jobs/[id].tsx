@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { NextPage } from "next";
 import React, { useState } from "react";
 import {
 	Container,
@@ -9,86 +9,61 @@ import {
 	Button,
 	Tabs,
 	Tab,
-	Divider,
+	Theme,
+	useMediaQuery,
 } from "@mui/material";
 
-import { SecondLayout } from '@/layouts/SecondLayout';
-import { SectionTitle, ApplyForm } from '@/components/index';
+import { SecondLayout } from "@/layouts/SecondLayout";
+import { SectionTitle, ApplyForm } from "@/components/index";
 import { getJobIds, getJobById } from "@/utils/spreadsheets";
 
-
 export async function getStaticPaths() {
-  const jobs = await getJobIds();
-  const paths = jobs.map(({ id }) => ({ params: { id: `${id}` } }));
-  return {
-    paths,
-    fallback: false,
-  };
+	const jobs = await getJobIds();
+	const paths = jobs.map(({ id }) => ({ params: { id: `${id}` } }));
+	return {
+		paths,
+		fallback: false,
+	};
 }
 
 export async function getStaticProps({ params }: any) {
-  const job = await getJobById(params.id);
-  return {
-    props: { job },
-  };
+	const job = await getJobById(params.id);
+	// console.log(job);
+	return {
+		props: { job },
+	};
 }
 
 const JobIdPage: NextPage = ({ job }: any) => {
+	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 	const [tabIndex, setTabIndex] = useState(0);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-    setTabIndex(newValue);
-  };
+	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+		setTabIndex(newValue);
+	};
 
 	return (
 		<SecondLayout>
-			<Box
-        sx={{
-          height: '50vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-				<Box
-					component="img"
-					src={'/assets/bg1.svg'}
-					sx={{
-						pointerEvents: 'none',
-						width: 1672.74,
-						height: 1242.1,
-						top: -317,
-						left: 'calc(50% + 48px)',
-						opacity: 0.4,
-						right: -24,
-						transform: 'translateX(-50%) rotate(20.99deg)',
-						position: 'absolute',
-					}}
+			<Banner />
+			<JobHeader title={job.name} subtitle={job.location} mobile={mobile} />
+			<Container sx={{ mt: 15, px: { md: 25 } }}>
+				<JobTabs
+					currentTabIndex={tabIndex}
+					onTabChange={handleTabChange}
+					mobile={mobile}
 				/>
-				<SectionTitle mb={0}>{job.name}</SectionTitle>
-			</Box>
-			<Container>
-				<Box sx={{ width: '100%', mt: 2 }}>
-					<Tabs value={tabIndex} onChange={handleTabChange} centered>
-						<Tab label="Role Overview" sx={{fontSize: 24, px: 8}}/>
-						{/* <Divider orientation="vertical" flexItem/> */}
-						<Tab label="Application" sx={{fontSize: 24, px: 8}}/>
-					</Tabs>
-				</Box>
-				{/* <Divider/> */}
-				<Box sx={{ width: '100%' }}>
+				<Box sx={{ width: "100%" }}>
 					<TabPanel value={tabIndex} index={0}>
-						<Overview 
-							desc={job.description} 
-							requirements={job.requirements}
+						<Overview
+							desc={job.description}
+							responsibilities={job.responsibilities}
+							needRequirements={job.needRequirements}
+							loveRequirements={job.loveRequirements}
 							offers={job.offers}
-							handleClick={() => setTabIndex(1)}
+							handleClick={() => setTabIndex(2)}
 						/>
 					</TabPanel>
-					<TabPanel value={tabIndex} index={1}>
+					<TabPanel value={tabIndex} index={2}>
 						<ApplyForm jobName={job.name} />
 					</TabPanel>
 				</Box>
@@ -99,49 +74,197 @@ const JobIdPage: NextPage = ({ job }: any) => {
 
 export default JobIdPage;
 
-function Overview({ desc, requirements, offers, handleClick }: any) {
+function Banner() {
 	return (
-		<Stack spacing={10} mt={10} px={20}>
-			<Typography fontSize={24}>{desc}</Typography>
-			<Box sx={{ width: '100%' }}>
-				<SectionTitle>Requirements</SectionTitle>
-				<Stack spacing={1}>
-					{requirements.map((el: string, idx: number) => (
-						<Typography key={idx} fontSize={24}>{el}</Typography>
-					))}
-				</Stack>
+		<Box
+			sx={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				flexDirection: "column",
+				position: "relative",
+				overflow: "hidden",
+				backgroundImage: "url(/assets/bg3.svg)",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "cover",
+				backgroundPosition: "bottom",
+				mb: 20,
+			}}
+		>
+			<Box
+				sx={{
+					mt: "140px",
+					width: "100%",
+				}}
+			>
+				<img src="/assets/jobs/banner.png" alt="banner" width={"100%"} />
 			</Box>
-			<Box sx={{ width: '100%' }}>
-				<SectionTitle>Offers</SectionTitle>
-				<Stack spacing={1}>
-					{offers.map((el: string, idx: number) => (
-						<Typography key={idx} fontSize={24}>{el}</Typography>
-					))}
+		</Box>
+	);
+}
+
+function JobHeader({ title, subtitle, mobile }: any) {
+	return (
+		<Box
+			sx={{
+				width: "100%",
+				borderBottom: "2px solid rgba(255, 255, 255, 0.1)",
+			}}
+		>
+			<Container sx={{ px: { md: 25 } }}>
+				<Stack spacing={0} alignItems={mobile ? "center" : "start"}>
+					<Typography
+						fontSize={{ xs: 24, sm: 40 }}
+						fontWeight={300}
+						color="#fff"
+						lineHeight={1}
+					>
+						{title}
+					</Typography>
+					<Typography
+						fontSize={{ xs: 18, sm: 24 }}
+						fontWeight={300}
+						color="#fff"
+					>
+						{subtitle}
+					</Typography>
+					<Box
+						sx={{
+							background: "#7000FF",
+							width: "150px",
+							height: "5px",
+							mt: 2,
+						}}
+					/>
 				</Stack>
-			</Box>
+			</Container>
+		</Box>
+	);
+}
+
+function JobTabs({ currentTabIndex, onTabChange, mobile }: any) {
+	return (
+		<Box sx={{ width: "100%", mt: 2 }}>
+			<Tabs
+				centered={mobile}
+				value={currentTabIndex}
+				onChange={onTabChange}
+				TabIndicatorProps={{
+					style: {
+						display: "none",
+					},
+				}}
+				sx={{
+					"& .Mui-selected": {
+						color: "#957AFF !important",
+					},
+				}}
+			>
+				<Tab
+					label="Role Overview"
+					sx={{
+						color: "#3E3962",
+						fontSize: { xs: 18, sm: 24 },
+						fontWeight: 700,
+						pr: 4,
+						pl: 0,
+					}}
+				/>
+				<Box
+					sx={{
+						width: "2px",
+						height: "25px",
+						margin: "auto 0",
+						background: "#3E3962",
+					}}
+				></Box>
+				<Tab
+					label="Application"
+					sx={{
+						color: "#3E3962",
+						fontSize: { xs: 18, sm: 24 },
+						fontWeight: 700,
+						pl: 4,
+					}}
+				/>
+			</Tabs>
+		</Box>
+	);
+}
+
+function Overview({
+	desc,
+	responsibilities,
+	needRequirements,
+	loveRequirements,
+	offers,
+	handleClick,
+}: any) {
+	return (
+		<Stack spacing={7.5} mt={7.5}>
+			<Typography fontSize={16} lineHeight={"24px"}>
+				{desc}
+			</Typography>
+			<Stack spacing={4}>
+				<OverviewH bigger>RESPONSIBILITY</OverviewH>
+				<OverviewUl items={responsibilities} />
+			</Stack>
+			<Stack spacing={4}>
+				<OverviewH bigger>REQUIREMENT</OverviewH>
+				<OverviewH>What you&apos;ll definitely need:</OverviewH>
+				<OverviewUl items={needRequirements} />
+				<OverviewH>What we&apos;d love you to have:</OverviewH>
+				<OverviewUl items={loveRequirements} />
+				<OverviewH>What we offer:</OverviewH>
+				<OverviewUl items={offers} />
+			</Stack>
 			<Grid container justifyContent="center">
-				<Button onClick={handleClick} sx={{
-					background: "rgba(196, 196, 196, 0.3)", 
-					px: 8, 
-					py: 2,
-					fontSize: "24px",
-					fontWeight: "bold"
-				}}>
+				<Button
+					onClick={handleClick}
+					sx={{
+						background: "#7000FF",
+						py: 3,
+						fontSize: "24px",
+						fontWeight: "bold",
+						width: "320px",
+					}}
+				>
 					Apply
 				</Button>
 			</Grid>
 		</Stack>
-	)
+	);
+}
+
+function OverviewH({ children, bigger }: any) {
+	return (
+		<Typography fontSize={bigger ? 24 : 16} fontWeight={700}>
+			{children}
+		</Typography>
+	);
+}
+
+function OverviewUl({ items }: any) {
+	return (
+		<Stack spacing={1}>
+			{items.map((el: string, idx: number) => (
+				<Stack direction={"row"} spacing={2} key={idx} pl={2}>
+					<Typography fontSize={16} lineHeight={"24px"}>
+						{"•"}
+					</Typography>
+					<Typography fontSize={16} lineHeight={"24px"}>
+						{el}
+					</Typography>
+				</Stack>
+			))}
+		</Stack>
+	);
 }
 
 function TabPanel({ children, value, index, ...other }: any) {
-  return (
-    <Box
-      role="tabpanel"
-      hidden={value !== index}
-      {...other}
-    >
-      {value === index && children}
-    </Box>
-  );
+	return (
+		<Box role="tabpanel" hidden={value !== index} {...other}>
+			{value === index && children}
+		</Box>
+	);
 }

@@ -1,35 +1,37 @@
+import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import {
-  Box,
-  AppBar,
-  Container,
-  Toolbar,
+	Box,
+	AppBar,
+	Container,
+	Toolbar,
 	Button,
 	Stack,
 	Drawer,
-  IconButton,
-  Theme,
-  useMediaQuery,
-  useScrollTrigger,
-} from '@mui/material';
-import Link from 'next/link';
-import React from 'react';
-import { CloseIcon, MenuIcon } from '../assets';
-import { Footer, Logo } from '../components';
-import { secondLayoutNavigation } from '../constants';
-
+	IconButton,
+	Link as MuiLink,
+	Theme,
+	useMediaQuery,
+	useScrollTrigger,
+} from "@mui/material";
+import { CloseIcon, MenuIcon } from "../assets";
+import { Footer, Logo } from "../components";
+import { secondLayoutNavigation } from "../constants";
+import { ArrowRightIcon } from "@/assets/index";
 
 export interface SecondLayoutProps {}
 
 export const SecondLayout: React.FC<SecondLayoutProps> = ({ children }) => {
-  return (
-    <Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      <Header />
-      <Box component="main" flexGrow={1}>
+	return (
+		<Box sx={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+			<Header />
+			<Box component="main" flexGrow={1}>
 				{children}
-      </Box>
-      <Footer />
-    </Box>
-  );
+			</Box>
+			<Footer />
+		</Box>
+	);
 };
 
 function Header() {
@@ -38,47 +40,51 @@ function Header() {
 		threshold: 200,
 	});
 	const [open, setOpen] = React.useState(false);
-  const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
+	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 	const handleDrawerToggle = () => {
-    setOpen(!open);
-  };
+		setOpen(!open);
+	};
+	const router = useRouter();
 
 	return (
 		<>
 			<AppBar
 				sx={{
-					backgroundColor: (theme) => trigger ? theme.palette.background.default : 'transparent',
-					transition: 'background 0.2s ',
+					backgroundColor: (theme) =>
+						trigger ? theme.palette.background.default : "transparent",
+					transition: "background 0.2s ",
 				}}
 				color="transparent"
 				square
 				elevation={0}
 			>
-				<Toolbar>
+				<Toolbar
+					sx={{
+						height: trigger ? "unset" : "140px",
+						transition: "all ease .5s",
+					}}
+				>
 					<Container
 						maxWidth={false}
-            sx={{
-							// mt: { xs: 2, md: 5 },
-							// py: { xs: 2, md: 5 },
+						sx={{
+							py: trigger ? 2 : 0,
 							px: { xs: 5, lg: 10 },
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              // gap: 2,
-            }}
+							display: "flex",
+							justifyContent: "space-between",
+							alignItems: "center",
+						}}
 					>
 						<Logo />
-						{/* <Box sx={{ height: '140px' }}/> */}
-						<Navigation />
+						<Navigation currentPath={router.asPath} />
 						<IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="end"
-              sx={{ display: { sm: 'none' } }}
-              onClick={() => setOpen(true)}
-            >
-              <MenuIcon />
-            </IconButton>
+							color="inherit"
+							aria-label="open drawer"
+							edge="end"
+							sx={{ display: { sm: "none" } }}
+							onClick={() => setOpen(true)}
+						>
+							<MenuIcon />
+						</IconButton>
 					</Container>
 				</Toolbar>
 			</AppBar>
@@ -91,16 +97,23 @@ function Header() {
 					keepMounted: true, // Better open performance on mobile.
 				}}
 				sx={{
-					display: { xs: 'block', sm: 'block' },
-					'& .MuiDrawer-paper': {
-						boxSizing: 'border-box',
-						width: '100vw',
-						background: (theme) => theme.palette.background.default,
+					display: { xs: "block", sm: "block" },
+					"& .MuiDrawer-paper": {
+						boxSizing: "border-box",
+						width: "100vw",
+						// background: (theme) => theme.palette.background.default,
+						backgroundColor: (theme) => theme.palette.background.default,
+						backgroundImage: 'url("/assets/bg3.svg")',
+						backgroundRepeat: "no-repeat",
+						backgroundSize: "cover",
+						backgroundPosition: "bottom",
 					},
 				}}
 			>
-				<Container>
-					<Toolbar sx={{ justifyContent: 'space-between', mb: 8 }}>
+				<Container sx={{ px: 0 }}>
+					<Toolbar
+						sx={{ justifyContent: "space-between", mb: 12.5, px: 4, pt: 4 }}
+					>
 						<Logo />
 						<IconButton
 							color="inherit"
@@ -111,35 +124,62 @@ function Header() {
 							<CloseIcon />
 						</IconButton>
 					</Toolbar>
-					<Navigation mobile={mobile} />
+					<Navigation currentPath={router.asPath} mobile={mobile} />
 				</Container>
 			</Drawer>
 		</>
 	);
 }
 
-function Navigation({ mobile }: any) {
+function Navigation({ mobile, currentPath }: any) {
 	return (
-		<Stack 
-			direction={mobile ? "column" : "row"} 
-			spacing={{xs: 2, sm: 4, md: 8, lg: 12}}
+		<Stack
+			// direction={{ xs: "column", md: "row" }}
+			direction={mobile ? "column" : "row"}
+			spacing={{ xs: 2, sm: 6.25 }}
 			sx={{
-				display: mobile ? 'flex' : { xs: 'none', sm: 'flex' }
+				display: mobile ? "flex" : { xs: "none", sm: "flex" },
 			}}
 		>
-			{secondLayoutNavigation.map((el: any) => (
-				<Link key={el.label} href={el.href} passHref>
-					<Button variant="text" fullWidth={mobile} sx={{
-						color: "#fff",
-						fontSize: 18,
-						textTransform: "none",
-						borderRadius: 0,
-						'&:hover': {
-							background: "transparent"
-						}
-					}}>
-						{el.label}
-					</Button>
+			{secondLayoutNavigation.map(({ label, href }) => (
+				<Link key={label} href={href} passHref>
+					{mobile ? (
+						<MuiLink
+							color="#fff"
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								fontSize: 24,
+								lineHeight: "28px",
+								py: 2,
+								px: 6,
+								gap: 3,
+								backgroundColor: href === currentPath ? "#7000FF" : "unset",
+								width: "100%",
+							}}
+						>
+							{href === currentPath ? (
+								<ArrowRightIcon />
+							) : (
+								<Box minWidth={24} />
+							)}
+							<span>{label}</span>
+						</MuiLink>
+					) : (
+						<MuiLink
+							sx={{
+								color:
+									href === currentPath ? "#A89AFF" : "rgba(255, 255, 255, 0.8)",
+								fontSize: 18,
+								lineHeight: "21.09px",
+								textDecoration:
+									href === currentPath ? "underline #8470FF 3px" : "none",
+								textUnderlinePosition: "under",
+							}}
+						>
+							{label}
+						</MuiLink>
+					)}
 				</Link>
 			))}
 		</Stack>

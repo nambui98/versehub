@@ -1,27 +1,27 @@
-import { google } from 'googleapis';
-import getConfig from 'next/config';
-import fs from 'fs';
-import PersistentFile from 'formidable/PersistentFile';
+import { google } from "googleapis";
+import getConfig from "next/config";
+import fs from "fs";
+import PersistentFile from "formidable/PersistentFile";
 
-const { serverRuntimeConfig } = getConfig()
+const { serverRuntimeConfig } = getConfig();
 const scopes = [
-	'https://www.googleapis.com/auth/spreadsheets',
-	'https://www.googleapis.com/auth/drive',
-	'https://www.googleapis.com/auth/drive.file',
+	"https://www.googleapis.com/auth/spreadsheets",
+	"https://www.googleapis.com/auth/drive",
+	"https://www.googleapis.com/auth/drive.file",
 ];
 const jwt = new google.auth.JWT(
 	serverRuntimeConfig.CLIENT_EMAIL,
 	serverRuntimeConfig.CLIENT_ID,
-	serverRuntimeConfig.PRIVATE_KEY.replace(/\\n/g, '\n'),
+	serverRuntimeConfig.PRIVATE_KEY.replace(/\\n/g, "\n"),
 	scopes
 );
-const sheets = google.sheets({ version: 'v4', auth: jwt });
-const drive = google.drive({version: 'v3', auth: jwt});
+const sheets = google.sheets({ version: "v4", auth: jwt });
+const drive = google.drive({ version: "v3", auth: jwt });
 
 const SHEET = {
-	CONTACT_US: 'Contact_us',
-	JOBS: 'Jobs',
-	APPLICATION: 'Application',
+	CONTACT_US: "Contact_us",
+	JOBS: "ActiveJobs",
+	APPLICATION: "Application",
 };
 
 export async function uploadFileToDrive(file: any) {
@@ -29,11 +29,11 @@ export async function uploadFileToDrive(file: any) {
 		const res = await drive.files.create({
 			media: {
 				mimeType: file.mimetype,
-				body: fs.createReadStream(file.filepath)
+				body: fs.createReadStream(file.filepath),
 			},
 			requestBody: {
 				name: file.originalFilename,
-				parents: ['1_WsHxHgJqe_r3pbDIN1YmHwj5UnXqjo8']
+				parents: ["1_WsHxHgJqe_r3pbDIN1YmHwj5UnXqjo8"],
 			},
 			supportsAllDrives: true,
 		});
@@ -88,7 +88,7 @@ export async function getJobById(id: number) {
 	try {
 		const response = await sheets.spreadsheets.values.get({
 			spreadsheetId: serverRuntimeConfig.SPREADSHEET_ID,
-			range: `${SHEET.JOBS}!A${id}:F${id}`,
+			range: `${SHEET.JOBS}!A${id}:H${id}`,
 		});
 		const rows = response.data.values || [];
 		if (rows.length && rows.length > 0) {
@@ -97,8 +97,10 @@ export async function getJobById(id: number) {
 				department: row[1],
 				location: row[2],
 				description: row[3],
-				requirements: `${row[4]}`.split('\n'),
-				offers: `${row[5]}`.split('\n')
+				offers: cleanTexts(row[4] || ""),
+				responsibilities: cleanTexts(row[5] || ""),
+				needRequirements: cleanTexts(row[6] || ""),
+				loveRequirements: cleanTexts(row[7] || ""),
 			}))[0];
 		}
 	} catch (err) {
@@ -107,21 +109,27 @@ export async function getJobById(id: number) {
 	return null;
 }
 
+function cleanTexts(texts: string) {
+	return texts
+		.split("\n")
+		.map((el) => el.replace("-", "").trim())
+		.filter((el) => !!el);
+}
 interface contactBody {
-	name: string,
-	email: string,
-	message: string
+	name: string;
+	email: string;
+	message: string;
 }
 
 export async function appendContactUs(body: contactBody) {
 	const data = {
-		createdAt: new Date().toLocaleString('en-GB'),
-		...body
+		createdAt: new Date().toLocaleString("en-GB"),
+		...body,
 	};
 	return sheets.spreadsheets.values.append({
 		spreadsheetId: serverRuntimeConfig.SPREADSHEET_ID,
 		range: SHEET.CONTACT_US,
-		valueInputOption: 'USER_ENTERED',
+		valueInputOption: "USER_ENTERED",
 		requestBody: {
 			values: [[...Object.values(data)]],
 		},
@@ -129,27 +137,26 @@ export async function appendContactUs(body: contactBody) {
 }
 
 interface applyBody {
-	jobName: string,
-	firstName: string,
-	lastName: string,
-	email: string,
-	phone: string,
-	location: string,
-	attachment: string
+	jobName: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	phone: string;
+	location: string;
+	attachment: string;
 }
 
 export async function appendApplication(body: applyBody) {
 	const data = {
-		createdAt: new Date().toLocaleString('en-GB'),
-		...body
+		createdAt: new Date().toLocaleString("en-GB"),
+		...body,
 	};
 	return sheets.spreadsheets.values.append({
 		spreadsheetId: serverRuntimeConfig.SPREADSHEET_ID,
 		range: SHEET.APPLICATION,
-		valueInputOption: 'USER_ENTERED',
+		valueInputOption: "USER_ENTERED",
 		requestBody: {
 			values: [[...Object.values(data)]],
 		},
 	});
 }
-
