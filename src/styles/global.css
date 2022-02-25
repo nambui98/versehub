@@ -51,9 +51,9 @@
 	font-display: swap;
 }
 
-html {
+/* html {
 	scroll-behavior: smooth;
-}
+} */
 
 /* body::-webkit-scrollbar {
 	width: 8px;

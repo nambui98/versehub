@@ -7,29 +7,32 @@ export const MISSION = {
 	],
 };
 
-export const VALUES = [
-	{
-		title: "Our people",
-		image: "/assets/jobs/value1.png",
-		content: [
-			"Think big and have long term mindset to build great products",
-			"Be curious: keep asking questions, keep pushing personal knowledge borderline, go above and beyond and deliver to customers what is more than their expectation",
-			"Be helpful: play nice to each other, help other learn and grow, no one is left behind, make new comers feel belong and included",
-		],
-	},
-	{
-		title: "Our products",
-		image: "/assets/jobs/value2.png",
-		content: ["World class quality products"],
-	},
-	{
-		title: "Our service",
-		image: "/assets/jobs/value3.png",
-		content: [
-			"Customer oriented, everything starts from customers and goes to the customers",
-		],
-	},
-];
+export const VALUES = {
+	title: "core values",
+	items: [
+		{
+			title: "Our people",
+			image: "/assets/jobs/value1.png",
+			content: [
+				"Think big and have long term mindset to build great products",
+				"Be curious: keep asking questions, keep pushing personal knowledge borderline, go above and beyond and deliver to customers what is more than their expectation",
+				"Be helpful: play nice to each other, help other learn and grow, no one is left behind, make new comers feel belong and included",
+			],
+		},
+		{
+			title: "Our products",
+			image: "/assets/jobs/value2.png",
+			content: ["World class quality products"],
+		},
+		{
+			title: "Our service",
+			image: "/assets/jobs/value3.png",
+			content: [
+				"Customer oriented, everything starts from customers and goes to the customers",
+			],
+		},
+	],
+};
 
 export const BENEFIT = {
 	title: "benefits",

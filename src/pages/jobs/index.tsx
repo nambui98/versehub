@@ -33,7 +33,7 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import { SecondLayout } from "@/layouts/SecondLayout";
 import { SectionTitle, CustomCheckbox } from "@/components/index";
 import { MISSION, VALUES, BENEFIT, CONTACT } from "@/constants/jobs";
-import { getJobList } from "@/utils/spreadsheets";
+import { getJobList } from "@/utils/sheets.google";
 
 // SwiperCore.use([Pagination, Autoplay]);
 
@@ -120,6 +120,16 @@ function OurMission() {
 function CoreValues() {
 	return (
 		<Grid container>
+			<Grid item xs={12}>
+				<SectionTitle
+					mb={7}
+					sx={{
+						textAlign: "center",
+					}}
+				>
+					{VALUES.title}
+				</SectionTitle>
+			</Grid>
 			<Swiper
 				modules={[Pagination, Autoplay]}
 				// centeredSlides={true}
@@ -129,7 +139,7 @@ function CoreValues() {
 					disableOnInteraction: false,
 				}}
 			>
-				{VALUES.map(({ title, image, content }) => (
+				{VALUES.items.map(({ title, image, content }) => (
 					<SwiperSlide key={title}>
 						<Box
 							sx={{
@@ -164,7 +174,13 @@ function CoreValues() {
 									px={{ md: 4, lg: 7, xl: 10 }}
 									py={{ md: 6, lg: 9, xl: 12.5 }}
 								>
-									<Typography variant="h2" fontSize={40} mt={1} mb={3}>
+									<Typography
+										fontSize={24}
+										fontWeight={"bold"}
+										mt={1}
+										mb={2}
+										sx={{ textTransform: "uppercase" }}
+									>
 										{title}
 									</Typography>
 									<Stack spacing={1}>
@@ -182,14 +198,18 @@ function CoreValues() {
 								sx={{ display: { xs: "flex", md: "none" } }}
 							>
 								<Grid item xs={12}>
-									<SectionTitle
-										mb={4}
+									<Typography
+										fontSize={24}
+										fontWeight={"bold"}
+										mt={1}
+										mb={2}
 										sx={{
+											textTransform: "uppercase",
 											textAlign: { xs: "center", md: "left" },
 										}}
 									>
 										{title}
-									</SectionTitle>
+									</Typography>
 									<Stack spacing={1}>
 										{content.map((text: string, idx: number) => (
 											<Typography key={idx} fontSize={18}>
@@ -404,7 +424,7 @@ function Opportunities({ data }: any) {
 	return (
 		<Box
 			mt={28}
-			px={{ xs: 5, md: 10 }}
+			px={{ xs: 2, md: 10 }}
 			pb={{ xs: 40, md: 30 }}
 			sx={{
 				backgroundImage: "url(/assets/jobs/opportunities.png)",
@@ -416,7 +436,7 @@ function Opportunities({ data }: any) {
 			<Grid container>
 				<SectionTitle>Opportunities</SectionTitle>
 				<Grid container spacing={{ xs: 10, md: 15 }}>
-					<Grid item xs={12} md={4}>
+					<Grid item xs={12} md={6} lg={4}>
 						<Typography
 							fontSize={24}
 							fontWeight={"bold"}
@@ -463,6 +483,12 @@ function Opportunities({ data }: any) {
 										clipPath:
 											"polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%)",
 										transition: "all ease .25s",
+										"&:hover": {
+											backgroundColor:
+												currentDepartment === el.title
+													? "#7000FF"
+													: "rgba(170, 0, 172, 0.08)",
+										},
 									}}
 								>
 									{el.title} ({el.count})
@@ -503,7 +529,7 @@ function Opportunities({ data }: any) {
 							))}
 						</FormGroup>
 					</Grid>
-					<Grid item xs={12} md={8}>
+					<Grid item xs={12} md={6} lg={8}>
 						<Typography
 							fontSize={24}
 							fontWeight={"bold"}
@@ -518,7 +544,7 @@ function Opportunities({ data }: any) {
 								width: "100%",
 								// height: "100vh",
 								// minHeight: "768px",
-								height: "700px",
+								height: { sm: "700px" },
 								overflowY: "scroll",
 								"&::-webkit-scrollbar": {
 									width: "8px",
@@ -554,7 +580,7 @@ function Opportunities({ data }: any) {
 												<ListItemText
 													primary={
 														<Typography
-															fontSize={24}
+															fontSize={{ xs: 20, sm: 24 }}
 															fontWeight="bold"
 															sx={{ cursor: "pointer" }}
 														>
@@ -562,9 +588,10 @@ function Opportunities({ data }: any) {
 														</Typography>
 													}
 													secondary={
-														<Typography fontSize={18}>
+														<Typography fontSize={{ xs: 14, sm: 18 }}>
 															<FmdGoodOutlinedIcon
 																sx={{
+																	fontSize: { xs: 18 },
 																	mr: 1,
 																	mb: "-4px",
 																	mt: 1,
@@ -575,8 +602,8 @@ function Opportunities({ data }: any) {
 													}
 													sx={{
 														my: 0,
-														px: 6,
-														py: 4,
+														px: { xs: 4, sm: 6 },
+														py: { xs: 3, sm: 4 },
 														borderRight: "1px solid #0F000F",
 													}}
 												/>

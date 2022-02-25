@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 
 import { SecondLayout } from "@/layouts/SecondLayout";
-import { SectionTitle, ApplyForm } from "@/components/index";
-import { getJobIds, getJobById } from "@/utils/spreadsheets";
+import { SectionTitle, ApplyForm, useSmoothScroll } from "@/components/index";
+import { getJobIds, getJobById } from "@/utils/sheets.google";
 
 export async function getStaticPaths() {
 	const jobs = await getJobIds();
@@ -37,6 +37,7 @@ export async function getStaticProps({ params }: any) {
 const JobIdPage: NextPage = ({ job }: any) => {
 	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 	const [tabIndex, setTabIndex] = useState(0);
+	useSmoothScroll();
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setTabIndex(newValue);
@@ -46,7 +47,7 @@ const JobIdPage: NextPage = ({ job }: any) => {
 		<SecondLayout>
 			<Banner />
 			<JobHeader title={job.name} subtitle={job.location} mobile={mobile} />
-			<Container sx={{ mt: 15, px: { md: 25 } }}>
+			<Container sx={{ mt: 15, px: { md: 25 } }} id="tabs">
 				<JobTabs
 					currentTabIndex={tabIndex}
 					onTabChange={handleTabChange}
@@ -220,6 +221,7 @@ function Overview({
 			</Stack>
 			<Grid container justifyContent="center">
 				<Button
+					href="#tabs"
 					onClick={handleClick}
 					sx={{
 						background: "#7000FF",

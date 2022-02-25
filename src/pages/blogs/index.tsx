@@ -5,9 +5,7 @@ import { SecondLayout } from "@/layouts/SecondLayout";
 const ContactPage: NextPage = () => {
 	return (
 		<SecondLayout>
-			<Container>
-				<Typography variant="h1">Blogs</Typography>
-			</Container>
+			<Container>{/* <Typography variant="h1">Blogs</Typography> */}</Container>
 		</SecondLayout>
 	);
 };

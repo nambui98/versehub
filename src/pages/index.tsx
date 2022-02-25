@@ -21,6 +21,7 @@ import {
 	ContactForm,
 	AnimatedArrow,
 	ProfileDialog,
+	useSmoothScroll,
 } from "@/components/index";
 import {
 	BANNER,
@@ -35,38 +36,40 @@ import { Anchors } from "../constants";
 
 const HomePage: NextPage = () => {
 	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
+	useSmoothScroll();
 
-	const [openProfile, setOpenProfile] = useState(false);
-	const [profile, setProfile] = useState({
-		name: "",
-		title: "",
-		desc: [],
-	});
+	// const [openProfile, setOpenProfile] = useState(false);
+	// const [profile, setProfile] = useState({
+	// 	name: "",
+	// 	title: "",
+	// 	desc: [],
+	// });
 
-	const handleClickProfile = (data: any) => {
-		if (data && data.name && data.title && data.desc) {
-			setProfile(data);
-			setOpenProfile(true);
-		}
-	};
+	// const handleClickProfile = (data: any) => {
+	// 	if (data && data.name && data.title && data.desc) {
+	// 		setProfile(data);
+	// 		setOpenProfile(true);
+	// 	}
+	// };
 
-	const handleCloseProfile = () => {
-		setOpenProfile(false);
-	};
+	// const handleCloseProfile = () => {
+	// 	setOpenProfile(false);
+	// };
 
 	return (
 		<BasicLayout>
-			<ProfileDialog
+			{/* <ProfileDialog
 				open={openProfile}
 				onClose={handleCloseProfile}
 				data={profile}
-			/>
+			/> */}
 			<Banner />
 			<Stack spacing={{ xs: 22.5 }} mt={23}>
 				<Services />
 				<ProductsPartners data={{ ...PRODUCT, anchor: Anchors.Products }} />
 				<ProductsPartners data={{ ...PARTNER, anchor: Anchors.Partners }} />
-				<Team onClickProfile={handleClickProfile} />
+				{/* <Team onClickProfile={handleClickProfile} /> */}
+				<Team />
 				<Offices />
 				<Jobs />
 				<StackWrapper bookmark={Anchors.Contact}>
@@ -337,11 +340,14 @@ function Team({ onClickProfile }: any) {
 					justifyContent="center"
 					// alignItems="center"
 				>
-					{TEAM.items.map(({ src, name, title, desc }, key) => (
+					{TEAM.items.map(({ src, name, title, desc, linkedIn }, key) => (
 						<Grid item xs={6} sm={6} md={3} lg={3} key={key}>
 							<Stack spacing={2.5} justifyContent="center" alignItems="center">
 								<Box
-									onClick={() => onClickProfile({ name, title, desc })}
+									// onClick={() => onClickProfile({ name, title, linkedIn })}
+									onClick={() => {
+										if (linkedIn) window.open(linkedIn, "_blank");
+									}}
 									sx={{
 										width: "100%",
 										height: 0,
@@ -355,7 +361,8 @@ function Team({ onClickProfile }: any) {
 												transition: "all .5s",
 											},
 										},
-										cursor: desc && desc.length ? "pointer" : "unset",
+										// cursor: desc && desc.length ? "pointer" : "unset",
+										cursor: linkedIn ? "pointer" : "unset",
 									}}
 								>
 									<img
@@ -491,33 +498,33 @@ function Jobs() {
 								justifyContent: { xs: "center", md: "flex-start" },
 							}}
 						>
-							{/* <Link href="/jobs" passHref> */}
-							<Box
-								component="a"
-								href="/jobs"
-								sx={{
-									display: "inline-block",
-									textDecoration: "none",
-									p: "2px",
-									borderRadius: 7.5,
-									background:
-										"linear-gradient(180deg, rgba(112, 0, 255, 0.7) 0%, rgba(252, 0, 255, 0.7) 100%)",
-								}}
-							>
+							<Link href="/jobs" passHref>
 								<Box
+									component="a"
+									// href="/jobs"
 									sx={{
-										px: 7,
-										py: 3,
+										display: "inline-block",
+										textDecoration: "none",
+										p: "2px",
 										borderRadius: 7.5,
-										background: "#000",
+										background:
+											"linear-gradient(180deg, rgba(112, 0, 255, 0.7) 0%, rgba(252, 0, 255, 0.7) 100%)",
 									}}
 								>
-									<Typography fontSize={22} fontWeight={700} color="#fff">
-										Explore roles
-									</Typography>
+									<Box
+										sx={{
+											px: 7,
+											py: 3,
+											borderRadius: 7.5,
+											background: "#000",
+										}}
+									>
+										<Typography fontSize={22} fontWeight={700} color="#fff">
+											Explore roles
+										</Typography>
+									</Box>
 								</Box>
-							</Box>
-							{/* </Link> */}
+							</Link>
 						</Box>
 					</Grid>
 				</Grid>

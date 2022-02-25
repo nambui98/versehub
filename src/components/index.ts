@@ -8,3 +8,4 @@ export * from "./ApplyForm";
 export * from "./AnimatedArrow";
 export * from "./ProfileDialog";
 export * from "./Checkbox";
+export * from "./SmoothScroll";

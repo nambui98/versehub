@@ -7,6 +7,8 @@ import {
 	TextField,
 	Snackbar,
 	Alert,
+	Backdrop,
+	CircularProgress,
 } from "@mui/material";
 import { SectionTitle } from "../components";
 import { ArrowRightIcon } from "../assets/index";
@@ -20,6 +22,7 @@ export const ContactForm = () => {
 	const [errorEmail, setErrorEmail] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(false);
 	const [showSnack, setShowSnack] = useState(false);
+	const [showBackdrop, setShowBackdrop] = useState(false);
 
 	const handleSubmit = async (event: any) => {
 		event.preventDefault();
@@ -38,6 +41,7 @@ export const ContactForm = () => {
 			setTimeout(() => setErrorMessage(false), 2000);
 			return;
 		}
+		setShowBackdrop(true);
 		const response = await fetch("/api/contact", {
 			method: "POST",
 			body: JSON.stringify({
@@ -49,6 +53,7 @@ export const ContactForm = () => {
 				"Content-Type": "application/json",
 			},
 		});
+		setShowBackdrop(false);
 		setShowSnack(true);
 		setTextName("");
 		setTextEmail("");
@@ -68,6 +73,12 @@ export const ContactForm = () => {
 				overflow: "hidden",
 			}}
 		>
+			<Backdrop
+				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+				open={showBackdrop}
+			>
+				<CircularProgress color="inherit" />
+			</Backdrop>
 			<Snackbar
 				open={showSnack}
 				onClose={() => setShowSnack(false)}

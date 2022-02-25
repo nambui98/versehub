@@ -101,8 +101,8 @@ const CustomTextField = ({
 
 const CustomFileField = ({
 	label,
-	file,
-	onChange,
+	value,
+	// onChange,
 	onFileChange,
 	error,
 }: any) => {
@@ -110,8 +110,8 @@ const CustomFileField = ({
 		<Stack spacing={0}>
 			<CustomLabel>{label}</CustomLabel>
 			<CustomInputFile
-				value={(file && file.name) || ""}
-				onChange={onChange}
+				value={value || ""}
+				// onChange={onChange}
 				endAdornment={
 					<InputAdornment position="end">
 						<Button
@@ -123,7 +123,7 @@ const CustomFileField = ({
 							<input
 								type="file"
 								hidden
-								// multiple
+								multiple
 								accept="image/*,.pdf"
 								onChange={onFileChange}
 							/>
@@ -145,7 +145,9 @@ export const ApplyForm = ({ jobName }: any) => {
 	const [textEmail, setTextEmail] = useState("");
 	const [textPhone, setTextPhone] = useState("");
 	const [textLocation, setTextLocation] = useState("");
-	const [fileResume, setFileResume] = useState<any>(null);
+	// const [fileResume, setFileResume] = useState<any>(null);
+	const [files, setFiles] = useState<any>([]);
+	const [fileNames, setFileNames] = useState("");
 	const [errorFirst, setErrorFirst] = useState(false);
 	const [errorLast, setErrorLast] = useState(false);
 	const [errorEmail, setErrorEmail] = useState(false);
@@ -154,24 +156,34 @@ export const ApplyForm = ({ jobName }: any) => {
 	const [errorResume, setErrorResume] = useState("");
 
 	const onFileChange = (event: any) => {
-		setFileResume(null);
-		// console.log(event.target.files);
-		const file = event.target.files[0];
-		if (
-			!file.type ||
-			(!file.type.includes("pdf") && !file.type.includes("image/"))
-		) {
-			setErrorResume("Unsupported media type");
-			setTimeout(() => setErrorResume(""), 2000);
-			return;
+		setFiles([]);
+		setFileNames("");
+		// const file = event.target.files[0];
+		const files = event.target.files;
+		let totalSize = 0;
+		let fileNames = [];
+		for (let i = 0; i < files.length; i++) {
+			const file = files[i];
+			if (
+				!file.size ||
+				!file.type ||
+				(!file.type.includes("pdf") && !file.type.includes("image/"))
+			) {
+				setErrorResume("Unsupported media type");
+				setTimeout(() => setErrorResume(""), 2000);
+				return;
+			}
+			totalSize += file.size;
+			if (totalSize > 5 * 1024 * 1024) {
+				// 5MB
+				setErrorResume("Payload too large");
+				setTimeout(() => setErrorResume(""), 2000);
+				return;
+			}
+			fileNames.push(file.name);
 		}
-		if (!file.size || file.size > 5 * 1024 * 1024) {
-			// 5MB
-			setErrorResume("Payload too large");
-			setTimeout(() => setErrorResume(""), 2000);
-			return;
-		}
-		setFileResume(file);
+		setFiles(files);
+		setFileNames(fileNames.join(", "));
 	};
 
 	const handleSubmit = async (event: any) => {
@@ -204,11 +216,12 @@ export const ApplyForm = ({ jobName }: any) => {
 			setTimeout(() => setErrorLocation(false), 2000);
 			return;
 		}
-		if (!fileResume) {
+		if (!files || !files.length || files.length <= 0) {
 			setErrorResume("Empty");
 			setTimeout(() => setErrorResume(""), 2000);
 			return;
 		}
+		console.log("files", files);
 		setShowBackdrop(true);
 		const formData = new FormData();
 		formData.append("jobName", jobName);
@@ -217,7 +230,10 @@ export const ApplyForm = ({ jobName }: any) => {
 		formData.append("email", textEmail);
 		formData.append("phone", textPhone);
 		formData.append("location", textLocation);
-		formData.append("resume", fileResume, fileResume.name);
+		// formData.append("resume", fileResume, fileResume.name);
+		for (let i = 0; i < files.length; i++) {
+			formData.append(`attachment[${i}]`, files[i]);
+		}
 		const response = await fetch("/api/apply", {
 			method: "POST",
 			body: formData,
@@ -229,7 +245,9 @@ export const ApplyForm = ({ jobName }: any) => {
 		setTextEmail("");
 		setTextPhone("");
 		setTextLocation("");
-		setFileResume(null);
+		// setFileResume(null);
+		setFiles([]);
+		setFileNames("");
 	};
 
 	return (
@@ -297,8 +315,8 @@ export const ApplyForm = ({ jobName }: any) => {
 				/>
 				<CustomFileField
 					label="Attachment"
-					file={fileResume}
-					onChange={(e: any) => setTextLocation(e.target.value)}
+					value={fileNames}
+					// onChange={(e: any) => setTextLocation(e.target.value)}
 					onFileChange={onFileChange}
 					error={errorResume}
 				/>

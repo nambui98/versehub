@@ -1,51 +1,20 @@
 import { google } from "googleapis";
 import getConfig from "next/config";
-import fs from "fs";
-import PersistentFile from "formidable/PersistentFile";
-
 const { serverRuntimeConfig } = getConfig();
-const scopes = [
-	"https://www.googleapis.com/auth/spreadsheets",
-	"https://www.googleapis.com/auth/drive",
-	"https://www.googleapis.com/auth/drive.file",
-];
+
 const jwt = new google.auth.JWT(
 	serverRuntimeConfig.CLIENT_EMAIL,
 	serverRuntimeConfig.CLIENT_ID,
 	serverRuntimeConfig.PRIVATE_KEY.replace(/\\n/g, "\n"),
-	scopes
+	["https://www.googleapis.com/auth/spreadsheets"]
 );
 const sheets = google.sheets({ version: "v4", auth: jwt });
-const drive = google.drive({ version: "v3", auth: jwt });
 
 const SHEET = {
 	CONTACT_US: "Contact_us",
 	JOBS: "ActiveJobs",
 	APPLICATION: "Application",
 };
-
-export async function uploadFileToDrive(file: any) {
-	try {
-		const res = await drive.files.create({
-			media: {
-				mimeType: file.mimetype,
-				body: fs.createReadStream(file.filepath),
-			},
-			requestBody: {
-				name: file.originalFilename,
-				parents: ["1_WsHxHgJqe_r3pbDIN1YmHwj5UnXqjo8"],
-			},
-			supportsAllDrives: true,
-		});
-		// console.log('drive.files.create', res.data);
-		if (res.data && res.data.id)
-			return `https://drive.google.com/file/d/${res.data.id}/view?usp=sharing`;
-		return null;
-	} catch (err) {
-		console.log(err);
-		return null;
-	}
-}
 
 export async function getJobList() {
 	try {
@@ -115,6 +84,7 @@ function cleanTexts(texts: string) {
 		.map((el) => el.replace("-", "").trim())
 		.filter((el) => !!el);
 }
+
 interface contactBody {
 	name: string;
 	email: string;
@@ -143,13 +113,17 @@ interface applyBody {
 	email: string;
 	phone: string;
 	location: string;
-	attachment: string;
+	attachments: string[];
 }
 
 export async function appendApplication(body: applyBody) {
 	const data = {
 		createdAt: new Date().toLocaleString("en-GB"),
 		...body,
+		attachments:
+			body.attachments.length === 1
+				? body.attachments[0]
+				: body.attachments.join("\n"),
 	};
 	return sheets.spreadsheets.values.append({
 		spreadsheetId: serverRuntimeConfig.SPREADSHEET_ID,
