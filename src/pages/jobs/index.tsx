@@ -48,31 +48,7 @@ export async function getStaticProps() {
 const JobsPage: NextPage = ({ jobs }: any) => {
 	return (
 		<SecondLayout>
-			<Box
-				sx={{
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					flexDirection: "column",
-					position: "relative",
-					overflow: "hidden",
-					backgroundImage: "url(/assets/bg3.svg)",
-					backgroundRepeat: "no-repeat",
-					backgroundSize: "cover",
-					backgroundPosition: "bottom",
-					mb: 20,
-				}}
-			>
-				<Box
-					sx={{
-						mt: "140px",
-						width: "100%",
-						// height: "calc(100vh - 140px)",
-					}}
-				>
-					<img src="/assets/jobs/banner.png" alt="banner" width={"100%"} />
-				</Box>
-			</Box>
+			<Banner />
 			<Container>
 				<Stack spacing={20}>
 					<OurMission />
@@ -87,6 +63,35 @@ const JobsPage: NextPage = ({ jobs }: any) => {
 };
 
 export default JobsPage;
+
+function Banner() {
+	return (
+		<Box
+			sx={{
+				display: "flex",
+				alignItems: "center",
+				justifyContent: "center",
+				flexDirection: "column",
+				position: "relative",
+				overflow: "hidden",
+				backgroundImage: "url(/assets/bg3.svg)",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "cover",
+				backgroundPosition: "bottom",
+				mb: 20,
+			}}
+		>
+			<Box
+				sx={{
+					mt: "140px",
+					width: "100%",
+				}}
+			>
+				<img src="/assets/jobs/banner.webp" alt="banner" width={"100%"} />
+			</Box>
+		</Box>
+	);
+}
 
 function OurMission() {
 	return (
@@ -240,9 +245,14 @@ function Benefits() {
 			justifyContent={"center"}
 			alignItems={"center"}
 		>
-			<Typography variant="h2" fontSize={40} align="center">
+			<SectionTitle
+				mb={3}
+				sx={{
+					textAlign: "center",
+				}}
+			>
 				{BENEFIT.title}
-			</Typography>
+			</SectionTitle>
 			<Box sx={{ width: "100%", maxWidth: "840px", mt: 3.75, mb: 15 }}>
 				<Typography fontSize={18} align="center">
 					{BENEFIT.desc}

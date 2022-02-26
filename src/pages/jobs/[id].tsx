@@ -98,7 +98,7 @@ function Banner() {
 					width: "100%",
 				}}
 			>
-				<img src="/assets/jobs/banner.png" alt="banner" width={"100%"} />
+				<img src="/assets/jobs/banner.webp" alt="banner" width={"100%"} />
 			</Box>
 		</Box>
 	);

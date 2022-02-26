@@ -20,12 +20,14 @@ import {
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
 import { ApplyDialog } from "./ApplyDialog";
 
+const LIMIT_UPLOAD_SIZE = 25; // MB
+
 const CustomLabel = ({ children }: any) => (
 	<InputLabel
 		shrink
 		sx={{
 			color: "#3D3763",
-			fontSize: 24,
+			fontSize: { xs: 18, sm: 24 },
 			textTransform: "uppercase",
 		}}
 	>
@@ -46,6 +48,10 @@ const CustomInput = styled(InputBase)({
 			borderColor: "#28223F",
 			background: "#28223F",
 		},
+		"@media (max-width: 600px)": {
+			fontSize: 18,
+			padding: "25px 30px",
+		},
 	},
 });
 
@@ -57,6 +63,10 @@ const CustomInputFile = styled(OutlinedInput)({
 		fontWeight: 700,
 		color: "#FFF",
 		padding: "25px 50px",
+		"@media (max-width: 600px)": {
+			fontSize: 18,
+			padding: "25px 30px",
+		},
 	},
 	"& fieldset": {
 		border: "none",
@@ -119,12 +129,12 @@ const CustomFileField = ({
 							component="label"
 							sx={{ height: "100%", color: "#28223F" }}
 						>
-							<AttachFileOutlinedIcon sx={{ fontSize: 42 }} />
+							<AttachFileOutlinedIcon sx={{ fontSize: { xs: 32, sm: 42 } }} />
 							<input
 								type="file"
 								hidden
 								multiple
-								accept="image/*,.pdf"
+								accept="image/*,.pdf,.doc,.docx,video/mp4,video/x-m4v,video/*"
 								onChange={onFileChange}
 							/>
 						</Button>
@@ -167,15 +177,17 @@ export const ApplyForm = ({ jobName }: any) => {
 			if (
 				!file.size ||
 				!file.type ||
-				(!file.type.includes("pdf") && !file.type.includes("image/"))
+				(!file.type.includes("pdf") &&
+					!file.type.includes("doc") &&
+					!file.type.includes("image/") &&
+					!file.type.includes("video/"))
 			) {
 				setErrorResume("Unsupported media type");
 				setTimeout(() => setErrorResume(""), 2000);
 				return;
 			}
 			totalSize += file.size;
-			if (totalSize > 5 * 1024 * 1024) {
-				// 5MB
+			if (totalSize > LIMIT_UPLOAD_SIZE * 1024 * 1024) {
 				setErrorResume("Payload too large");
 				setTimeout(() => setErrorResume(""), 2000);
 				return;
@@ -334,7 +346,7 @@ export const ApplyForm = ({ jobName }: any) => {
 							},
 						}}
 					>
-						All set!
+						Apply
 					</Button>
 				</Grid>
 			</Box>
