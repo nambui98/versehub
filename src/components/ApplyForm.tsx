@@ -18,6 +18,9 @@ import {
 	styled,
 } from "@mui/material";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
+import DownloadDoneOutlinedIcon from "@mui/icons-material/DownloadDoneOutlined";
+import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
+import RemoveCircleOutlinedIcon from "@mui/icons-material/RemoveCircleOutlined";
 import { ApplyDialog } from "./ApplyDialog";
 
 const LIMIT_UPLOAD_SIZE = 25; // MB
@@ -112,7 +115,7 @@ const CustomTextField = ({
 const CustomFileField = ({
 	label,
 	value,
-	// onChange,
+	onChange,
 	onFileChange,
 	error,
 }: any) => {
@@ -121,7 +124,7 @@ const CustomFileField = ({
 			<CustomLabel>{label}</CustomLabel>
 			<CustomInputFile
 				value={value || ""}
-				// onChange={onChange}
+				onChange={onChange}
 				endAdornment={
 					<InputAdornment position="end">
 						<Button
@@ -146,6 +149,17 @@ const CustomFileField = ({
 	);
 };
 
+function isSupportedFile(file: any) {
+	return (
+		file.size &&
+		file.type &&
+		(file.type.includes("pdf") ||
+			file.type.includes("doc") ||
+			file.type.includes("image/") ||
+			file.type.includes("video/"))
+	);
+}
+
 export const ApplyForm = ({ jobName }: any) => {
 	const [showSnack, setShowSnack] = useState(false);
 	const [showBackdrop, setShowBackdrop] = useState(false);
@@ -155,9 +169,12 @@ export const ApplyForm = ({ jobName }: any) => {
 	const [textEmail, setTextEmail] = useState("");
 	const [textPhone, setTextPhone] = useState("");
 	const [textLocation, setTextLocation] = useState("");
+	const [textAttachment, setTextAttachment] = useState("");
+
 	// const [fileResume, setFileResume] = useState<any>(null);
-	const [files, setFiles] = useState<any>([]);
-	const [fileNames, setFileNames] = useState("");
+	const [attachFiles, setAttachFiles] = useState<any>([]);
+	// const [fileNames, setFileNames] = useState("");
+
 	const [errorFirst, setErrorFirst] = useState(false);
 	const [errorLast, setErrorLast] = useState(false);
 	const [errorEmail, setErrorEmail] = useState(false);
@@ -165,23 +182,17 @@ export const ApplyForm = ({ jobName }: any) => {
 	const [errorLocation, setErrorLocation] = useState(false);
 	const [errorResume, setErrorResume] = useState("");
 
-	const onFileChange = (event: any) => {
-		setFiles([]);
-		setFileNames("");
+	const handleFileChange = (event: any) => {
 		// const file = event.target.files[0];
 		const files = event.target.files;
-		let totalSize = 0;
-		let fileNames = [];
+		// const existedNames = attachFiles.map((el: any) => el.name);
+
+		let totalSize = attachFiles
+			.map((el: any) => el.size)
+			.reduce((pre: any, cur: any) => pre + cur, 0);
 		for (let i = 0; i < files.length; i++) {
 			const file = files[i];
-			if (
-				!file.size ||
-				!file.type ||
-				(!file.type.includes("pdf") &&
-					!file.type.includes("doc") &&
-					!file.type.includes("image/") &&
-					!file.type.includes("video/"))
-			) {
+			if (!isSupportedFile(file)) {
 				setErrorResume("Unsupported media type");
 				setTimeout(() => setErrorResume(""), 2000);
 				return;
@@ -192,10 +203,19 @@ export const ApplyForm = ({ jobName }: any) => {
 				setTimeout(() => setErrorResume(""), 2000);
 				return;
 			}
-			fileNames.push(file.name);
 		}
-		setFiles(files);
-		setFileNames(fileNames.join(", "));
+		setAttachFiles([
+			...attachFiles,
+			...files,
+			// ...files.filter((el: any) => !existedNames.includes(el.name)),
+		]);
+	};
+
+	const handleRemoveFile = (fileIndex: number) => {
+		// setAttachFiles(attachFiles.filter((el: any) => el.name !== fileName));
+		setAttachFiles(
+			attachFiles.filter((el: any, idx: number) => idx !== fileIndex)
+		);
 	};
 
 	const handleSubmit = async (event: any) => {
@@ -228,12 +248,11 @@ export const ApplyForm = ({ jobName }: any) => {
 			setTimeout(() => setErrorLocation(false), 2000);
 			return;
 		}
-		if (!files || !files.length || files.length <= 0) {
+		if (!attachFiles || !attachFiles.length || attachFiles.length <= 0) {
 			setErrorResume("Empty");
 			setTimeout(() => setErrorResume(""), 2000);
 			return;
 		}
-		console.log("files", files);
 		setShowBackdrop(true);
 		const formData = new FormData();
 		formData.append("jobName", jobName);
@@ -242,9 +261,10 @@ export const ApplyForm = ({ jobName }: any) => {
 		formData.append("email", textEmail);
 		formData.append("phone", textPhone);
 		formData.append("location", textLocation);
+		formData.append("attachUrl", textAttachment);
 		// formData.append("resume", fileResume, fileResume.name);
-		for (let i = 0; i < files.length; i++) {
-			formData.append(`attachment[${i}]`, files[i]);
+		for (let i = 0; i < attachFiles.length; i++) {
+			formData.append(`attachment[${i}]`, attachFiles[i]);
 		}
 		const response = await fetch("/api/apply", {
 			method: "POST",
@@ -257,26 +277,13 @@ export const ApplyForm = ({ jobName }: any) => {
 		setTextEmail("");
 		setTextPhone("");
 		setTextLocation("");
+		setTextAttachment("");
 		// setFileResume(null);
-		setFiles([]);
-		setFileNames("");
+		setAttachFiles([]);
 	};
 
 	return (
 		<Stack py={5}>
-			{/* <Snackbar
-				open={showSnack}
-				onClose={() => setShowSnack(false)}
-				autoHideDuration={2000}
-			>
-				<Alert
-					severity="success"
-					onClose={() => setShowSnack(false)}
-					sx={{ width: "100%" }}
-				>
-					Sent
-				</Alert>
-			</Snackbar> */}
 			<Backdrop
 				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
 				open={showBackdrop}
@@ -327,11 +334,38 @@ export const ApplyForm = ({ jobName }: any) => {
 				/>
 				<CustomFileField
 					label="Attachment"
-					value={fileNames}
-					// onChange={(e: any) => setTextLocation(e.target.value)}
-					onFileChange={onFileChange}
+					value={textAttachment}
+					onChange={(e: any) => setTextAttachment(e.target.value)}
+					onFileChange={handleFileChange}
 					error={errorResume}
 				/>
+				<Stack spacing={1}>
+					{attachFiles.map((el: any, idx: number) => (
+						<CustomInputFile
+							key={idx}
+							value={el.name}
+							startAdornment={
+								<InputAdornment position="start">
+									<DownloadDoneOutlinedIcon
+										sx={{ fontSize: { xs: 32, sm: 42 } }}
+									/>
+								</InputAdornment>
+							}
+							endAdornment={
+								<InputAdornment position="end">
+									<Button
+										variant="text"
+										component="label"
+										sx={{ height: "100%", color: "#28223F" }}
+										onClick={() => handleRemoveFile(idx)}
+									>
+										<CancelOutlinedIcon sx={{ fontSize: { xs: 32, sm: 42 } }} />
+									</Button>
+								</InputAdornment>
+							}
+						/>
+					))}
+				</Stack>
 				<Grid container justifyContent="center" mt={5}>
 					<Button
 						type="submit"

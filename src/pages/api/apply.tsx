@@ -26,8 +26,15 @@ export default async function handler(
 					}
 				});
 			});
-			const { jobName, firstName, lastName, email, phone, location } =
-				body.fields;
+			const {
+				jobName,
+				firstName,
+				lastName,
+				email,
+				phone,
+				location,
+				attachUrl,
+			} = body.fields;
 			// const { attachments } = body.files;
 			const files = body.files;
 			if (
@@ -50,7 +57,7 @@ export default async function handler(
 				email,
 				phone,
 				location,
-				attachments,
+				attachments: [attachUrl, ...attachments].filter((el) => el !== ""),
 			});
 			res.json({ message: "Success" });
 		} catch (err) {

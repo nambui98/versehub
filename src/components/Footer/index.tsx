@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = () => {
 							<Stack direction="row" spacing={1}>
 								{FOOTER.social.map(({ icon, href }, idx) => (
 									<Link key={idx} href={href} passHref>
-										<img src={icon} alt={href} />
+										<img src={icon} alt={href} style={{ cursor: "pointer" }} />
 									</Link>
 								))}
 							</Stack>

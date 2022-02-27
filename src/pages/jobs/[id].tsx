@@ -46,8 +46,9 @@ const JobIdPage: NextPage = ({ job }: any) => {
 	return (
 		<SecondLayout>
 			<Banner />
+			{/* <Box id="overview" sx={{ width: "100%", height: "1px" }} /> */}
 			<JobHeader title={job.name} subtitle={job.location} mobile={mobile} />
-			<Container sx={{ mt: 15, px: { md: 25 } }} id="tabs">
+			<Container sx={{ mt: 15, px: { md: 25 } }} id="apply">
 				<JobTabs
 					currentTabIndex={tabIndex}
 					onTabChange={handleTabChange}
@@ -120,6 +121,11 @@ function JobHeader({ title, subtitle, mobile }: any) {
 						color="#fff"
 						lineHeight={1}
 					>
+						<Box
+							component="span"
+							sx={{ mt: -14, position: "absolute" }}
+							id="overview"
+						/>
 						{title}
 					</Typography>
 					<Typography
@@ -221,7 +227,7 @@ function Overview({
 			</Stack>
 			<Grid container justifyContent="center">
 				<Button
-					href="#tabs"
+					href="#apply"
 					onClick={handleClick}
 					sx={{
 						background: "#7000FF",

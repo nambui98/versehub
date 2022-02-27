@@ -576,7 +576,7 @@ function Opportunities({ data }: any) {
 							>
 								{roles.map((el: any) => (
 									<ListItem key={el.name}>
-										<Link href={el.href} passHref>
+										<Link href={`${el.href}#overview`} passHref>
 											<ListItemButton
 												sx={{
 													background: "rgba(138, 171, 255, 0.1)",
