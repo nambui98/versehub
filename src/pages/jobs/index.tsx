@@ -49,6 +49,7 @@ const JobsPage: NextPage = ({ jobs }: any) => {
 	return (
 		<SecondLayout>
 			<Banner />
+			<Opportunities data={jobs} sxProp={{ display: { sm: "none" }, mb: 20 }} />
 			<Container>
 				<Stack spacing={20}>
 					<OurMission />
@@ -56,7 +57,10 @@ const JobsPage: NextPage = ({ jobs }: any) => {
 					<Benefits />
 				</Stack>
 			</Container>
-			<Opportunities data={jobs} />
+			<Opportunities
+				data={jobs}
+				sxProp={{ display: { xs: "none", sm: "block" } }}
+			/>
 			<Contact />
 		</SecondLayout>
 	);
@@ -321,6 +325,7 @@ function Contact() {
 				alignItems: "center",
 				py: 12.5,
 				px: 5,
+				mt: { xs: 20, sm: 0 },
 			}}
 		>
 			<Box
@@ -395,7 +400,7 @@ function Contact() {
 	);
 }
 
-function Opportunities({ data }: any) {
+function Opportunities({ data, sxProp }: any) {
 	const { departments, locations } = countDepartmentsAndLocations(data);
 	const [roles, setRoles] = useState([...data]);
 	const [currentDepartment, setCurrentDepartment] = useState(
@@ -441,6 +446,7 @@ function Opportunities({ data }: any) {
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "auto",
 				backgroundPosition: "left bottom",
+				...sxProp,
 			}}
 		>
 			<Grid container>
