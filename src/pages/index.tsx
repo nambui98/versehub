@@ -209,20 +209,21 @@ function Services() {
 								background:
 									"linear-gradient(180deg, #200048 23.44%, rgba(90, 0, 180, 0) 100%)",
 								borderRadius: 2,
-								py: 5,
-								px: { xs: 8, sm: 3, md: 5 },
+								py: 6,
+								px: { xs: 5, sm: 3, md: 5 },
 							}}
 						>
-							<Box
-								style={{
-									backgroundImage: `url(${src})`,
-								}}
-								sx={{
-									paddingTop: "100%",
-									backgroundPosition: "center",
-									backgroundSize: "cover",
-								}}
-							/>
+							<Box sx={{ px: { xs: 5, sm: 5, md: 0, lg: 2, xl: 4 } }}>
+								<Box
+									sx={{
+										pt: "100%",
+										backgroundImage: `url(${src})`,
+										backgroundRepeat: "no-repeat",
+										backgroundPosition: "center",
+										backgroundSize: "contain",
+									}}
+								/>
+							</Box>
 							<Typography
 								variant="h3"
 								textAlign="center"
@@ -230,7 +231,12 @@ function Services() {
 								mb={2.5}
 								mt={5}
 							>
-								{title}
+								{title.split("\n").map((el, idx) => (
+									<span key={idx}>
+										{el}
+										<br />
+									</span>
+								))}
 							</Typography>
 
 							<Typography
@@ -499,7 +505,22 @@ function Jobs() {
 							}}
 						>
 							<Link href="/jobs" passHref>
-								<Box
+								<Button
+									variant="contained"
+									sx={{
+										background: "#9300D9",
+										boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+										borderRadius: "40px",
+										px: 7,
+										py: 3,
+										border: "none",
+									}}
+								>
+									<Typography fontSize={22} fontWeight={700} color="#fff">
+										Explore roles
+									</Typography>
+								</Button>
+								{/* <Box
 									component="a"
 									// href="/jobs"
 									sx={{
@@ -523,7 +544,7 @@ function Jobs() {
 											Explore roles
 										</Typography>
 									</Box>
-								</Box>
+								</Box> */}
 							</Link>
 						</Box>
 					</Grid>

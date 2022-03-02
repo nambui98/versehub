@@ -24,6 +24,8 @@ import {
 	ListItemText,
 	ListItemIcon,
 	ListItemButton,
+	Theme,
+	useMediaQuery,
 } from "@mui/material";
 import FmdGoodOutlinedIcon from "@mui/icons-material/FmdGoodOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
@@ -46,21 +48,25 @@ export async function getStaticProps() {
 }
 
 const JobsPage: NextPage = ({ jobs }: any) => {
+	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
+
 	return (
 		<SecondLayout>
 			<Banner />
-			<Opportunities data={jobs} sxProp={{ display: { sm: "none" }, mb: 20 }} />
-			<Container>
-				<Stack spacing={20}>
-					<OurMission />
-					<CoreValues />
-					<Benefits />
-				</Stack>
+			{mobile && <OpportunitiesMobile data={jobs} />}
+			<Container sx={{ mb: 20 }}>
+				<OurMission />
 			</Container>
-			<Opportunities
-				data={jobs}
-				sxProp={{ display: { xs: "none", sm: "block" } }}
-			/>
+			{!mobile && (
+				<Container sx={{ mb: 20 }}>
+					<CoreValues />
+				</Container>
+			)}
+			{mobile && <CoreValues />}
+			<Container sx={{ my: 20 }}>
+				<Benefits />
+			</Container>
+			{!mobile && <OpportunitiesDesktop data={jobs} />}
 			<Contact />
 		</SecondLayout>
 	);
@@ -82,7 +88,7 @@ function Banner() {
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "cover",
 				backgroundPosition: "bottom",
-				mb: 20,
+				mb: { xs: 13, sm: 20 },
 			}}
 		>
 			<Box
@@ -101,17 +107,18 @@ function OurMission() {
 	return (
 		<Grid container spacing={8}>
 			<Grid item xs={12} md={7}>
-				<SectionTitle
-					mb={4}
-					sx={{
-						textAlign: { xs: "center", md: "left" },
-					}}
-				>
-					{MISSION.title}
-				</SectionTitle>
-				<Stack spacing={1}>
+				<Stack px={{ xs: 5, md: 0 }}>
+					<SectionTitle mb={4} fontSize={{ xs: 27, sm: 40 }}>
+						{MISSION.title}
+					</SectionTitle>
+				</Stack>
+				<Stack spacing={1} px={{ xs: 5, md: 0 }}>
 					{MISSION.desc.map((content: string, idx: number) => (
-						<Typography key={idx} fontSize={18}>
+						<Typography
+							key={idx}
+							fontSize={{ xs: 16, sm: 18 }}
+							fontWeight={{ xs: 300, md: 500 }}
+						>
 							{content}
 						</Typography>
 					))}
@@ -130,113 +137,119 @@ function CoreValues() {
 	return (
 		<Grid container>
 			<Grid item xs={12}>
-				<SectionTitle
-					mb={7}
-					sx={{
-						textAlign: "center",
+				<Stack px={{ xs: 6, md: 0 }}>
+					<SectionTitle
+						fontSize={{ xs: 27, sm: 40 }}
+						mb={{ xs: 3.5, md: 7 }}
+						sx={{
+							textAlign: { xs: "left", md: "center" },
+						}}
+					>
+						{VALUES.title}
+					</SectionTitle>
+				</Stack>
+			</Grid>
+			<Grid item xs={12}>
+				<Swiper
+					modules={[Pagination, Autoplay]}
+					// centeredSlides={true}
+					pagination={{ clickable: true }}
+					autoplay={{
+						delay: 5000,
+						disableOnInteraction: false,
 					}}
 				>
-					{VALUES.title}
-				</SectionTitle>
-			</Grid>
-			<Swiper
-				modules={[Pagination, Autoplay]}
-				// centeredSlides={true}
-				pagination={{ clickable: true }}
-				autoplay={{
-					delay: 5000,
-					disableOnInteraction: false,
-				}}
-			>
-				{VALUES.items.map(({ title, image, content }) => (
-					<SwiperSlide key={title}>
-						<Box
-							sx={{
-								width: "100%",
-								background: { xs: "none", md: "#494662" },
-								borderRadius: { xs: 0, md: 2 },
-								overflow: "hidden",
-							}}
-						>
-							<Grid
-								container
-								columns={11}
-								sx={{ display: { xs: "none", md: "flex" } }}
+					{VALUES.items.map(({ title, image, content }) => (
+						<SwiperSlide key={title}>
+							<Box
+								sx={{
+									width: "100%",
+									background: { xs: "none", md: "#494662" },
+									borderRadius: { xs: 0, md: 2 },
+									overflow: "hidden",
+								}}
 							>
-								<Grid item sm={11} md={5}>
-									<Box
-										sx={{
-											width: "100%",
-											height: "100%",
-											minHeight: "450px",
-											backgroundImage: `url(${image})`,
-											backgroundRepeat: "no-repeat",
-											backgroundSize: "cover",
-											backgroundPosition: "right",
-										}}
-									/>
-								</Grid>
 								<Grid
-									item
-									sm={11}
-									md={6}
-									px={{ md: 4, lg: 7, xl: 10 }}
-									py={{ md: 6, lg: 9, xl: 12.5 }}
+									container
+									columns={11}
+									sx={{ display: { xs: "none", md: "flex" } }}
 								>
-									<Typography
-										fontSize={24}
-										fontWeight={"bold"}
-										mt={1}
-										mb={2}
-										sx={{ textTransform: "uppercase" }}
+									<Grid item sm={11} md={5}>
+										<Box
+											sx={{
+												width: "100%",
+												height: "100%",
+												minHeight: "450px",
+												backgroundImage: `url(${image})`,
+												backgroundRepeat: "no-repeat",
+												backgroundSize: "cover",
+												backgroundPosition: "right",
+											}}
+										/>
+									</Grid>
+									<Grid
+										item
+										sm={11}
+										md={6}
+										px={{ md: 4, lg: 7, xl: 10 }}
+										py={{ md: 6, lg: 9, xl: 12.5 }}
 									>
-										{title}
-									</Typography>
-									<Stack spacing={1}>
-										{content.map((text: string, idx: number) => (
-											<Typography key={idx} fontSize={18}>
-												{text}
-											</Typography>
-										))}
-									</Stack>
-								</Grid>
-							</Grid>
-							<Grid
-								container
-								spacing={8}
-								sx={{ display: { xs: "flex", md: "none" } }}
-							>
-								<Grid item xs={12}>
-									<Typography
-										fontSize={24}
-										fontWeight={"bold"}
-										mt={1}
-										mb={2}
-										sx={{
-											textTransform: "uppercase",
-											textAlign: { xs: "center", md: "left" },
-										}}
-									>
-										{title}
-									</Typography>
-									<Stack spacing={1}>
-										{content.map((text: string, idx: number) => (
-											<Typography key={idx} fontSize={18}>
-												{text}
-											</Typography>
-										))}
-									</Stack>
-								</Grid>
-								<Grid item xs={12}>
-									<Grid container justifyContent="center" alignItems="center">
-										<img src={image} alt={title} width="100%" />
+										<Typography
+											fontSize={24}
+											fontWeight={"bold"}
+											mt={1}
+											mb={2}
+											sx={{ textTransform: "uppercase" }}
+										>
+											{title}
+										</Typography>
+										<Stack spacing={1}>
+											{content.map((text: string, idx: number) => (
+												<Typography key={idx} fontSize={18}>
+													{text}
+												</Typography>
+											))}
+										</Stack>
 									</Grid>
 								</Grid>
-							</Grid>
-						</Box>
-					</SwiperSlide>
-				))}
-			</Swiper>
+								<Grid
+									container
+									spacing={3}
+									sx={{ display: { xs: "flex", md: "none" } }}
+								>
+									<Grid item xs={12}>
+										<Typography
+											fontSize={18}
+											fontWeight={"bold"}
+											mt={1}
+											mb={2}
+											mx={6}
+											sx={{
+												textTransform: "uppercase",
+												textAlign: "left",
+											}}
+										>
+											{title}
+										</Typography>
+										<Stack spacing={1} px={6}>
+											{content.map((text: string, idx: number) => (
+												<Typography key={idx} fontSize={16} fontWeight={300}>
+													{text}
+												</Typography>
+											))}
+										</Stack>
+									</Grid>
+									<Grid item xs={12}>
+										<Grid container justifyContent="center" alignItems="center">
+											<img src={image} alt={title} width="100%" />
+										</Grid>
+									</Grid>
+								</Grid>
+							</Box>
+						</SwiperSlide>
+					))}
+				</Swiper>
+			</Grid>
 		</Grid>
 	);
 }
@@ -249,21 +262,38 @@ function Benefits() {
 			justifyContent={"center"}
 			alignItems={"center"}
 		>
-			<SectionTitle
-				mb={3}
+			<Box sx={{ width: "100%", px: { xs: 5, md: 0 } }}>
+				<SectionTitle
+					fontSize={{ xs: 27, sm: 40 }}
+					sx={{
+						textAlign: { xs: "left", md: "center" },
+					}}
+					mb={{ xs: 2, md: "unset" }}
+				>
+					{BENEFIT.title}
+				</SectionTitle>
+			</Box>
+			<Box
 				sx={{
-					textAlign: "center",
+					width: "100%",
+					maxWidth: "840px",
+					px: { xs: 5, md: 0 },
+					mt: 3.75,
+					mb: { xs: 10, md: 15 },
 				}}
 			>
-				{BENEFIT.title}
-			</SectionTitle>
-			<Box sx={{ width: "100%", maxWidth: "840px", mt: 3.75, mb: 15 }}>
-				<Typography fontSize={18} align="center">
+				<Typography
+					fontSize={{ xs: 16, sm: 18 }}
+					fontWeight={{ xs: 300, md: 500 }}
+					sx={{
+						textAlign: { xs: "left", md: "center" },
+					}}
+				>
 					{BENEFIT.desc}
 				</Typography>
 			</Box>
-			<Box sx={{ width: "100%", maxWidth: "900px" }}>
-				<Grid container spacing={5}>
+			<Box sx={{ width: "100%", maxWidth: "900px", px: { xs: 5, md: 0 } }}>
+				<Grid container spacing={{ xs: 10, md: 5 }}>
 					{BENEFIT.items.map(({ src, desc }, idx) => (
 						<Grid key={idx} item xs={6} sm={6} md={4}>
 							<Stack
@@ -273,13 +303,14 @@ function Benefits() {
 							>
 								<Box
 									sx={{
-										height: "110px",
+										height: { xs: "55px", md: "110px" },
 										display: "flex",
 										flexDirection: "column",
 										justifyContent: "end",
+										px: { xs: 2, md: 0 },
 									}}
 								>
-									<img src={src} alt={desc} />
+									<img src={src} alt={desc} width="100%" />
 								</Box>
 								<Box
 									sx={{
@@ -293,6 +324,7 @@ function Benefits() {
 										fontSize={{ xs: 14, md: 18 }}
 										lineHeight={1.2}
 										align="center"
+										fontWeight={{ xs: 300, md: 500 }}
 									>
 										{desc.split("\n").map((el, idx) => (
 											<span key={idx}>
@@ -316,16 +348,12 @@ function Contact() {
 		<Box
 			sx={{
 				width: "100%",
-				height: { xs: "unset", md: "495px" },
+				height: { md: "495px" },
 				position: "relative",
 				background: "#271067",
-				display: "flex",
-				flexDirection: "column",
-				justifyContent: "center",
-				alignItems: "center",
-				py: 12.5,
+				py: { xs: 12, sm: 20, md: 12.5 },
 				px: 5,
-				mt: { xs: 20, sm: 0 },
+				mt: { xs: 20, md: 0 },
 			}}
 		>
 			<Box
@@ -357,58 +385,81 @@ function Contact() {
 			/>
 			<Box
 				sx={{
-					position: { xs: "unset", md: "absolute" },
-					left: { xs: "unset", md: "5%", xl: "15%" },
-					bottom: { xs: "unset", md: "25%" },
-					width: { xs: "100%", md: "max-content" },
-					mb: { xs: 5, md: 0 },
-				}}
-			>
-				<Typography
-					fontSize={{ xs: 30, md: 42 }}
-					fontWeight={300}
-					mb={3}
-					align={"center"}
-				>
-					{CONTACT.title}
-				</Typography>
-				<Typography fontSize={16} align={"center"}>
-					<PhoneOutlinedIcon sx={{ color: "#7B4BE1", mb: -0.75, mr: 1 }} />
-					{CONTACT.phone}
-					<EmailOutlinedIcon
-						sx={{ color: "#7B4BE1", mb: -0.75, mr: 1, ml: 4 }}
-					/>
-					{CONTACT.email}
-				</Typography>
-			</Box>
-			<Box
-				sx={{
-					position: { xs: "unset", md: "absolute" },
-					right: { xs: "unset", md: "5%", xl: "10%" },
-					top: { xs: "unset", md: "-25%" },
-					width: "100%",
+					position: "absolute",
+					right: { xs: "2rem", md: "5%", xl: "10%" },
+					top: { xs: "-20%", sm: "-25%" },
+					width: { xs: "40%", md: "100%" },
 					maxWidth: "600px",
 					height: 0,
-					// maxHeight: "589px",
-					paddingTop: { xs: "98%", sm: "589px" },
+					paddingTop: { xs: "40%", md: "589px" },
 					backgroundImage: "url(/assets/jobs/contact.png)",
 					backgroundRepeat: "no-repeat",
 					backgroundSize: "cover",
 				}}
 			/>
+			<Box
+				sx={{
+					position: "absolute",
+					left: { xs: "2rem", md: "5%", xl: "15%" },
+					bottom: { xs: "20%", sm: "35%", md: "25%" },
+					width: { md: "max-content" },
+					// mb: { xs: 5, md: 0 },
+				}}
+			>
+				<Box sx={{ width: { xs: "50%", sm: "unset" } }}>
+					<Typography
+						fontSize={{ xs: 18, sm: 28, md: 42 }}
+						fontWeight={300}
+						mb={3}
+						sx={{
+							textAlign: { xs: "left", md: "center" },
+						}}
+					>
+						{CONTACT.title}
+					</Typography>
+				</Box>
+				<Typography
+					fontSize={{ xs: 14, sm: 16 }}
+					sx={{
+						textAlign: { xs: "left", md: "center" },
+						fontWeight: { xs: 300, sm: "normal" },
+					}}
+				>
+					<PhoneOutlinedIcon
+						sx={{
+							color: "#7B4BE1",
+							mb: { xs: -0.5, sm: -0.75 },
+							mr: { xs: 0.5, sm: 1 },
+							fontSize: { xs: 18, sm: "unset" },
+						}}
+					/>
+					{CONTACT.phone}
+					<EmailOutlinedIcon
+						sx={{
+							color: "#7B4BE1",
+							mb: { xs: -0.5, sm: -0.75 },
+							mr: { xs: 0.5, sm: 1 },
+							ml: 5,
+							fontSize: { xs: 18, sm: "unset" },
+						}}
+					/>
+					{CONTACT.email}
+				</Typography>
+			</Box>
 		</Box>
 	);
 }
 
-function Opportunities({ data, sxProp }: any) {
-	const { departments, locations } = countDepartmentsAndLocations(data);
+function OpportunitiesDesktop({ data, sxProp }: any) {
 	const [roles, setRoles] = useState([...data]);
-	const [currentDepartment, setCurrentDepartment] = useState(
-		departments[0].title
-	);
-	const [currentLocation, setCurrentLocation] = useState(
-		locations.map((el) => el.title)
-	);
+	let departments: string[] = ["All"];
+	let locations: string[] = [];
+	data.forEach(({ department, location }: any) => {
+		if (!departments.includes(department)) departments.push(department);
+		if (!locations.includes(location)) locations.push(location);
+	});
+	const [currentLocation, setCurrentLocation] = useState(locations);
+	const [currentDepartment, setCurrentDepartment] = useState(departments[0]);
 
 	useEffect(() => {
 		setRoles(
@@ -422,12 +473,16 @@ function Opportunities({ data, sxProp }: any) {
 		return () => {};
 	}, [data, currentDepartment, currentLocation]);
 
-	function handleDepartmentClick(title: string) {
-		setCurrentDepartment(title);
+	function countDepartment(title: string) {
+		if (title === "All") return data.length;
+		return data.filter(
+			(el: any) =>
+				el.department === title && currentLocation.includes(el.location)
+		).length;
 	}
 
-	function handleDepartmentChange(event: SelectChangeEvent) {
-		setCurrentDepartment(event.target.value as string);
+	function handleDepartmentClick(title: string) {
+		setCurrentDepartment(title);
 	}
 
 	function handleLocationChange(title: string, checked: boolean) {
@@ -439,8 +494,8 @@ function Opportunities({ data, sxProp }: any) {
 	return (
 		<Box
 			mt={28}
-			px={{ xs: 2, md: 10 }}
-			pb={{ xs: 40, md: 30 }}
+			px={10}
+			pb={30}
 			sx={{
 				backgroundImage: "url(/assets/jobs/opportunities.png)",
 				backgroundRepeat: "no-repeat",
@@ -450,8 +505,10 @@ function Opportunities({ data, sxProp }: any) {
 			}}
 		>
 			<Grid container>
-				<SectionTitle>Opportunities</SectionTitle>
-				<Grid container spacing={{ xs: 10, md: 15 }}>
+				<SectionTitle fontSize={40} mb={6.5}>
+					Opportunities
+				</SectionTitle>
+				<Grid container spacing={15}>
 					<Grid item xs={12} md={6} lg={4}>
 						<Typography
 							fontSize={24}
@@ -462,34 +519,18 @@ function Opportunities({ data, sxProp }: any) {
 						>
 							DEPARTMENTS
 						</Typography>
-						<FormControl fullWidth sx={{ display: { xs: "flex", md: "none" } }}>
-							<Select
-								value={currentDepartment}
-								onChange={handleDepartmentChange}
-							>
-								{departments.map((el: any) => (
-									<MenuItem key={el.title} value={el.title}>
-										{el.title} ({el.count})
-									</MenuItem>
-								))}
-							</Select>
-						</FormControl>
-						<Stack
-							spacing={0}
-							ml={3.75}
-							sx={{ display: { xs: "none", md: "flex" } }}
-						>
-							{departments.map((el: any) => (
+						<Stack spacing={0} ml={3.75}>
+							{departments.map((title: string) => (
 								<Button
-									key={el.title}
+									key={title}
 									variant="text"
-									onClick={() => handleDepartmentClick(el.title)}
+									onClick={() => handleDepartmentClick(title)}
 									sx={{
 										backgroundColor:
-											currentDepartment === el.title ? "#7000FF" : "unset",
+											currentDepartment === title ? "#7000FF" : "unset",
 										color: "#fff",
 										p:
-											currentDepartment === el.title
+											currentDepartment === title
 												? "14px 20px 10px"
 												: "14px 20px 10px 0",
 										justifyContent: "start",
@@ -501,13 +542,13 @@ function Opportunities({ data, sxProp }: any) {
 										transition: "all ease .25s",
 										"&:hover": {
 											backgroundColor:
-												currentDepartment === el.title
+												currentDepartment === title
 													? "#7000FF"
 													: "rgba(170, 0, 172, 0.08)",
 										},
 									}}
 								>
-									{el.title} ({el.count})
+									{title} ({countDepartment(title)})
 								</Button>
 							))}
 						</Stack>
@@ -516,24 +557,24 @@ function Opportunities({ data, sxProp }: any) {
 							fontWeight={"bold"}
 							letterSpacing={"0.2rem"}
 							color={"#564F8B"}
-							mb={4}
+							mb={6}
 							mt={10}
 						>
 							LOCATIONS
 						</Typography>
 						<FormGroup sx={{ pl: 3.75 }}>
-							{locations.map((el: any) => (
+							{locations.map((title: string) => (
 								<FormControlLabel
-									key={el.title}
+									key={title}
 									control={
 										<CustomCheckbox
 											defaultChecked
 											onChange={(e) =>
-												handleLocationChange(el.title, e.target.checked)
+												handleLocationChange(title, e.target.checked)
 											}
 										/>
 									}
-									label={el.title}
+									label={title}
 									sx={{
 										"& .MuiFormControlLabel-label": {
 											fontSize: 18,
@@ -551,15 +592,13 @@ function Opportunities({ data, sxProp }: any) {
 							fontWeight={"bold"}
 							letterSpacing={"0.2rem"}
 							color={"#564F8B"}
-							mb={5}
+							mb={6}
 						>
 							FEATURED ROLES
 						</Typography>
 						<Box
 							sx={{
 								width: "100%",
-								// height: "100vh",
-								// minHeight: "768px",
 								height: { sm: "700px" },
 								overflowY: "scroll",
 								"&::-webkit-scrollbar": {
@@ -645,27 +684,199 @@ function Opportunities({ data, sxProp }: any) {
 	);
 }
 
-function countDepartmentsAndLocations(data: any) {
-	interface Map {
-		[key: string]: any;
-	}
-	let departments: Map = {
-		All: { title: "All", count: data.length },
-	};
-	let locations: Map = {};
-	data.forEach((el: any) => {
-		if (!departments[el.department]) {
-			departments[el.department] = {
-				title: el.department,
-				count: data.filter((e1: any) => e1.department === el.department).length,
-			};
-		}
-		if (!locations[el.location]) {
-			locations[el.location] = { title: el.location };
-		}
+function OpportunitiesMobile({ data, sxProp }: any) {
+	const [roles, setRoles] = useState([...data]);
+	let departments: string[] = ["All"];
+	let locations: string[] = ["All"];
+	data.forEach(({ department, location }: any) => {
+		if (!departments.includes(department)) departments.push(department);
+		if (!locations.includes(location)) locations.push(location);
 	});
-	return {
-		departments: Object.values(departments),
-		locations: Object.values(locations),
-	};
+	const [currentLocation, setCurrentLocation] = useState(locations[0]);
+	const [currentDepartment, setCurrentDepartment] = useState(departments[0]);
+
+	useEffect(() => {
+		setRoles(
+			data.filter(
+				(el: any) =>
+					(currentDepartment === "All" ||
+						el.department === currentDepartment) &&
+					(currentLocation === "All" || el.location === currentLocation)
+			)
+		);
+		return () => {};
+	}, [data, currentDepartment, currentLocation]);
+
+	function countDepartment(title: string) {
+		if (title === "All") return data.length;
+		return data.filter(
+			(el: any) =>
+				el.department === title &&
+				(currentLocation === "All" || el.location === currentLocation)
+		).length;
+	}
+
+	function handleDepartmentChange(event: SelectChangeEvent) {
+		setCurrentDepartment(event.target.value as string);
+	}
+
+	function handleLocationChange(event: SelectChangeEvent) {
+		setCurrentLocation(event.target.value as string);
+	}
+
+	return (
+		<Box
+			mb={20}
+			px={2}
+			pb={40}
+			sx={{
+				backgroundImage: "url(/assets/jobs/opportunities.png)",
+				backgroundRepeat: "no-repeat",
+				backgroundSize: "auto",
+				backgroundPosition: "left bottom",
+				...sxProp,
+			}}
+		>
+			<Grid container>
+				<SectionTitle fontSize={27} mb={5} mx={4}>
+					Opportunities
+				</SectionTitle>
+				<Grid container spacing={10}>
+					<Grid item xs={12} md={6} lg={4}>
+						<Typography
+							fontSize={16}
+							fontWeight={"bold"}
+							letterSpacing={"0.2rem"}
+							color={"#564F8B"}
+							mb={3.75}
+							mx={4}
+						>
+							DEPARTMENTS
+						</Typography>
+						<Box sx={{ px: 4 }}>
+							<FormControl fullWidth>
+								<Select
+									value={currentDepartment}
+									onChange={handleDepartmentChange}
+								>
+									{departments.map((title: string) => (
+										<MenuItem key={title} value={title}>
+											{title} ({countDepartment(title)})
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+						</Box>
+						<Typography
+							fontSize={16}
+							fontWeight={"bold"}
+							letterSpacing={"0.2rem"}
+							color={"#564F8B"}
+							mb={3.75}
+							mt={7}
+							mx={4}
+						>
+							LOCATIONS
+						</Typography>
+						<Box sx={{ px: 4 }}>
+							<FormControl fullWidth>
+								<Select value={currentLocation} onChange={handleLocationChange}>
+									{locations.map((title: string) => (
+										<MenuItem key={title} value={title}>
+											{title}
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+						</Box>
+					</Grid>
+					<Grid item xs={12} md={6} lg={8}>
+						<Typography
+							fontSize={16}
+							fontWeight={"bold"}
+							letterSpacing={"0.2rem"}
+							color={"#564F8B"}
+							mb={2}
+							mx={4}
+						>
+							FEATURED ROLES
+						</Typography>
+						<Box
+							sx={{
+								width: "100%",
+								px: 2,
+							}}
+						>
+							<List
+								sx={{
+									p: 0,
+									"& li": {
+										py: "5px",
+										px: 0,
+									},
+								}}
+							>
+								{roles.map((el: any) => (
+									<ListItem key={el.name}>
+										<Link href={`${el.href}#overview`} passHref>
+											<ListItemButton
+												sx={{
+													// background: "rgba(138, 171, 255, 0.1)",
+													borderRadius: "16px",
+													"&:hover": {
+														background: "rgba(138, 171, 255, 0.2)",
+													},
+													p: 0,
+												}}
+											>
+												<ListItemText
+													primary={
+														<Typography
+															fontSize={{ xs: 20, sm: 24 }}
+															fontWeight="bold"
+															sx={{ cursor: "pointer" }}
+														>
+															{el.name}
+														</Typography>
+													}
+													secondary={
+														<Typography fontSize={{ xs: 14, sm: 18 }}>
+															<FmdGoodOutlinedIcon
+																sx={{
+																	fontSize: { xs: 18 },
+																	mr: 1,
+																	mb: "-4px",
+																	mt: 1,
+																}}
+															/>
+															<span>{el.location}</span>
+														</Typography>
+													}
+													sx={{
+														my: 0,
+														px: { xs: 4, sm: 6 },
+														py: { xs: 3, sm: 4 },
+														borderRight: "1px solid #0F000F",
+													}}
+												/>
+												<ListItemIcon
+													sx={{
+														minWidth: "unset",
+														color: "rgba(255, 255, 255, 0.1)",
+														px: 2,
+													}}
+												>
+													<ArrowForwardIosOutlinedIcon />
+												</ListItemIcon>
+											</ListItemButton>
+										</Link>
+									</ListItem>
+								))}
+							</List>
+						</Box>
+					</Grid>
+				</Grid>
+			</Grid>
+		</Box>
+	);
 }

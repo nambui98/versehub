@@ -8,25 +8,25 @@ export const SERVICE = {
 	title: "what do we do",
 	items: [
 		{
-			src: "/assets/missions/mission-1.webp",
+			src: "/assets/missions/mission1.webp",
 			title: "Game NFT & Metaverse",
 			// desc: 'The first true metaverse game on the blockchain which has an ecosystem and provides a real user experience as close to real life experiences with unlimited possibilities.',
 			desc: "The first true metaverse game on blockchain which have the ecosystem and experience as close as possible to real life but still providing the unlimited creativity.",
 		},
 		{
-			src: "/assets/missions/mission-2.webp",
-			title: "Communication & Decentralized Financial Solution",
+			src: "/assets/missions/mission2.webp",
+			title: "Communication &\nDecentralized Financial Solution",
 			// desc: 'Our products bring a combined solution for communication, asset management, and co-working. Everything crypto-related in one place, ready for exploring.',
 			desc: "Communication, managing assets, sharing ideas and information... Everything about crypto in one place, ready for exploring.",
 		},
 		{
-			src: "/assets/missions/mission-3.webp",
+			src: "/assets/missions/mission3.webp",
 			title: "Web3",
 			// desc: 'We believe Web3 will be a game-changing technology of the internet and we are working hard to research and contribute to its development.',
 			desc: "We believe that Web3 is <something big> and we are working hard to research and contribute to the development of web3 technology.",
 		},
 		{
-			src: "/assets/missions/mission-4.webp",
+			src: "/assets/missions/mission4.webp",
 			title: "Incubation & Advisory",
 			// desc: 'We provide strategic, technical, and financial support to other teams and projects for their R&D, while helping them adopt blockchain for better results.',
 			desc: "Provide strategic advice, technical and financial support, ease researching and development for small or new teams/projects, help them get into the blockchain industry faster and get better results.",

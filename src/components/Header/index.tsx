@@ -66,7 +66,7 @@ export const Header: React.FC<HeaderProps> = () => {
 			}
 
 			const item = items[i];
-			const node = document.getElementById(item.value);
+			const node = document.getElementById(`${item.value}`.slice(1));
 
 			if (
 				node &&
