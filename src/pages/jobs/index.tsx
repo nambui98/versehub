@@ -117,7 +117,7 @@ function OurMission() {
 						<Typography
 							key={idx}
 							fontSize={{ xs: 16, sm: 18 }}
-							fontWeight={{ xs: 300, md: 500 }}
+							fontWeight={{ xs: 300, sm: 500 }}
 						>
 							{content}
 						</Typography>
@@ -217,9 +217,9 @@ function CoreValues() {
 									spacing={3}
 									sx={{ display: { xs: "flex", md: "none" } }}
 								>
-									<Grid item xs={12}>
+									<Grid item xs={12} height={{ xs: 355, sm: 300 }}>
 										<Typography
-											fontSize={18}
+											fontSize={{ xs: 18, sm: 24 }}
 											fontWeight={"bold"}
 											mt={1}
 											mb={2}
@@ -233,7 +233,11 @@ function CoreValues() {
 										</Typography>
 										<Stack spacing={1} px={6}>
 											{content.map((text: string, idx: number) => (
-												<Typography key={idx} fontSize={16} fontWeight={300}>
+												<Typography
+													key={idx}
+													fontSize={{ xs: 16, sm: 18 }}
+													fontWeight={{ xs: 300, sm: 500 }}
+												>
 													{text}
 												</Typography>
 											))}
@@ -430,7 +434,7 @@ function Contact() {
 							color: "#7B4BE1",
 							mb: { xs: -0.5, sm: -0.75 },
 							mr: { xs: 0.5, sm: 1 },
-							fontSize: { xs: 18, sm: "unset" },
+							fontSize: { xs: 18, sm: "1.5rem" },
 						}}
 					/>
 					{CONTACT.phone}
@@ -440,7 +444,7 @@ function Contact() {
 							mb: { xs: -0.5, sm: -0.75 },
 							mr: { xs: 0.5, sm: 1 },
 							ml: 5,
-							fontSize: { xs: 18, sm: "unset" },
+							fontSize: { xs: 18, sm: "1.5rem" },
 						}}
 					/>
 					{CONTACT.email}
