@@ -98,6 +98,14 @@ function Banner() {
 				}}
 			>
 				<img src="/assets/jobs/banner.webp" alt="banner" width={"100%"} />
+				{/* <Image
+					src={"/assets/jobs/banner.png"}
+					alt="banner"
+					width="100%"
+					height="46.25%"
+					layout="responsive"
+					objectFit="cover"
+				/> */}
 			</Box>
 		</Box>
 	);
@@ -626,7 +634,10 @@ function OpportunitiesDesktop({ data, sxProp }: any) {
 								{roles.map((el: any) => (
 									<ListItem key={el.name}>
 										<Link href={`${el.href}#overview`} passHref>
+											{/* <a href={`${el.href}#overview`} target="_blank"> */}
 											<ListItemButton
+												component="a"
+												target="_blank"
 												sx={{
 													background: "rgba(138, 171, 255, 0.1)",
 													borderRadius: "16px",

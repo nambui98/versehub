@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import React, { useState } from "react";
+import Image from "next/image";
 import {
 	Container,
 	Typography,
@@ -100,6 +101,14 @@ function Banner() {
 				}}
 			>
 				<img src="/assets/jobs/banner.webp" alt="banner" width={"100%"} />
+				{/* <Image
+					src={"/assets/jobs/banner.webp"}
+					alt="banner"
+					width="100%"
+					height="46.25%"
+					layout="responsive"
+					objectFit="cover"
+				/> */}
 			</Box>
 		</Box>
 	);
