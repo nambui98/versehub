@@ -25,7 +25,8 @@ export const secondLayoutNavigation = [
 export const FOOTER = {
 	location: {
 		icon: "/assets/footer/location.svg",
-		desc: "71 Knighthead point, London, England, E14, BSS",
+		// desc: "71 Knighthead point, London, England, E14, BSS",
+		desc: "London, England",
 	},
 	mail: { icon: "/assets/footer/mail.svg", desc: "info@versehub.io" },
 	social: [

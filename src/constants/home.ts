@@ -220,7 +220,7 @@ export const TEAM = {
 };
 
 export const OFFICE = {
-	title: "our office",
+	title: "our offices",
 	items: [
 		{
 			src: "/assets/offices/office1.png",

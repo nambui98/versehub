@@ -76,14 +76,14 @@ export const Footer: React.FC<FooterProps> = () => {
 							color="#58487B"
 							textAlign={{ xs: "center", sm: "left" }}
 						>
-							© Versehub, 2022
+							© VerseHub, 2022
 						</Typography>
 					</Grid>
 					<Grid item xs={12} sm={8}>
 						<Grid container justifyContent={{ xs: "center", sm: "end" }}>
-							<Typography fontSize={14} color="#8D6FCF">
+							{/* <Typography fontSize={14} color="#8D6FCF">
 								{FOOTER.links.map((el) => el.desc).join(" | ")}
-							</Typography>
+							</Typography> */}
 						</Grid>
 					</Grid>
 				</Grid>
