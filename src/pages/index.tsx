@@ -273,7 +273,7 @@ function ProductsPartners({ data }: any) {
 					justifyContent="center"
 					sx={{ px: { xs: "unset", sm: 10, md: 15, lg: 20 } }}
 				>
-					{data.items.map(({ src, title, active, width }: any, key: number) => (
+					{data.items.map(({ url, src, title, active, width }: any, key: number) => (
 						<Grid key={key} item xs={6} sm={6} md={4}>
 							<Stack
 								justifyContent="center"
@@ -290,6 +290,9 @@ function ProductsPartners({ data }: any) {
 								}}
 							>
 								<Stack
+									onClick={() => {
+										url?window.open(url, '_blank', 'noopener,noreferrer'):console.info("I'm NOT a button.");
+									}}
 									spacing={0}
 									justifyContent="center"
 									alignItems="center"

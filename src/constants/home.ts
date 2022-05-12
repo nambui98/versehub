@@ -48,6 +48,7 @@ export const PRODUCT = {
 			title: "Nextverse",
 			active: true,
 			width: "20%",
+			url: "http://nextverse.org"
 		},
 		{
 			src: "/assets/products/city.png",
@@ -168,7 +169,7 @@ export const TEAM = {
 		{
 			src: "/assets/teams/profile4.jpg",
 			name: "Jolly",
-			title: "Tech Lead",
+			title: "Head of Development",
 			desc: [
 				`15 years' experience in game industry`,
 				`8 years' experience in R&D`,
