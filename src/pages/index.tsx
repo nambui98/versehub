@@ -123,8 +123,8 @@ function Banner() {
 					textAlign: "center",
 					color: "rgba(255, 255, 255, 0.5)",
 				}}
-				// color={'rgba(255, 255, 255, 0.5)'}
-				// align="center"
+			// color={'rgba(255, 255, 255, 0.5)'}
+			// align="center"
 			>
 				<Typography variant="subtitle1" fontSize={{ xs: 22, md: 24 }}>
 					{BANNER[0]}
@@ -184,7 +184,7 @@ function StackWrapper({ children, bookmark, styles }: any) {
 				justifyContent: "center",
 				alignItems: "center",
 			}}
-			// style={match1440 ? { ...styles } : null}
+		// style={match1440 ? { ...styles } : null}
 		>
 			<Container>{children}</Container>
 		</Box>
@@ -284,6 +284,7 @@ function ProductsPartners({ data }: any) {
 									p: "1px",
 									overflow: "hidden",
 									borderRadius: 2,
+									cursor: "pointer",
 									background: active
 										? "linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)"
 										: "linear-gradient(180deg, #372D73 0%, #5A2966 100%)",
@@ -291,7 +292,7 @@ function ProductsPartners({ data }: any) {
 							>
 								<Stack
 									onClick={() => {
-										url?window.open(url, '_blank', 'noopener,noreferrer'):console.info("I'm NOT a button.");
+										url ? window.open(url, '_blank', 'noopener,noreferrer') : console.info("I'm NOT a button.");
 									}}
 									spacing={0}
 									justifyContent="center"
@@ -347,7 +348,7 @@ function Team({ onClickProfile }: any) {
 					rowSpacing={{ xs: 6 }}
 					columns={{ xs: 12, sm: 12, md: 12, lg: 15 }}
 					justifyContent="center"
-					// alignItems="center"
+				// alignItems="center"
 				>
 					{TEAM.items.map(({ src, name, title, desc, linkedIn }, key) => (
 						<Grid item xs={6} sm={6} md={3} lg={3} key={key}>
