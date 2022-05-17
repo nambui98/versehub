@@ -284,7 +284,7 @@ function ProductsPartners({ data }: any) {
 									p: "1px",
 									overflow: "hidden",
 									borderRadius: 2,
-									cursor: "pointer",
+									cursor: active ? "pointer" : "default",
 									background: active
 										? "linear-gradient(180deg, #7000FF 0%, #FC00FF 100%)"
 										: "linear-gradient(180deg, #372D73 0%, #5A2966 100%)",
