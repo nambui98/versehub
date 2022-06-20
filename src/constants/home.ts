@@ -38,10 +38,11 @@ export const PRODUCT = {
 	title: "release",
 	items: [
 		{
-			src: "/assets/products/city.png",
-			title: "Coming soon",
-			active: false,
+			src: "/assets/products/logo-text-white.png",
+			title: "Befitter",
+			active: true,
 			width: "40%",
+			url: 'https://befitter.io/'
 		},
 		{
 			src: "/assets/products/nextverse-logo.png",

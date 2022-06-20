@@ -69,7 +69,7 @@ const HomePage: NextPage = () => {
 				<ProductsPartners data={{ ...PRODUCT, anchor: Anchors.Products }} />
 				<ProductsPartners data={{ ...PARTNER, anchor: Anchors.Partners }} />
 				{/* <Team onClickProfile={handleClickProfile} /> */}
-				<Team />
+				{/* <Team /> */}
 				<Offices />
 				<Jobs />
 				<StackWrapper bookmark={Anchors.Contact}>
@@ -313,7 +313,7 @@ function ProductsPartners({ data }: any) {
 										},
 									}}
 								>
-									<Box sx={{ width }}>
+									<Box sx={[{ width }, key === 0 ? logoBefitter : {}]}>
 										<img src={src} alt={`image-${key}`} width={"100%"} />
 									</Box>
 									<Typography
@@ -556,4 +556,13 @@ function Jobs() {
 			</Container>
 		</StackWrapper>
 	);
+}
+
+const logoBefitter = {
+	'& img': {
+		margin: '8px 0',
+		'@media (min-width: 768px)': {
+			margin: '15px 0'
+		}
+	}
 }
