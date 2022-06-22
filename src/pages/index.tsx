@@ -321,7 +321,7 @@ function ProductsPartners({ data }: any) {
 										fontSize={{ xs: 10, sm: 16, md: 12, lg: 16 }}
 										fontWeight={600}
 										letterSpacing={{ xs: "0.15rem", sm: ".25rem" }}
-										sx={{ textTransform: "uppercase" }}
+										sx={{ textTransform: key === 0 ? 'initial' : "uppercase" }}
 									>
 										{title}
 									</Typography>

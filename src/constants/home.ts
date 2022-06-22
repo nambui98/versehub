@@ -39,7 +39,7 @@ export const PRODUCT = {
 	items: [
 		{
 			src: "/assets/products/logo-text-white.png",
-			title: "Befitter",
+			title: "beFITTER",
 			active: true,
 			width: "40%",
 			url: 'https://befitter.io/'
