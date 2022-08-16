@@ -226,15 +226,10 @@ export const OFFICE = {
 	items: [
 		{
 			src: "/assets/offices/office1.png",
-			title: "Malta",
-			subtitle: "Headquarters",
+			title: "St Vincent and the Grenadines",
+			subtitle: "Headquarter",
 		},
 		{ src: "/assets/offices/office2.png", title: "UK", subtitle: "London" },
-		{
-			src: "/assets/offices/office3.png",
-			title: "Singapore",
-			subtitle: "Singapore",
-		},
 		{ src: "/assets/offices/office4.png", title: "Vietnam", subtitle: "Hanoi" },
 	],
 };

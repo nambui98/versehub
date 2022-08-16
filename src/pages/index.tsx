@@ -421,6 +421,7 @@ function Offices() {
 					container
 					spacing={{ xs: 1.5, sm: 3 }}
 					rowSpacing={{ xs: 1.5, sm: 3 }}
+					justifyContent={'center'}
 				>
 					{OFFICE.items.map(({ src, title, subtitle }, idx) => (
 						<Grid item key={title} xs={6} md={3}>

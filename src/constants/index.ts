@@ -26,9 +26,10 @@ export const FOOTER = {
 	location: {
 		icon: "/assets/footer/location.svg",
 		// desc: "71 Knighthead point, London, England, E14, BSS",
-		desc: "London, England",
+		desc: "Hanoi, Vietnam",
 	},
-	mail: { icon: "/assets/footer/mail.svg", desc: "info@versehub.io" },
+	mail: { icon: "/assets/footer/mail.svg", desc: "dungnv@versehub.io" },
+	phone: { icon: "/assets/footer/mail.svg", desc: "(+84) 866 174 689" },
 	social: [
 		{
 			icon: "/assets/footer/linkedIn.svg",

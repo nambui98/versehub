@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Grid, Box, Container, Typography, Stack } from "@mui/material";
 import { FOOTER } from "@/constants/index";
 import { Logo } from "@/components/index";
+import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 
 export interface FooterProps {}
 
@@ -21,7 +22,7 @@ export const Footer: React.FC<FooterProps> = () => {
 								mt={4}
 							>
 								<img src={FOOTER.location.icon} alt="location" />
-								<Typography fontSize={14} ml={0.5}>
+								<Typography fontSize={14} ml={1}>
 									{FOOTER.location.desc}
 								</Typography>
 							</Grid>
@@ -32,8 +33,24 @@ export const Footer: React.FC<FooterProps> = () => {
 								mt={1}
 							>
 								<img src={FOOTER.mail.icon} alt="mail" />
-								<Typography fontSize={14} ml={0.5}>
+								<Typography fontSize={14} ml={1}>
 									{FOOTER.mail.desc}
+								</Typography>
+							</Grid>
+							<Grid
+								container
+								justifyContent={{ xs: "center", sm: "unset" }}
+								alignItems="center"
+								mt={1}
+							>
+								<PhoneOutlinedIcon
+									sx={{
+										color: "#7B4BE1",
+										fontSize: { xs: 12, sm: "1.3rem" },
+									}}
+								/>
+								<Typography fontSize={14} ml={1}>
+									{FOOTER.phone.desc}
 								</Typography>
 							</Grid>
 						</Stack>
