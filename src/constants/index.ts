@@ -11,7 +11,7 @@ export const navigations = [
 	{ label: "Services", value: "#services" },
 	{ label: "Products", value: "#products" },
 	{ label: "Partners", value: "#partners" },
-	{ label: "Team", value: "#team" },
+	// { label: "Team", value: "#team" },
 	{ label: "Jobs", value: "/jobs" },
 	{ label: "Contact", value: "#contact" },
 ];
