@@ -67,7 +67,7 @@ const HomePage: NextPage = () => {
 			<Stack spacing={{ xs: 22.5 }} mt={23}>
 				<Services />
 				<ProductsPartners data={{ ...PRODUCT, anchor: Anchors.Products }} />
-				<ProductsPartners data={{ ...PARTNER, anchor: Anchors.Partners }} />
+				{/* <ProductsPartners data={{ ...PARTNER, anchor: Anchors.Partners }} /> */}
 				{/* <Team onClickProfile={handleClickProfile} /> */}
 				{/* <Team /> */}
 				<Offices />
