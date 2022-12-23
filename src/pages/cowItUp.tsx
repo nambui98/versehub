@@ -1,4 +1,4 @@
-import { Box, styled, useMediaQuery } from "@mui/material"
+import { Box, Link, styled, useMediaQuery } from "@mui/material"
 import { NextPage } from "next"
 
 const CowItUpPage: NextPage = () => {
@@ -23,10 +23,10 @@ const CowItUpPage: NextPage = () => {
         </Box>}
       </BoxBody>
       <BoxButton>
-        <a href="#" style={{
+        <Link href="#" style={{
           marginRight: width767 ? '14px' : '32px',
-        }}><img src="/assets/ciu/AppStore.png" /></a>
-        <a href="#"><img src="/assets/ciu/PlayStore.png" /></a>
+        }}><img src="/assets/ciu/AppStore.png" /></Link>
+        <Link href="#"><img src="/assets/ciu/PlayStore.png" /></Link>
       </BoxButton>
       <BoxFooter>
         <Box sx={{
@@ -34,7 +34,7 @@ const CowItUpPage: NextPage = () => {
         }}><img src="/assets/ciu/logo_versehub.png" /></Box>
         <BoxPolicy>
           Developed by Versehub INC<br></br>
-          <a href="/cowItUp-policy">Privacy Policy</a>
+          <Link href="/cowItUp-policy">Privacy Policy</Link>
         </BoxPolicy>
       </BoxFooter>
     </Inner>
@@ -149,5 +149,6 @@ const BoxPolicy = styled(Box)({
   textAlign: 'left',
   '& a': {
     color: '#151515',
+    textDecoration: 'underline',
   }
 })
