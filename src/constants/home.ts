@@ -52,10 +52,11 @@ export const PRODUCT = {
 			url: "http://nextverse.org"
 		},
 		{
-			src: "/assets/products/city.png",
-			title: "Coming soon",
-			active: false,
+			src: "/assets/ciu/logo_ciu_white.png",
+			title: "Cow it up",
+			active: true,
 			width: "40%",
+			url: "/cowItUp"
 		},
 		{
 			src: "/assets/products/city.png",

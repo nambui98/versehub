@@ -50,6 +50,138 @@
 	font-style: normal;
 	font-display: swap;
 }
+@font-face {
+	font-family: 'Aldo the Apache';
+	font-weight: normal;
+	src: url("/fonts/Aldo/AldotheApache.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 100;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-Thin.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 100;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-ThinItalic.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 200;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-ExtraLight.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 200;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-ExtraLightItalic.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 300;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-Light.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 300;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-LightItalic.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 400;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-Regular.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 400;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-Italic.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 500;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-Medium.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 500;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-MediumItalic.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 600;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-SemiBold.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 600;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-SemiBoldItalic.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 700;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-Bold.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 700;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-BoldItalic.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 800;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-ExtraBold.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 800;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-ExtraBoldItalic.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 900;
+	font-style: normal;
+	src: url("/fonts/beVietNam/BeVietnamPro-Black.ttf");
+	font-display: swap;
+}
+@font-face {
+	font-family: "BeVietnamPro";
+	font-weight: 900;
+	font-style: italic;
+	src: url("/fonts/beVietNam/BeVietnamPro-BlackItalic.ttf");
+	font-display: swap;
+}
 
 /* html {
 	scroll-behavior: smooth;
