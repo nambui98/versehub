@@ -37,7 +37,7 @@ const tabPolicy = [
       If we send e-mail or SMS messages to you for the purpose of promoting VerseHub products or services, or those of a third-party partner, we will generally provide you with choices about receiving further such promotional messages. Preferences for "push" notifications may in most cases be adjusted through VerseHub or your mobile device.<br></br>
 
       Interaction with Game Center or Other 3rd Party Game Services<br></br>
-      By registering with your Game Center on your device (“Game Center”), you allow VerseHub INC to access certain information from your profile for that Game Center. The information you allow us to access is affected by the privacy settings you and your friends establish at the Game Center. You can control and find out more about these settings directly from the Game Center. For example, we may access and store some or all of the following information, as allowed by you, the Game Center and your preferences:<br></br>
+      By registering with your Game Center on your device ("Game Center"), you allow VerseHub INC to access certain information from your profile for that Game Center. The information you allow us to access is affected by the privacy settings you and your friends establish at the Game Center. You can control and find out more about these settings directly from the Game Center. For example, we may access and store some or all of the following information, as allowed by you, the Game Center and your preferences:<br></br>
 
       Your first and last name;<br></br>
       Your Game Center ID;<br></br>
@@ -145,7 +145,7 @@ const tabPolicy = [
 
       A withdrawal of consent will not affect the lawfulness of our processing or the processing of any third parties based on consent before your withdrawal.<br></br>
 
-      For all data processing activities that rely on users' consent, you can withdraw your consent at any time from the “settings” page in our various applications.<br></br>
+      For all data processing activities that rely on users' consent, you can withdraw your consent at any time from the "settings" page in our various applications.<br></br>
 
       Please only note that in the case where you withdraw your consent or where you refuse to consent in the first place, you will still be served with advertising but that may be less relevant to you as it will not be tailored to your interests.<br></br>
     </>
@@ -165,7 +165,7 @@ const CowItUpPolicyPage: NextPage = () => {
         <Box sx={{
           marginBottom: width767 ? '24px' : '80px'
         }}>
-          This Privacy Policy describes how VerseHub INC (referred to in this Privacy Policy as “Company,” “we,” “us,” or “our”) of the associated mobile applications Cow It Up - Match Tiles (the “App”) available for download in the Google Play Store/App Store and its subsidiaries and its affiliates (“Company”, “us”, “we” or “ VerseHub INC”) respect the privacy of the users of their mobile applications (“User” or “you”) and are committed to protect the User's information.<br></br>
+          This Privacy Policy describes how VerseHub INC (referred to in this Privacy Policy as "Company," "we," "us," or "our") of the associated mobile applications Cow It Up - Match Tiles (the "App") available for download in the Google Play Store/App Store and its subsidiaries and its affiliates ("Company", "us", "we" or " VerseHub INC") respect the privacy of the users of their mobile applications ("User" or "you") and are committed to protect the User's information.<br></br>
           This Privacy Policy explains the types of information we collect, and how we collect, use, disclose, share and protect your information.<br></br>
           We recognize the importance of protecting the information collected about you. Please familiarize yourself with our privacy practices.<br></br>
           If you have any questions, complaints, or comments regarding our privacy statement or policies, please cowitup01@gmail.com .<br></br>
@@ -188,7 +188,7 @@ const CowItUpPolicyPage: NextPage = () => {
         <Email><img src="/assets/ciu/email.png" /> cowitup01@gmail.com</Email>
         <Title>Terms of Services</Title>
         <Box>
-          These Terms of Service (“ToS”) constitute a legal agreement between the user of our products and services “user” or “you”) and the Company. It applies when a user accesses, uses or visits the associated mobile application available for download in the Google Play Store and other third party app stores, or pre-installed on third party devices (the “App”), and/or the services provided through the Site and the App. In these ToS, the term “Service” means and includes the Site, the App and these services, individually or collectively. We prepared these ToS to help explain the terms that apply to your use of the Service.
+          These Terms of Service ("ToS") constitute a legal agreement between the user of our products and services "user" or "you") and the Company. It applies when a user accesses, uses or visits the associated mobile application available for download in the Google Play Store and other third party app stores, or pre-installed on third party devices (the "App"), and/or the services provided through the Site and the App. In these ToS, the term "Service" means and includes the Site, the App and these services, individually or collectively. We prepared these ToS to help explain the terms that apply to your use of the Service.
         </Box>
         <Subtitle>Consent</Subtitle>
         <Box>By visiting the Site, downloading the App, or otherwise using the Service, you indicate your agreement to be bound by these ToS. If you do not agree with these ToS, you must not use the Service, and uninstall the App if you have already downloaded it.</Box>
