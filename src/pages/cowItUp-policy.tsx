@@ -46,23 +46,23 @@ const tabPolicy = [
       The user ID numbers and other public data for your friends;<br></br>
       The login e-mail you provided to that Game Center when you registered; and<br></br>
       Your gender.<br></br>
-      By connecting any VerseHub" Product to a Game Center, you consent to our access, use and storage in accordance with this Privacy Policy of any and all of the information that you agreed the Game Center could provide to VerseHub INC. You may be able to specify what information is provided by the Game Center to us by using the privacy settings in your Game Center profile information.<br></br>
+      By connecting any VerseHub&quot; Product to a Game Center, you consent to our access, use and storage in accordance with this Privacy Policy of any and all of the information that you agreed the Game Center could provide to VerseHub INC. You may be able to specify what information is provided by the Game Center to us by using the privacy settings in your Game Center profile information.<br></br>
 
       Other<br></br>
       We may offer you the opportunity to provide us with your e-mail address so that we may register you to receive premium support or provide you with special offers from VerseHub INC our partner companies.<br></br>
 
       VerseHub INC may provide you the opportunity to participate in include sweepstakes or contests (&quot;Promotions&quot;). If you choose to participate in a Promotion, we may request that you provide us with personal information such as your e-mail address or mailing address.<br></br>
 
-      If you request support relating to a VerseHub INC"s product, we may request personal information such as your name and e-mail address and your user name for any SNS"s, if that appears necessary to resolving the problem.<br></br>
+      If you request support relating to a VerseHub INC&quot;s product, we may request personal information such as your name and e-mail address and your user name for any SNS&quot;s, if that appears necessary to resolving the problem.<br></br>
 
       We may also request or receive personal information in other interactions you may have with VerseHub INC.<br></br>
 
       Cookies and Other Technologies<br></br>
-      A cookie is a small string of text that we, or service providers acting on our behalf, send to your computer"s or mobile device"s browser. Other types of cookies exist, but the cookies in the Apps are only used to obtain browser or device-specific information.<br></br>
+      A cookie is a small string of text that we, or service providers acting on our behalf, send to your computer&quot;s or mobile device&quot;s browser. Other types of cookies exist, but the cookies in the Apps are only used to obtain browser or device-specific information.<br></br>
 
       Some cookies are necessary to enable a game to function properly and to allow your gameplay experience to continue from one session another. Other cookies can show, for instance, which parts of VerseHub are the most popular, how much time users are spending there, and how they are interacting with the content.<br></br>
 
-      You may have the option to disable cookies by changing the options in your browser to stop accepting cookies or to prompt you before accepting a cookie from the pages you visit. Additionally, you can disable or delete similar data used by browser add-ons, such as Flash cookies, by changing the add-on"s settings or visiting the website of its manufacturer.<br></br>
+      You may have the option to disable cookies by changing the options in your browser to stop accepting cookies or to prompt you before accepting a cookie from the pages you visit. Additionally, you can disable or delete similar data used by browser add-ons, such as Flash cookies, by changing the add-on&quot;s settings or visiting the website of its manufacturer.<br></br>
 
       Please note that third parties delivering advertisements through the Services may also use cookies or other technologies. Their placement and use of cookies and other technologies will be subject to their own privacy policies and terms and conditions.<br></br>
     </>
@@ -122,9 +122,9 @@ const tabPolicy = [
   {
     title: "Your California Privacy Rights",
     content: <>
-      If you are a California resident and VerseHub INC" user, you are entitled to request certain information regarding our disclosure of certain &quot;personal information&quot; (as defined in California Civil Code Section 1798.83) to third parties for their direct marketing purposes. If you are a California resident and have provided us with personal information within the last year, you may make such a request by emailing us at cowitup01@gmail.com and typing the following in the subject line of the e-mail: &quot;California Privacy Rights&quot;.
+      If you are a California resident and VerseHub INC&quot; user, you are entitled to request certain information regarding our disclosure of certain &quot;personal information&quot; (as defined in California Civil Code Section 1798.83) to third parties for their direct marketing purposes. If you are a California resident and have provided us with personal information within the last year, you may make such a request by emailing us at cowitup01@gmail.com and typing the following in the subject line of the e-mail: &quot;California Privacy Rights&quot;.
 
-      Within 30 days of receiving such a request, we will provide a list of the categories of personal information disclosed to third parties for such third parties" direct marketing purposes during the immediately preceding calendar year, along with the names and addresses of these third parties. A request may be made no more than once per calendar year and we are not required to respond to requests made by means other than through the e-mail address above.<br></br>
+      Within 30 days of receiving such a request, we will provide a list of the categories of personal information disclosed to third parties for such third parties&quot; direct marketing purposes during the immediately preceding calendar year, along with the names and addresses of these third parties. A request may be made no more than once per calendar year and we are not required to respond to requests made by means other than through the e-mail address above.<br></br>
     </>
   },
   {
@@ -309,7 +309,7 @@ const Email = styled(Box)({
   "@media (min-width: 768px)": {
     flexDirection: "row",
     fontSize: 32,
-    marginBottom: 0
+    marginBottom: 80
   }
 })
 const Subtitle = styled(Box)({
