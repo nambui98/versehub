@@ -25,7 +25,7 @@ const tabPolicy = [
       Generally, we use your information to provide you with an efficient and customized experience. For example, we may use information in the following ways:<br></br>
       To send important notices, such as communications about your purchases and changes to this Privacy Policy;<br></br>
       To inform you about new VerseHub products and promote VerseHub products;<br></br>
-      To send 'push' notifications to your mobile device regarding VerseHub that you have been playing (for example, suggesting that you open the VerseHub to take certain actions);<br></br>
+      To send &quot;push&quot; notifications to your mobile device regarding VerseHub that you have been playing (for example, suggesting that you open the VerseHub to take certain actions);<br></br>
       To provide in-game information regarding player achievements, such as leaderboards;<br></br>
       To provide technical support and respond to inquiries from you;<br></br>
       To prevent fraud and potentially illegal activities;<br></br>
@@ -34,10 +34,10 @@ const tabPolicy = [
       To deliver and target advertising from third parties;<br></br>
       To gather demographic information about VerseHub users in order to more effectively manage the Apps and provide targeted advertising; and<br></br>
       To track clicks or other ad fulfillment metrics.<br></br>
-      If we send e-mail or SMS messages to you for the purpose of promoting VerseHub products or services, or those of a third-party partner, we will generally provide you with choices about receiving further such promotional messages. Preferences for 'push' notifications may in most cases be adjusted through VerseHub or your mobile device.<br></br>
+      If we send e-mail or SMS messages to you for the purpose of promoting VerseHub products or services, or those of a third-party partner, we will generally provide you with choices about receiving further such promotional messages. Preferences for &quot;push&quot; notifications may in most cases be adjusted through VerseHub or your mobile device.<br></br>
 
       Interaction with Game Center or Other 3rd Party Game Services<br></br>
-      By registering with your Game Center on your device ('Game Center'), you allow VerseHub INC to access certain information from your profile for that Game Center. The information you allow us to access is affected by the privacy settings you and your friends establish at the Game Center. You can control and find out more about these settings directly from the Game Center. For example, we may access and store some or all of the following information, as allowed by you, the Game Center and your preferences:<br></br>
+      By registering with your Game Center on your device (&quot;Game Center&quot;), you allow VerseHub INC to access certain information from your profile for that Game Center. The information you allow us to access is affected by the privacy settings you and your friends establish at the Game Center. You can control and find out more about these settings directly from the Game Center. For example, we may access and store some or all of the following information, as allowed by you, the Game Center and your preferences:<br></br>
 
       Your first and last name;<br></br>
       Your Game Center ID;<br></br>
@@ -51,7 +51,7 @@ const tabPolicy = [
       Other<br></br>
       We may offer you the opportunity to provide us with your e-mail address so that we may register you to receive premium support or provide you with special offers from VerseHub INC our partner companies.<br></br>
 
-      VerseHub INC may provide you the opportunity to participate in include sweepstakes or contests ('Promotions'). If you choose to participate in a Promotion, we may request that you provide us with personal information such as your e-mail address or mailing address.<br></br>
+      VerseHub INC may provide you the opportunity to participate in include sweepstakes or contests (&quot;Promotions&quot;). If you choose to participate in a Promotion, we may request that you provide us with personal information such as your e-mail address or mailing address.<br></br>
 
       If you request support relating to a VerseHub INC's product, we may request personal information such as your name and e-mail address and your user name for any SNS's, if that appears necessary to resolving the problem.<br></br>
 
@@ -71,7 +71,7 @@ const tabPolicy = [
     title: 'How We Share Your Information',
     content: <>
       With Third-Party Advertising Entities<br></br>
-      We accept advertisements from Third Parties ad networks which may be displayed in our Apps. We may share certain information with third-party advertisers, ad networks and ad platforms ('Advertising Entities') to develop and deliver targeted advertising in the Apps. We may also allow Advertising Entities to collect non-personal information within the Services which they may share with us, including your device identifier, device type, device brand, device model, OS type/version, network type, device language, device locale, and IP address. Advertising Entities may also collect non-personal information related to the performance of the advertisements, such as how many times an advertisement is shown, how long an advertisement is viewed, and any click-throughs of an advertisement. Advertising Entities may collect this information through the use of tracking technologies like browser cookies and web beacons.<br></br>
+      We accept advertisements from Third Parties ad networks which may be displayed in our Apps. We may share certain information with third-party advertisers, ad networks and ad platforms (&quot;Advertising Entities&quot;) to develop and deliver targeted advertising in the Apps. We may also allow Advertising Entities to collect non-personal information within the Services which they may share with us, including your device identifier, device type, device brand, device model, OS type/version, network type, device language, device locale, and IP address. Advertising Entities may also collect non-personal information related to the performance of the advertisements, such as how many times an advertisement is shown, how long an advertisement is viewed, and any click-throughs of an advertisement. Advertising Entities may collect this information through the use of tracking technologies like browser cookies and web beacons.<br></br>
 
       With Other Service Providers<br></br>
       To help administer the Apps, we may use third-party service providers. These service providers will have access to your information only to perform the services they have been engaged to perform for us, and they have agreed not to disclose or use it for any other purpose.<br></br>
@@ -122,7 +122,7 @@ const tabPolicy = [
   {
     title: 'Your California Privacy Rights',
     content: <>
-      If you are a California resident and VerseHub INC' user, you are entitled to request certain information regarding our disclosure of certain 'personal information' (as defined in California Civil Code Section 1798.83) to third parties for their direct marketing purposes. If you are a California resident and have provided us with personal information within the last year, you may make such a request by emailing us at cowitup01@gmail.com and typing the following in the subject line of the e-mail: 'California Privacy Rights'.
+      If you are a California resident and VerseHub INC' user, you are entitled to request certain information regarding our disclosure of certain &quot;personal information&quot; (as defined in California Civil Code Section 1798.83) to third parties for their direct marketing purposes. If you are a California resident and have provided us with personal information within the last year, you may make such a request by emailing us at cowitup01@gmail.com and typing the following in the subject line of the e-mail: &quot;California Privacy Rights&quot;.
 
       Within 30 days of receiving such a request, we will provide a list of the categories of personal information disclosed to third parties for such third parties' direct marketing purposes during the immediately preceding calendar year, along with the names and addresses of these third parties. A request may be made no more than once per calendar year and we are not required to respond to requests made by means other than through the e-mail address above.<br></br>
     </>
@@ -145,7 +145,7 @@ const tabPolicy = [
 
       A withdrawal of consent will not affect the lawfulness of our processing or the processing of any third parties based on consent before your withdrawal.<br></br>
 
-      For all data processing activities that rely on users' consent, you can withdraw your consent at any time from the 'settings' page in our various applications.<br></br>
+      For all data processing activities that rely on users' consent, you can withdraw your consent at any time from the &quot;settings&quot; page in our various applications.<br></br>
 
       Please only note that in the case where you withdraw your consent or where you refuse to consent in the first place, you will still be served with advertising but that may be less relevant to you as it will not be tailored to your interests.<br></br>
     </>
@@ -165,7 +165,7 @@ const CowItUpPolicyPage: NextPage = () => {
         <Box sx={{
           marginBottom: width767 ? '24px' : '80px'
         }}>
-          This Privacy Policy describes how VerseHub INC (referred to in this Privacy Policy as 'Company,' 'we,' 'us,' or 'our') of the associated mobile applications Cow It Up - Match Tiles (the 'App') available for download in the Google Play Store/App Store and its subsidiaries and its affiliates ('Company', 'us', 'we' or ' VerseHub INC') respect the privacy of the users of their mobile applications ('User' or 'you') and are committed to protect the User's information.<br></br>
+          This Privacy Policy describes how VerseHub INC (referred to in this Privacy Policy as &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) of the associated mobile applications Cow It Up - Match Tiles (the &quot;App&quot;) available for download in the Google Play Store/App Store and its subsidiaries and its affiliates (&quot;Company&quot;, &quot;us&quot;, &quot;we&quot; or &quot; VerseHub INC&quot;) respect the privacy of the users of their mobile applications (&quot;User&quot; or &quot;you&quot;) and are committed to protect the User's information.<br></br>
           This Privacy Policy explains the types of information we collect, and how we collect, use, disclose, share and protect your information.<br></br>
           We recognize the importance of protecting the information collected about you. Please familiarize yourself with our privacy practices.<br></br>
           If you have any questions, complaints, or comments regarding our privacy statement or policies, please cowitup01@gmail.com .<br></br>
@@ -188,7 +188,7 @@ const CowItUpPolicyPage: NextPage = () => {
         <Email><img src='/assets/ciu/email.png' /> cowitup01@gmail.com</Email>
         <Title>Terms of Services</Title>
         <Box>
-          These Terms of Service ('ToS') constitute a legal agreement between the user of our products and services 'user' or 'you') and the Company. It applies when a user accesses, uses or visits the associated mobile application available for download in the Google Play Store and other third party app stores, or pre-installed on third party devices (the 'App'), and/or the services provided through the Site and the App. In these ToS, the term 'Service' means and includes the Site, the App and these services, individually or collectively. We prepared these ToS to help explain the terms that apply to your use of the Service.
+          These Terms of Service (&quot;ToS&quot;) constitute a legal agreement between the user of our products and services &quot;user&quot; or &quot;you&quot;) and the Company. It applies when a user accesses, uses or visits the associated mobile application available for download in the Google Play Store and other third party app stores, or pre-installed on third party devices (the &quot;App&quot;), and/or the services provided through the Site and the App. In these ToS, the term &quot;Service&quot; means and includes the Site, the App and these services, individually or collectively. We prepared these ToS to help explain the terms that apply to your use of the Service.
         </Box>
         <Subtitle>Consent</Subtitle>
         <Box>By visiting the Site, downloading the App, or otherwise using the Service, you indicate your agreement to be bound by these ToS. If you do not agree with these ToS, you must not use the Service, and uninstall the App if you have already downloaded it.</Box>
