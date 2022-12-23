@@ -1,10 +1,10 @@
-import { Box, styled, useMediaQuery, Modal, Typography } from '@mui/material'
-import { NextPage } from 'next'
-import { useState } from 'react'
+import { Box, styled, useMediaQuery, Modal, Typography } from "@mui/material"
+import { NextPage } from "next"
+import { useState } from "react"
 
 const tabPolicy = [
   {
-    title: 'Information We Collect',
+    title: "Information We Collect",
     content: <>
       We collect the following categories of your personal information and may sell it to third parties: identifiers, commercial information, internet or other electronic network activity information, geolocation data, and inferences drawn from these categories.<br></br>
       We may collect through the Services both personal information that identifies you and can be used to contact you, and non-personal information, which is data in a form that does not allow direct association with you, which may include technical information, including the IP address through which you are accessing the Services and the unique mobile device ID or virtual unique device identifier for any mobile device you may be using.<br></br>
@@ -20,7 +20,7 @@ const tabPolicy = [
     </>
   },
   {
-    title: 'How We Use Your Information',
+    title: "How We Use Your Information",
     content: <>
       Generally, we use your information to provide you with an efficient and customized experience. For example, we may use information in the following ways:<br></br>
       To send important notices, such as communications about your purchases and changes to this Privacy Policy;<br></br>
@@ -46,29 +46,29 @@ const tabPolicy = [
       The user ID numbers and other public data for your friends;<br></br>
       The login e-mail you provided to that Game Center when you registered; and<br></br>
       Your gender.<br></br>
-      By connecting any VerseHub' Product to a Game Center, you consent to our access, use and storage in accordance with this Privacy Policy of any and all of the information that you agreed the Game Center could provide to VerseHub INC. You may be able to specify what information is provided by the Game Center to us by using the privacy settings in your Game Center profile information.<br></br>
+      By connecting any VerseHub" Product to a Game Center, you consent to our access, use and storage in accordance with this Privacy Policy of any and all of the information that you agreed the Game Center could provide to VerseHub INC. You may be able to specify what information is provided by the Game Center to us by using the privacy settings in your Game Center profile information.<br></br>
 
       Other<br></br>
       We may offer you the opportunity to provide us with your e-mail address so that we may register you to receive premium support or provide you with special offers from VerseHub INC our partner companies.<br></br>
 
       VerseHub INC may provide you the opportunity to participate in include sweepstakes or contests (&quot;Promotions&quot;). If you choose to participate in a Promotion, we may request that you provide us with personal information such as your e-mail address or mailing address.<br></br>
 
-      If you request support relating to a VerseHub INC's product, we may request personal information such as your name and e-mail address and your user name for any SNS's, if that appears necessary to resolving the problem.<br></br>
+      If you request support relating to a VerseHub INC"s product, we may request personal information such as your name and e-mail address and your user name for any SNS"s, if that appears necessary to resolving the problem.<br></br>
 
       We may also request or receive personal information in other interactions you may have with VerseHub INC.<br></br>
 
       Cookies and Other Technologies<br></br>
-      A cookie is a small string of text that we, or service providers acting on our behalf, send to your computer's or mobile device's browser. Other types of cookies exist, but the cookies in the Apps are only used to obtain browser or device-specific information.<br></br>
+      A cookie is a small string of text that we, or service providers acting on our behalf, send to your computer"s or mobile device"s browser. Other types of cookies exist, but the cookies in the Apps are only used to obtain browser or device-specific information.<br></br>
 
       Some cookies are necessary to enable a game to function properly and to allow your gameplay experience to continue from one session another. Other cookies can show, for instance, which parts of VerseHub are the most popular, how much time users are spending there, and how they are interacting with the content.<br></br>
 
-      You may have the option to disable cookies by changing the options in your browser to stop accepting cookies or to prompt you before accepting a cookie from the pages you visit. Additionally, you can disable or delete similar data used by browser add-ons, such as Flash cookies, by changing the add-on's settings or visiting the website of its manufacturer.<br></br>
+      You may have the option to disable cookies by changing the options in your browser to stop accepting cookies or to prompt you before accepting a cookie from the pages you visit. Additionally, you can disable or delete similar data used by browser add-ons, such as Flash cookies, by changing the add-on"s settings or visiting the website of its manufacturer.<br></br>
 
       Please note that third parties delivering advertisements through the Services may also use cookies or other technologies. Their placement and use of cookies and other technologies will be subject to their own privacy policies and terms and conditions.<br></br>
     </>
   },
   {
-    title: 'How We Share Your Information',
+    title: "How We Share Your Information",
     content: <>
       With Third-Party Advertising Entities<br></br>
       We accept advertisements from Third Parties ad networks which may be displayed in our Apps. We may share certain information with third-party advertisers, ad networks and ad platforms (&quot;Advertising Entities&quot;) to develop and deliver targeted advertising in the Apps. We may also allow Advertising Entities to collect non-personal information within the Services which they may share with us, including your device identifier, device type, device brand, device model, OS type/version, network type, device language, device locale, and IP address. Advertising Entities may also collect non-personal information related to the performance of the advertisements, such as how many times an advertisement is shown, how long an advertisement is viewed, and any click-throughs of an advertisement. Advertising Entities may collect this information through the use of tracking technologies like browser cookies and web beacons.<br></br>
@@ -83,14 +83,14 @@ const tabPolicy = [
     </>
   },
   {
-    title: 'Links to Third-Party Websites and Services',
+    title: "Links to Third-Party Websites and Services",
     content: <>
       The Apps may contain links to other websites and online services, including third-party advertisements. If you choose to click through to one of these other websites or online services, please note that any information you may provide will be subject to the privacy policy and other terms and conditions of that websites or service, and not to this Privacy Policy. We do not control third-party websites or services, and the fact that a link to such a website or service appears in the Apps does not mean that we endorse them or have approved their policies or practices relating to user information.<br></br>
       Before providing any information to any third-party website or service, we encourage you to review the privacy policy and other terms and conditions of that website or service. You agree that VerseHub INC will have no liability for any matters relating to a third-party website or service that you provide information to, including their collection and handling of that information.<br></br>
     </>
   },
   {
-    title: 'Deletion, Modification and Retention of Personal Information',
+    title: "Deletion, Modification and Retention of Personal Information",
     content: <>
       If for any reason you wish to delete or modify your Personal Information, please send us an e-mail to: cowitup01@gmail.com with adequate details of your request and we will make reasonable efforts to modify or delete any such Personal Information pursuant to any applicable privacy laws.<br></br>
 
@@ -100,13 +100,13 @@ const tabPolicy = [
     </>
   },
   {
-    title: 'Non-US Users',
+    title: "Non-US Users",
     content: <>
       Information that you provide may be transferred or accessed by entities around the world as described in this Privacy Policy. If you are located outside the United States, you understand that we may transfer personal information to and process it in the United States. If you are located in the European Union, you freely consent to the transfer of personal information outside of the European Union. Your consent to this Privacy Policy followed by your submission of personal information represents your agreement to these transfers.
     </>
   },
   {
-    title: 'Your Data Protection Rights under the General Data Protection Regulation (GDPR)',
+    title: "Your Data Protection Rights under the General Data Protection Regulation (GDPR)",
     content: <>
       If you are a resident of the European Economic Area (EEA), you have certain data protection rights. VerseHub INC to take reasonable steps to allow you to correct, amend, delete or limit the use of your Personal Data. If you wish to be informed about what Personal Data we hold about you and if you want it to be removed from our systems, please contact us via: cowitup01@gmail.com<br></br>
 
@@ -120,15 +120,15 @@ const tabPolicy = [
     </>
   },
   {
-    title: 'Your California Privacy Rights',
+    title: "Your California Privacy Rights",
     content: <>
-      If you are a California resident and VerseHub INC' user, you are entitled to request certain information regarding our disclosure of certain &quot;personal information&quot; (as defined in California Civil Code Section 1798.83) to third parties for their direct marketing purposes. If you are a California resident and have provided us with personal information within the last year, you may make such a request by emailing us at cowitup01@gmail.com and typing the following in the subject line of the e-mail: &quot;California Privacy Rights&quot;.
+      If you are a California resident and VerseHub INC" user, you are entitled to request certain information regarding our disclosure of certain &quot;personal information&quot; (as defined in California Civil Code Section 1798.83) to third parties for their direct marketing purposes. If you are a California resident and have provided us with personal information within the last year, you may make such a request by emailing us at cowitup01@gmail.com and typing the following in the subject line of the e-mail: &quot;California Privacy Rights&quot;.
 
-      Within 30 days of receiving such a request, we will provide a list of the categories of personal information disclosed to third parties for such third parties' direct marketing purposes during the immediately preceding calendar year, along with the names and addresses of these third parties. A request may be made no more than once per calendar year and we are not required to respond to requests made by means other than through the e-mail address above.<br></br>
+      Within 30 days of receiving such a request, we will provide a list of the categories of personal information disclosed to third parties for such third parties" direct marketing purposes during the immediately preceding calendar year, along with the names and addresses of these third parties. A request may be made no more than once per calendar year and we are not required to respond to requests made by means other than through the e-mail address above.<br></br>
     </>
   },
   {
-    title: 'Individual Rights',
+    title: "Individual Rights",
     content: <>
       We provide you with the rights described below when you use our Services. Please contact us at cowitup01@gmail.com if you would like to exercise your rights under applicable law.<br></br>
 
@@ -137,7 +137,7 @@ const tabPolicy = [
       Please be advised that there are limitations to your individual rights. We may limit your individual rights in the following ways:<br></br>
 
       Where denial of access is required or authorized by law;<br></br>
-      When granting access would have a negative impact on other's privacy;<br></br>
+      When granting access would have a negative impact on other&apos;s privacy;<br></br>
       To protect our rights and properties; and<br></br>
       Where the request is frivolous or burdensome.<br></br>
       Right to withdraw consent.<br></br>
@@ -145,7 +145,7 @@ const tabPolicy = [
 
       A withdrawal of consent will not affect the lawfulness of our processing or the processing of any third parties based on consent before your withdrawal.<br></br>
 
-      For all data processing activities that rely on users' consent, you can withdraw your consent at any time from the &quot;settings&quot; page in our various applications.<br></br>
+      For all data processing activities that rely on users&apos; consent, you can withdraw your consent at any time from the &quot;settings&quot; page in our various applications.<br></br>
 
       Please only note that in the case where you withdraw your consent or where you refuse to consent in the first place, you will still be served with advertising but that may be less relevant to you as it will not be tailored to your interests.<br></br>
     </>
@@ -153,19 +153,19 @@ const tabPolicy = [
 ]
 
 const CowItUpPolicyPage: NextPage = () => {
-  const width767 = useMediaQuery('(max-width: 767px)')
-  const [currentTab, setCurrentTab] = useState<string>('Information We Collect')
+  const width767 = useMediaQuery("(max-width: 767px)")
+  const [currentTab, setCurrentTab] = useState<string>("Information We Collect")
   const [openPopup, setOpenPopup] = useState(false);
 
   return <Wrap>
-    <Logo><img src='/assets/ciu/logo_ciu.png' /><CowLogo><img src={`/assets/ciu/${width767 ? 'icon_ciu_2' : 'icon_ciu_3'}.png`} /></CowLogo></Logo>
+    <Logo><img src="/assets/ciu/logo_ciu.png" /><CowLogo><img src={`/assets/ciu/${width767 ? "icon_ciu_2" : "icon_ciu_3"}.png`} /></CowLogo></Logo>
     <Inner>
       <Title>privacy policy</Title>
       <Body>
         <Box sx={{
-          marginBottom: width767 ? '24px' : '80px'
+          marginBottom: width767 ? "24px" : "80px"
         }}>
-          This Privacy Policy describes how VerseHub INC (referred to in this Privacy Policy as &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) of the associated mobile applications Cow It Up - Match Tiles (the &quot;App&quot;) available for download in the Google Play Store/App Store and its subsidiaries and its affiliates (&quot;Company&quot;, &quot;us&quot;, &quot;we&quot; or &quot; VerseHub INC&quot;) respect the privacy of the users of their mobile applications (&quot;User&quot; or &quot;you&quot;) and are committed to protect the User's information.<br></br>
+          This Privacy Policy describes how VerseHub INC (referred to in this Privacy Policy as &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) of the associated mobile applications Cow It Up - Match Tiles (the &quot;App&quot;) available for download in the Google Play Store/App Store and its subsidiaries and its affiliates (&quot;Company&quot;, &quot;us&quot;, &quot;we&quot; or &quot; VerseHub INC&quot;) respect the privacy of the users of their mobile applications (&quot;User&quot; or &quot;you&quot;) and are committed to protect the User&apos;s information.<br></br>
           This Privacy Policy explains the types of information we collect, and how we collect, use, disclose, share and protect your information.<br></br>
           We recognize the importance of protecting the information collected about you. Please familiarize yourself with our privacy practices.<br></br>
           If you have any questions, complaints, or comments regarding our privacy statement or policies, please cowitup01@gmail.com .<br></br>
@@ -185,7 +185,7 @@ const CowItUpPolicyPage: NextPage = () => {
           {!width767 && <BoxTabRight>{tabPolicy.filter(item => item.title === currentTab)[0].content}</BoxTabRight>}
         </BoxTab>
         <Title>Contact us with any questions</Title>
-        <Email><img src='/assets/ciu/email.png' /> cowitup01@gmail.com</Email>
+        <Email><img src="/assets/ciu/email.png" /> cowitup01@gmail.com</Email>
         <Title>Terms of Services</Title>
         <Box>
           These Terms of Service (&quot;ToS&quot;) constitute a legal agreement between the user of our products and services &quot;user&quot; or &quot;you&quot;) and the Company. It applies when a user accesses, uses or visits the associated mobile application available for download in the Google Play Store and other third party app stores, or pre-installed on third party devices (the &quot;App&quot;), and/or the services provided through the Site and the App. In these ToS, the term &quot;Service&quot; means and includes the Site, the App and these services, individually or collectively. We prepared these ToS to help explain the terms that apply to your use of the Service.
@@ -223,91 +223,91 @@ const CowItUpPolicyPage: NextPage = () => {
 export default CowItUpPolicyPage
 
 const Wrap = styled(Box)({
-  width: '100%',
-  height: '100%',
-  // backgroundImage: 'url(/assets/ciu/background_policy.png)',
-  background: '#91D579',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  textAlign: 'center',
+  width: "100%",
+  height: "100%",
+  // backgroundImage: "url(/assets/ciu/background_policy.png)",
+  background: "#91D579",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+  textAlign: "center",
 })
 const Logo = styled(Box)({
-  textAlign: 'center',
-  position: 'relative',
-  display: 'inline-block',
+  textAlign: "center",
+  position: "relative",
+  display: "inline-block",
   paddingTop: 24,
   marginBottom: 24,
-  '& img': {
+  "& img": {
     maxWidth: 212,
-    '@media (min-width: 768px)': {
+    "@media (min-width: 768px)": {
       maxWidth: 344
     }
   },
-  '@media (min-width: 768px)': {
+  "@media (min-width: 768px)": {
     paddingTop: 40,
     marginBottom: 64,
   }
 })
 const CowLogo = styled(Box)({
-  position: 'absolute',
-  left: 'calc(100% - 15px)',
+  position: "absolute",
+  left: "calc(100% - 15px)",
   bottom: -50,
-  '@media (max-width: 767px)': {
-    '& img': {
+  "@media (max-width: 767px)": {
+    "& img": {
       maxWidth: 110
     },
-    left: 'calc(100% - 35px)',
+    left: "calc(100% - 35px)",
     top: 4,
   }
 })
 const Inner = styled(Box)({
   maxWidth: 800,
-  margin: 'auto',
-  fontFamily: 'Aldo the Apache',
-  padding: '0 15px',
-  textAlign: 'left',
-  '@media (min-width: 1280px)': {
+  margin: "auto",
+  fontFamily: "Aldo the Apache",
+  padding: "0 15px",
+  textAlign: "left",
+  "@media (min-width: 1280px)": {
     maxWidth: 1150
   }
 })
 const Title = styled(Box)({
   fontSize: 32,
-  color: '#6A2C08',
+  color: "#6A2C08",
   marginBottom: 24,
-  textAlign: 'center',
-  fontFamily: 'Aldo the Apache',
-  '@media (min-width: 768px)': {
+  textAlign: "center",
+  fontFamily: "Aldo the Apache",
+  "@media (min-width: 768px)": {
     fontSize: 40
   }
 })
 const Body = styled(Box)({
-  fontFamily: 'BeVietnamPro',
+  fontFamily: "BeVietnamPro",
   fontSize: 14,
-  color: '#151515',
+  color: "#151515",
   paddingBottom: 40,
-  lineHeight: '26px',
-  '@media (min-width: 768px)': {
+  lineHeight: "26px",
+  "@media (min-width: 768px)": {
     fontSize: 16,
   }
 })
 const Email = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  flexDirection: 'column',
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
   marginBottom: 40,
-  '& img': {
+  "& img": {
     marginRight: 16,
-    '@media (max-width: 767px)': {
+    "@media (max-width: 767px)": {
       marginBottom: 16
     }
   },
-  color: '#151515',
+  color: "#151515",
   fontSize: 24,
   fontWeight: 500,
-  '@media (min-width: 768px)': {
-    flexDirection: 'row',
+  "@media (min-width: 768px)": {
+    flexDirection: "row",
     fontSize: 32,
     marginBottom: 0
   }
@@ -315,15 +315,15 @@ const Email = styled(Box)({
 const Subtitle = styled(Box)({
   fontSize: 24,
   fontWeight: 400,
-  color: '#6A2C08',
-  fontFamily: 'Aldo the Apache',
-  margin: '24px 0 16px'
+  color: "#6A2C08",
+  fontFamily: "Aldo the Apache",
+  margin: "24px 0 16px"
 })
 const BoxTab = styled(Box)({
-  display: 'flex',
-  justifyContent: 'space-between',
+  display: "flex",
+  justifyContent: "space-between",
   marginBottom: 10,
-  '@media (min-width: 768px)': {
+  "@media (min-width: 768px)": {
     marginBottom: 80
   }
 })
@@ -336,47 +336,47 @@ type tabLeftItemProp = {
 const TabLeftItem = styled(Box)((props: tabLeftItemProp) => ({
   fontSize: 24,
   marginBottom: 20,
-  color: props.active ? '#6A2C08' : '#151515',
-  cursor: 'pointer',
-  fontFamily: 'Aldo the Apache',
-  '@media (min-width: 768px)': {
+  color: props.active ? "#6A2C08" : "#151515",
+  cursor: "pointer",
+  fontFamily: "Aldo the Apache",
+  "@media (min-width: 768px)": {
     width: 352,
   }
 }))
 const BoxTabRight = styled(Box)({
   maxWidth: 732,
-  borderBottom: '1px solid #6A2C08',
+  borderBottom: "1px solid #6A2C08",
   paddingBottom: 24
 })
 const BoxPopup = styled(Box)({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '100%',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "100%",
   maxWidth: 396,
-  background: '#ffffff',
-  padding: '40px 24px',
-  color: '#151515',
+  background: "#ffffff",
+  padding: "40px 24px",
+  color: "#151515",
   maxHeight: 720,
-  overflow: 'auto',
-  border: '2px solid #6C2D08',
+  overflow: "auto",
+  border: "2px solid #6C2D08",
   borderRadius: 12,
-  '&::-webkit-scrollbar': {
-    display: 'none'
+  "&::-webkit-scrollbar": {
+    display: "none"
   },
-  '@media (max-width: 767px)': {
-    width: 'calc(100% - 30px)',
-    maxHeight: '70%'
+  "@media (max-width: 767px)": {
+    width: "calc(100% - 30px)",
+    maxHeight: "70%"
   }
 })
 const TitlePopup = styled(Typography)({
-  fontFamily: 'Aldo the Apache',
+  fontFamily: "Aldo the Apache",
   marginBottom: 16,
-  color: '#151515',
+  color: "#151515",
   fontSize: 18,
-  textAlign: 'center'
+  textAlign: "center"
 })
 const BodyPopup = styled(Typography)({
-  fontFamily: 'BeVietnamPro',
+  fontFamily: "BeVietnamPro",
 })
