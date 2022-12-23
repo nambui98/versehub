@@ -23,10 +23,10 @@ const CowItUpPage: NextPage = () => {
         </Box>}
       </BoxBody>
       <BoxButton>
-        <a style={{
+        <a href="#" style={{
           marginRight: width767 ? '14px' : '32px',
         }}><img src="/assets/ciu/AppStore.png" /></a>
-        <a><img src="/assets/ciu/PlayStore.png" /></a>
+        <a href="#"><img src="/assets/ciu/PlayStore.png" /></a>
       </BoxButton>
       <BoxFooter>
         <Box sx={{
