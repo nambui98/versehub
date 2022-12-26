@@ -37,7 +37,7 @@ const tabPolicy = [
       If we send e-mail or SMS messages to you for the purpose of promoting VerseHub products or services, or those of a third-party partner, we will generally provide you with choices about receiving further such promotional messages. Preferences for &quot;push&quot; notifications may in most cases be adjusted through VerseHub or your mobile device.<br></br>
 
       Interaction with Game Center or Other 3rd Party Game Services<br></br>
-      By registering with your Game Center on your device (&quot;Game Center&quot;), you allow VerseHub INC to access certain information from your profile for that Game Center. The information you allow us to access is affected by the privacy settings you and your friends establish at the Game Center. You can control and find out more about these settings directly from the Game Center. For example, we may access and store some or all of the following information, as allowed by you, the Game Center and your preferences:<br></br>
+      By registering with your Game Center on your device (&quot;Game Center&quot;), you allow VerseHub Global to access certain information from your profile for that Game Center. The information you allow us to access is affected by the privacy settings you and your friends establish at the Game Center. You can control and find out more about these settings directly from the Game Center. For example, we may access and store some or all of the following information, as allowed by you, the Game Center and your preferences:<br></br>
 
       Your first and last name;<br></br>
       Your Game Center ID;<br></br>
@@ -46,16 +46,16 @@ const tabPolicy = [
       The user ID numbers and other public data for your friends;<br></br>
       The login e-mail you provided to that Game Center when you registered; and<br></br>
       Your gender.<br></br>
-      By connecting any VerseHub&quot; Product to a Game Center, you consent to our access, use and storage in accordance with this Privacy Policy of any and all of the information that you agreed the Game Center could provide to VerseHub INC. You may be able to specify what information is provided by the Game Center to us by using the privacy settings in your Game Center profile information.<br></br>
+      By connecting any VerseHub&quot; Product to a Game Center, you consent to our access, use and storage in accordance with this Privacy Policy of any and all of the information that you agreed the Game Center could provide to VerseHub Global. You may be able to specify what information is provided by the Game Center to us by using the privacy settings in your Game Center profile information.<br></br>
 
       Other<br></br>
-      We may offer you the opportunity to provide us with your e-mail address so that we may register you to receive premium support or provide you with special offers from VerseHub INC our partner companies.<br></br>
+      We may offer you the opportunity to provide us with your e-mail address so that we may register you to receive premium support or provide you with special offers from VerseHub Global our partner companies.<br></br>
 
-      VerseHub INC may provide you the opportunity to participate in include sweepstakes or contests (&quot;Promotions&quot;). If you choose to participate in a Promotion, we may request that you provide us with personal information such as your e-mail address or mailing address.<br></br>
+      VerseHub Global may provide you the opportunity to participate in include sweepstakes or contests (&quot;Promotions&quot;). If you choose to participate in a Promotion, we may request that you provide us with personal information such as your e-mail address or mailing address.<br></br>
 
-      If you request support relating to a VerseHub INC&quot;s product, we may request personal information such as your name and e-mail address and your user name for any SNS&quot;s, if that appears necessary to resolving the problem.<br></br>
+      If you request support relating to a VerseHub Global&quot;s product, we may request personal information such as your name and e-mail address and your user name for any SNS&quot;s, if that appears necessary to resolving the problem.<br></br>
 
-      We may also request or receive personal information in other interactions you may have with VerseHub INC.<br></br>
+      We may also request or receive personal information in other interactions you may have with VerseHub Global.<br></br>
 
       Cookies and Other Technologies<br></br>
       A cookie is a small string of text that we, or service providers acting on our behalf, send to your computer&quot;s or mobile device&quot;s browser. Other types of cookies exist, but the cookies in the Apps are only used to obtain browser or device-specific information.<br></br>
@@ -77,16 +77,16 @@ const tabPolicy = [
       To help administer the Apps, we may use third-party service providers. These service providers will have access to your information only to perform the services they have been engaged to perform for us, and they have agreed not to disclose or use it for any other purpose.<br></br>
 
       Under Special Circumstances<br></br>
-      We may disclose information about you to law enforcement officials or private parties as we, in our sole discretion, believe necessary or appropriate to respond to claims and legal process (including but not limited to subpoenas), to protect the property and rights of VerseHub INC or a third party, to protect the safety of any person or to prevent or stop activity we may consider to be illegal or unethical.<br></br>
+      We may disclose information about you to law enforcement officials or private parties as we, in our sole discretion, believe necessary or appropriate to respond to claims and legal process (including but not limited to subpoenas), to protect the property and rights of VerseHub Global or a third party, to protect the safety of any person or to prevent or stop activity we may consider to be illegal or unethical.<br></br>
 
-      In connection with a merger, acquisition, reorganization or sale of assets, or in the event of bankruptcy, we may sell, transfer or otherwise share some or all of VerseHub INC assets, including your personal information.<br></br>
+      In connection with a merger, acquisition, reorganization or sale of assets, or in the event of bankruptcy, we may sell, transfer or otherwise share some or all of VerseHub Global assets, including your personal information.<br></br>
     </>
   },
   {
     title: "Links to Third-Party Websites and Services",
     content: <>
       The Apps may contain links to other websites and online services, including third-party advertisements. If you choose to click through to one of these other websites or online services, please note that any information you may provide will be subject to the privacy policy and other terms and conditions of that websites or service, and not to this Privacy Policy. We do not control third-party websites or services, and the fact that a link to such a website or service appears in the Apps does not mean that we endorse them or have approved their policies or practices relating to user information.<br></br>
-      Before providing any information to any third-party website or service, we encourage you to review the privacy policy and other terms and conditions of that website or service. You agree that VerseHub INC will have no liability for any matters relating to a third-party website or service that you provide information to, including their collection and handling of that information.<br></br>
+      Before providing any information to any third-party website or service, we encourage you to review the privacy policy and other terms and conditions of that website or service. You agree that VerseHub Global will have no liability for any matters relating to a third-party website or service that you provide information to, including their collection and handling of that information.<br></br>
     </>
   },
   {
@@ -108,21 +108,21 @@ const tabPolicy = [
   {
     title: "Your Data Protection Rights under the General Data Protection Regulation (GDPR)",
     content: <>
-      If you are a resident of the European Economic Area (EEA), you have certain data protection rights. VerseHub INC to take reasonable steps to allow you to correct, amend, delete or limit the use of your Personal Data. If you wish to be informed about what Personal Data we hold about you and if you want it to be removed from our systems, please contact us via: cowitup01@gmail.com<br></br>
+      If you are a resident of the European Economic Area (EEA), you have certain data protection rights. VerseHub Global to take reasonable steps to allow you to correct, amend, delete or limit the use of your Personal Data. If you wish to be informed about what Personal Data we hold about you and if you want it to be removed from our systems, please contact us via: cowitup01@gmail.com<br></br>
 
       In certain circumstances, you have the following data protection rights:<br></br>
 
       The right of rectification. You have the right to have your information rectified if that information is inaccurate or incomplete.<br></br>
       The right to object. You have the right to object to our processing of your Personal Data.<br></br>
       The right of restriction. You have the right to request that we restrict the processing of your personal information.<br></br>
-      The right to withdraw consent. You also have the right to withdraw your consent at any time where VerseHub INC relied on your consent to process your personal information.<br></br>
+      The right to withdraw consent. You also have the right to withdraw your consent at any time where VerseHub Global relied on your consent to process your personal information.<br></br>
       Please note that we may ask you to verify your identity before responding to such requests<br></br>
     </>
   },
   {
     title: "Your California Privacy Rights",
     content: <>
-      If you are a California resident and VerseHub INC&quot; user, you are entitled to request certain information regarding our disclosure of certain &quot;personal information&quot; (as defined in California Civil Code Section 1798.83) to third parties for their direct marketing purposes. If you are a California resident and have provided us with personal information within the last year, you may make such a request by emailing us at cowitup01@gmail.com and typing the following in the subject line of the e-mail: &quot;California Privacy Rights&quot;.
+      If you are a California resident and VerseHub Global&quot; user, you are entitled to request certain information regarding our disclosure of certain &quot;personal information&quot; (as defined in California Civil Code Section 1798.83) to third parties for their direct marketing purposes. If you are a California resident and have provided us with personal information within the last year, you may make such a request by emailing us at cowitup01@gmail.com and typing the following in the subject line of the e-mail: &quot;California Privacy Rights&quot;.
 
       Within 30 days of receiving such a request, we will provide a list of the categories of personal information disclosed to third parties for such third parties&quot; direct marketing purposes during the immediately preceding calendar year, along with the names and addresses of these third parties. A request may be made no more than once per calendar year and we are not required to respond to requests made by means other than through the e-mail address above.<br></br>
     </>
@@ -173,7 +173,7 @@ const CowItUpPolicyPage: NextPage = () => {
         <Box sx={{
           marginBottom: width767 ? "24px" : "80px"
         }}>
-          This Privacy Policy describes how VerseHub INC (referred to in this Privacy Policy as &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) of the associated mobile applications Cow It Up - Match Tiles (the &quot;App&quot;) available for download in the Google Play Store/App Store and its subsidiaries and its affiliates (&quot;Company&quot;, &quot;us&quot;, &quot;we&quot; or &quot; VerseHub INC&quot;) respect the privacy of the users of their mobile applications (&quot;User&quot; or &quot;you&quot;) and are committed to protect the User&apos;s information.<br></br>
+          This Privacy Policy describes how VerseHub Global (referred to in this Privacy Policy as &quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) of the associated mobile applications Cow It Up - Match Tiles (the &quot;App&quot;) available for download in the Google Play Store/App Store and its subsidiaries and its affiliates (&quot;Company&quot;, &quot;us&quot;, &quot;we&quot; or &quot; VerseHub Global&quot;) respect the privacy of the users of their mobile applications (&quot;User&quot; or &quot;you&quot;) and are committed to protect the User&apos;s information.<br></br>
           This Privacy Policy explains the types of information we collect, and how we collect, use, disclose, share and protect your information.<br></br>
           We recognize the importance of protecting the information collected about you. Please familiarize yourself with our privacy practices.<br></br>
           If you have any questions, complaints, or comments regarding our privacy statement or policies, please cowitup01@gmail.com .<br></br>
