@@ -115,7 +115,7 @@ const tabPolicy = [
       The right of rectification. You have the right to have your information rectified if that information is inaccurate or incomplete.<br></br>
       The right to object. You have the right to object to our processing of your Personal Data.<br></br>
       The right of restriction. You have the right to request that we restrict the processing of your personal information.<br></br>
-      The right to withdraw consent. You also have the right to withdraw your consent at any time where VerseHub Global relied on your consent to process your personal information.<br></br>
+      The right to withdraw consent. You also have the right to withdraw your consent at any time when VerseHub Global relied on your consent to process your personal information.<br></br>
       Please note that we may ask you to verify your identity before responding to such requests<br></br>
     </>
   },
