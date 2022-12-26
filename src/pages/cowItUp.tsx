@@ -28,7 +28,7 @@ const CowItUpPage: NextPage = () => {
           }}><img src="/assets/ciu/icon_ciu_1.png" /></Box>}
         </BodyLeft>
         <BodyRight>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/hA-yxDm_Y1s?&autoplay=1&controls=0&mute=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/QKxb_IJ1xqY?&autoplay=1&controls=0&mute=1" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
           {!width767 && <Box sx={{
             textAlign: 'right',
             marginRight: '20px',
@@ -135,7 +135,8 @@ const BodyRight = styled(Box)({
   '& iframe': {
     width: '100%',
     height: 307,
-    border: 0
+    border: 0,
+    borderRadius: 12
   },
   '@media (min-width: 768px)': {
     width: 'calc(50% - 16px)',
