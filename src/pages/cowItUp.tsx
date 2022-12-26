@@ -10,7 +10,7 @@ const CowItUpPage: NextPage = () => {
         <Link href="#" style={{
           marginRight: width767 ? '14px' : '32px',
         }}><img src="/assets/ciu/AppStore.png" /></Link>
-        <Link href="#"><img src="/assets/ciu/PlayStore.png" /></Link>
+        <Link href="https://play.google.com/store/apps/details?id=cowitup.casual" target='_blank'><img src="/assets/ciu/PlayStore.png" /></Link>
       </BoxButton>
       <BoxBody>
         <BodyLeft>
@@ -51,7 +51,7 @@ const CowItUpPage: NextPage = () => {
           marginRight: '24px'
         }}><img src="/assets/ciu/logo_versehub.png" /></Box>
         <BoxPolicy>
-          Developed by Versehub INC<br></br>
+          Developed by VerseHub Global<br></br>
           <Link href="/cowItUp-policy">Privacy Policy</Link>
         </BoxPolicy>
       </BoxFooter>
