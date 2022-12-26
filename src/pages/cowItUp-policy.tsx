@@ -158,7 +158,15 @@ const CowItUpPolicyPage: NextPage = () => {
   const [openPopup, setOpenPopup] = useState(false);
 
   return <Wrap>
-    <Logo><img src="/assets/ciu/logo_ciu.png" /><CowLogo><img src={`/assets/ciu/${width767 ? "icon_ciu_2" : "icon_ciu_3"}.png`} /></CowLogo></Logo>
+    {width767 && <Logo><img src="/assets/ciu/logo_ciu.png" /><CowLogo><img src={`/assets/ciu/${width767 ? "icon_ciu_2" : "icon_ciu_3"}.png`} /></CowLogo></Logo>}
+    {!width767 && <Box sx={{
+      maxWidth: 800,
+      padding: "0 15px",
+      margin: 'auto',
+      "@media (min-width: 1280px)": {
+        maxWidth: 1150
+      }
+    }}><img width={'100%'} src="/assets/ciu/logo_group.png" /></Box>}
     <Inner>
       <Title>privacy policy</Title>
       <Body>
@@ -217,6 +225,7 @@ const CowItUpPolicyPage: NextPage = () => {
         <BodyPopup>{tabPolicy.filter(item => item.title === currentTab)[0].content}</BodyPopup>
       </BoxPopup>
     </Modal>
+    <ScrollToTop onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}><img src="/assets/ciu/scroll_top.png" /></ScrollToTop>
   </Wrap>
 }
 
@@ -379,4 +388,17 @@ const TitlePopup = styled(Typography)({
 })
 const BodyPopup = styled(Typography)({
   fontFamily: "BeVietnamPro",
+})
+const ScrollToTop = styled(Box)({
+  position: 'fixed',
+  right: 16,
+  bottom: 10,
+  cursor: 'pointer',
+  '& img': {
+    maxWidth: 50
+  },
+  '@media (min-width: 768px)': {
+    right: 30,
+    bottom: 20,
+  }
 })

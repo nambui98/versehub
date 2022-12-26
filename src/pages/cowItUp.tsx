@@ -6,6 +6,12 @@ const CowItUpPage: NextPage = () => {
   return <Wrap>
     <Logo><img src="/assets/ciu/logo_ciu.png" /><CowLogo><img src={`/assets/ciu/${width767 ? 'icon_ciu_2' : 'icon_ciu_3'}.png`} /></CowLogo></Logo>
     <Inner>
+      <BoxButton>
+        <Link href="#" style={{
+          marginRight: width767 ? '14px' : '32px',
+        }}><img src="/assets/ciu/AppStore.png" /></Link>
+        <Link href="#"><img src="/assets/ciu/PlayStore.png" /></Link>
+      </BoxButton>
       <BoxBody>
         <BodyLeft>
           Hey genius, ready to higher the IQ of the whole street? Try playing Cow it up - tile-matching game to know what it feels like to break the limit that no one has been able to overcome RIGHT NOW!<br></br><br></br>
@@ -13,21 +19,33 @@ const CowItUpPage: NextPage = () => {
             To start the tile-matching game is very easy. Your job is to eliminate all the patterns on the screen by adding them to the grid below.<br></br><br></br>
             However, winning the match 3 game is nearly equal to asking for the moon! How so?
           </Box>}
+          {!width767 && <Box sx={{
+            width: 182,
+            marginLeft: '30px',
+            '& img': {
+              width: '100%'
+            }
+          }}><img src="/assets/ciu/icon_ciu_1.png" /></Box>}
         </BodyLeft>
         <BodyRight>
           <iframe width="560" height="315" src="https://www.youtube.com/embed/hA-yxDm_Y1s?controls=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          {!width767 && <Box sx={{
+            textAlign: 'right',
+            marginRight: '20px',
+            marginTop: '-20px'
+          }}><img src="/assets/ciu/icon_ciu_4.png" /></Box>}
         </BodyRight>
         {width767 && <Box>
           To start the tile-matching game is very easy. Your job is to eliminate all the patterns on the screen by adding them to the grid below.<br></br><br></br>
           However, winning the match 3 game is nearly equal to asking for the moon! How so?
         </Box>}
+        {width767 && <Box sx={{
+            textAlign: 'center',
+            '& img': {
+              width: '109px'
+            }
+          }}><img src="/assets/ciu/icon_ciu_1.png" /></Box>}
       </BoxBody>
-      <BoxButton>
-        <Link href="#" style={{
-          marginRight: width767 ? '14px' : '32px',
-        }}><img src="/assets/ciu/AppStore.png" /></Link>
-        <Link href="#"><img src="/assets/ciu/PlayStore.png" /></Link>
-      </BoxButton>
       <BoxFooter>
         <Box sx={{
           marginRight: '24px'
@@ -46,6 +64,7 @@ export default CowItUpPage
 const Wrap = styled(Box)({
   width: '100%',
   height: '100%',
+  minHeight: '100vh',
   backgroundImage: 'url(/assets/ciu/background_ciu.png)',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
@@ -72,11 +91,11 @@ const Logo = styled(Box)({
 const CowLogo = styled(Box)({
   position: 'absolute',
   left: 'calc(100% - 15px)',
-  bottom: -50,  
+  bottom: -50,
   '@media (max-width: 767px)': {
     '& img': {
       maxWidth: 110
-    }, 
+    },
     left: 'calc(100% - 35px)',
     top: 4,
   }
@@ -126,14 +145,11 @@ const BodyRight = styled(Box)({
 const BoxButton = styled(Box)({
   display: 'flex',
   justifyContent: 'center',
-  marginBottom: 93,
+  marginBottom: 40,
   '& img': {
     maxWidth: 320,
     width: '100%',
     cursor: 'pointer'
-  },
-  '@media (min-width: 768px)': {
-    marginBottom: 87,
   }
 })
 const BoxFooter = styled(Box)({
