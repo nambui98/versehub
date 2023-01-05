@@ -7,9 +7,9 @@ const CowItUpPage: NextPage = () => {
     <Logo><img src="/assets/ciu/logo_ciu.png" /><CowLogo><img src={`/assets/ciu/${width767 ? 'icon_ciu_2' : 'icon_ciu_3'}.png`} /></CowLogo></Logo>
     <Inner>
       <BoxButton>
-        <Link href="#" style={{
+        <Link href="https://apps.apple.com/us/app/cow-it-up-match-tiles/id1660692083" style={{
           marginRight: width767 ? '14px' : '32px',
-        }}><img src="/assets/ciu/AppStore.png" /></Link>
+        }} target='_blank'><img src="/assets/ciu/AppStore.png" /></Link>
         <Link href="https://play.google.com/store/apps/details?id=cowitup.casual" target='_blank'><img src="/assets/ciu/PlayStore.png" /></Link>
       </BoxButton>
       <BoxBody>
