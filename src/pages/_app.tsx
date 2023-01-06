@@ -30,7 +30,7 @@ export default function MyApp(props: MyAppProps) {
         <meta property="og:description" content={(pathname === '/cowItUp' || pathname === '/cowItUp-policy') ?
          "We bring you an IQ-boosting game. Try playing Cow it up - a tile-matching game to know what it feels like to break the limit that no one has been able to overcome RIGHT NOW!" : 
          "We bring blockchain technology into individual lives and businesses"} />
-        <meta property="og:image" content={(pathname === '/cowItUp' || pathname === '/cowItUp-policy') ? "/assets/ciu_og_image.png" : "/assets/og_image.png"} />
+        <meta property="og:image" content={(pathname === '/cowItUp' || pathname === '/cowItUp-policy') ? "/assets/thumb_ciu.png" : "/assets/og_image.png"} />
 
         
         <meta name="twitter:card" content="summary" />
@@ -40,7 +40,7 @@ export default function MyApp(props: MyAppProps) {
         content={(pathname === '/cowItUp' || pathname === '/cowItUp-policy') ?
          "We bring you an IQ-boosting game. Try playing Cow it up - a tile-matching game to know what it feels like to break the limit that no one has been able to overcome RIGHT NOW!" : "We bring blockchain technology into individual lives and businesses"} />
         <meta property="twitter:image"              
-        content={(pathname === '/cowItUp' || pathname === '/cowItUp-policy') ? "assets/ciu_tw_image.png" : "assets/tw_image.png"} />
+        content={(pathname === '/cowItUp' || pathname === '/cowItUp-policy') ? "assets/thumb_ciu.png" : "assets/tw_image.png"} />
 
 
         <link rel="icon" href={(pathname === '/cowItUp' || pathname === '/cowItUp-policy') ? "/assets/ciu_favicon.png" : "/assets/versehub_favicon.png"} />
