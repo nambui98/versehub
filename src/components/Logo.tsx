@@ -17,7 +17,7 @@ export const Logo: React.FC<LogoProps> = (props) => {
 			{/* eslint-disable-next-line @next/next/no-img-element */}
 			{/* <img src="/assets/logo.png" alt="logo" height={42} width={36.64} /> */}
 			<Link href="/#" passHref>
-				<img src={logoSrc} alt="logo" style={{ cursor: "pointer" }} />
+				<img src={logoSrc} alt="logo" style={{ cursor: "pointer", maxWidth: '212px' }}  />
 				{/* <Typography color="white" component="h1" variant="h6" fontFamily="'Blackpast DEMO'">
           versehub
         </Typography> */}
