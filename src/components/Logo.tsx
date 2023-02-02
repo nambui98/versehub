@@ -6,7 +6,7 @@ export interface LogoProps extends BoxProps {
 
 export const Logo: React.FC<LogoProps> = (props) => {
 	const logoSrc = props.colored
-		? "/assets/logo_text_color.png"
+		? "/assets/logo_text.png"
 		: "/assets/logo_text.png";
 
 	return (
