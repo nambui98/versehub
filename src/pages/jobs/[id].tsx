@@ -1,287 +1,225 @@
+import {
+	Box, styled, Theme,
+	useMediaQuery
+} from "@mui/material";
 import type { NextPage } from "next";
 import React, { useState } from "react";
-import Image from "next/image";
-import {
-	Container,
-	Typography,
-	Box,
-	Grid,
-	Stack,
-	Button,
-	Tabs,
-	Tab,
-	Theme,
-	useMediaQuery,
-} from "@mui/material";
 
-import { SecondLayout } from "@/layouts/SecondLayout";
-import { SectionTitle, ApplyForm, useSmoothScroll } from "@/components/index";
-import { getJobIds, getJobById } from "@/utils/sheets.google";
-
-export async function getStaticPaths() {
-	const jobs = await getJobIds();
-	const paths = jobs.map(({ id }) => ({ params: { id: `${id}` } }));
-	return {
-		paths,
-		fallback: false,
-	};
-}
-
-export async function getStaticProps({ params }: any) {
-	const job = await getJobById(params.id);
-	// console.log(job);
-	return {
-		props: { job },
-	};
-}
+import { ApplyForm, useSmoothScroll } from "@/components/index";
+import { BasicLayout } from "@/layouts/BasicLayout";
+import { getJobById, getJobIds } from "@/utils/sheets.google";
+import { useRouter } from "next/router";
+import { JOB } from "@/constants/jobs";
+import Typography from "@mui/material/Typography";
+import { TEXT_STYLE } from "src/styles/common/textStyles";
+import Container from "@mui/material/Container";
+import Link from 'next/link';
+import { ButtonBase } from "@/components/Button";
 
 const JobIdPage: NextPage = ({ job }: any) => {
-	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
-	const [tabIndex, setTabIndex] = useState(0);
-	useSmoothScroll();
+	const router = useRouter()
 
-	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
-		setTabIndex(newValue);
-	};
+	const data = JOB.items.filter(item => item.id.toString() === router.query?.id)
 
 	return (
-		<SecondLayout>
-			<Banner />
-			{/* <Box id="overview" sx={{ width: "100%", height: "1px" }} /> */}
-			<JobHeader title={job.name} subtitle={job.location} mobile={mobile} />
-			<Container sx={{ mt: 15, px: { md: 25 } }} id="apply">
-				<JobTabs
-					currentTabIndex={tabIndex}
-					onTabChange={handleTabChange}
-					mobile={mobile}
-				/>
-				<Box sx={{ width: "100%" }}>
-					<TabPanel value={tabIndex} index={0}>
-						<Overview
-							desc={job.description}
-							responsibilities={job.responsibilities}
-							needRequirements={job.needRequirements}
-							loveRequirements={job.loveRequirements}
-							offers={job.offers}
-							handleClick={() => setTabIndex(2)}
-						/>
-					</TabPanel>
-					<TabPanel value={tabIndex} index={2}>
-						<ApplyForm jobName={job.name} />
-					</TabPanel>
-				</Box>
-			</Container>
-		</SecondLayout>
+		<BasicLayout>
+			<Banner data={data[0]} />
+			<Back />
+			<BodyJob data={data[0]} />
+		</BasicLayout>
 	);
 };
 
 export default JobIdPage;
 
-function Banner() {
-	return (
-		<Box
-			sx={{
-				display: "flex",
-				alignItems: "center",
-				justifyContent: "center",
-				flexDirection: "column",
-				position: "relative",
-				overflow: "hidden",
-				backgroundImage: "url(/assets/bg3.svg)",
-				backgroundRepeat: "no-repeat",
-				backgroundSize: "cover",
-				backgroundPosition: "bottom",
-				mb: 20,
-			}}
-		>
-			<Box
-				sx={{
-					mt: "140px",
-					width: "100%",
-				}}
-			>
-				<img src="/assets/jobs/banner.webp" alt="banner" width={"100%"} />
-				{/* <Image
-					src={"/assets/jobs/banner.webp"}
-					alt="banner"
-					width="100%"
-					height="46.25%"
-					layout="responsive"
-					objectFit="cover"
-				/> */}
+const Banner = (props: any) => {
+	return <Box sx={{
+		padding: '80px 0',
+		backgroundImage: 'url(/assets/jobs/banner.png)',
+		backgroundSize: 'cover',
+		backgroundRepeat: 'no-repeat',
+		backgroundPosition: 'center',
+		margin: '81px 0 16px',
+		width: '100%',
+		'@media (min-width: 768px)': {
+			padding: '121px 0',
+			margin: '81px 0 42px',
+		}
+	}}>
+		<Container sx={{
+			maxWidth: '1160px !important'
+		}}>
+			<Typography sx={{
+				...TEXT_STYLE(32, 600, '#FFFFFF'),
+				textAlign: 'center',
+				'@media (min-width: 768px)': {
+					...TEXT_STYLE(64, 600, '#FFFFFF'),
+					textAlign: 'left'
+				}
+			}}>{props.data?.title}</Typography>
+		</Container>
+	</Box>
+}
+const Back = () => {
+	return <Container sx={{
+		maxWidth: '1160px !important'
+	}}>
+		<Link href="/jobs">
+			<Box sx={{
+				display: 'flex',
+				alignItems: 'center',
+				...TEXT_STYLE(16, 500, '#5A6178'),
+				cursor: 'pointer',
+				'& img': {
+					marginRight: '16px'
+				}
+			}}>
+				<img src="/assets/icons/arrow-left.svg" />
+				Back to Jobs
 			</Box>
-		</Box>
-	);
+		</Link>
+	</Container>
 }
 
-function JobHeader({ title, subtitle, mobile }: any) {
-	return (
-		<Box
-			sx={{
-				width: "100%",
-				borderBottom: "2px solid rgba(255, 255, 255, 0.1)",
-			}}
-		>
-			<Container sx={{ px: { md: 25 } }}>
-				<Stack spacing={0} alignItems={mobile ? "center" : "start"}>
-					<Typography
-						fontSize={{ xs: 24, sm: 40 }}
-						fontWeight={300}
-						color="#fff"
-						lineHeight={1}
-					>
-						<Box
-							component="span"
-							sx={{ mt: -14, position: "absolute" }}
-							id="overview"
-						/>
-						{title}
-					</Typography>
-					<Typography
-						fontSize={{ xs: 18, sm: 24 }}
-						fontWeight={300}
-						color="#fff"
-					>
-						{subtitle}
-					</Typography>
-					<Box
-						sx={{
-							background: "#7000FF",
-							width: "150px",
-							height: "5px",
-							mt: 2,
-						}}
-					/>
-				</Stack>
-			</Container>
-		</Box>
-	);
-}
-
-function JobTabs({ currentTabIndex, onTabChange, mobile }: any) {
-	return (
-		<Box sx={{ width: "100%", mt: 2 }}>
-			<Tabs
-				centered={mobile}
-				value={currentTabIndex}
-				onChange={onTabChange}
-				TabIndicatorProps={{
-					style: {
-						display: "none",
+const BodyJob = (props: any) => {
+	const [statusSubmitForm, setStatusSubmitForm] = useState(false)
+	const [statusFormApply, setStatusFormApply] = useState(false)
+	return <Box sx={{
+		margin: '24px 0 40px',
+		'@media (min-width: 768px)': {
+			margin: '40px 0 80px',
+		}
+	}}>
+		<Container sx={{
+			maxWidth: '1160px !important'
+		}}>
+			<Box sx={{		
+				justifyContent: 'space-between',
+				alignItems: 'flex-start',
+				'@media (min-width: 768px)': {
+					display: 'flex',
+				}
+			}}>
+				<Box sx={{
+					...TEXT_STYLE(14, 500, '#5A6178'),
+					marginBottom: '24px',
+					'& h3': {
+						...TEXT_STYLE(24, 600, '#31373E'),
+						marginBottom: '16px'
 					},
-				}}
-				sx={{
-					"& .Mui-selected": {
-						color: "#957AFF !important",
+					'& ul': {
+						paddingLeft: '30px'
 					},
-				}}
-			>
-				<Tab
-					label="Role Overview"
-					sx={{
-						color: "#3E3962",
-						fontSize: { xs: 18, sm: 24 },
-						fontWeight: 700,
-						pr: 4,
-						pl: 0,
-					}}
-				/>
-				<Box
-					sx={{
-						width: "2px",
-						height: "25px",
-						margin: "auto 0",
-						background: "#3E3962",
-					}}
-				></Box>
-				<Tab
-					label="Application"
-					sx={{
-						color: "#3E3962",
-						fontSize: { xs: 18, sm: 24 },
-						fontWeight: 700,
-						pl: 4,
-					}}
-				/>
-			</Tabs>
-		</Box>
-	);
+					'@media (min-width: 768px)': {
+						marginRight: '40px',
+						marginBottom: 0
+					}
+				}}>
+					<Typography sx={{
+						...TEXT_STYLE(24, 600, '#5727A3'),
+						marginBottom: '24px',
+						'@media (min-width: 768px)': {
+							marginBottom: '40px',
+						}
+					}}>Job Description</Typography>
+					{props.data?.body}
+				</Box>
+				<Box sx={{				
+					'@media (min-width: 768px)': {
+						minWidth: '448px',
+						maxWidth: '448px',
+					}
+				}}>
+					<Box sx={{
+						padding: '24px',
+						border: '1px solid #E9EAEF',
+						borderRadius: '8px',
+						background: '#ffffff',
+						marginBottom: '16px',
+						'@media (min-width: 768px)': {
+							padding: '40px',
+						}
+					}}>
+						{statusSubmitForm ? 
+						<Box sx={{
+							textAlign: 'center',
+						}}>
+							<img src="/assets/icons/tick-circle.svg" />
+							<Typography sx={{
+								...TEXT_STYLE(24, 600, '#5A6178')
+							}}>Thanks for your apply! We will contact you soon!</Typography>
+						</Box> : 
+						(statusFormApply ? <ApplyForm jobName={props.data?.title} back={() => setStatusFormApply(false)} setStatusSubmitForm={setStatusSubmitForm} /> : <Box>
+							<Typography sx={{
+								...TEXT_STYLE(24, 600, '#5727A3'),
+								marginBottom: '24px'
+							}}>{props.data?.title}</Typography>
+							<TitleItemJob>Salary</TitleItemJob>
+							<SubTitleItemJob>Negotiable</SubTitleItemJob>
+							<TitleItemJob>Location</TitleItemJob>
+							<SubTitleItemJob>Hanoi</SubTitleItemJob>
+							<TitleItemJob>Team</TitleItemJob>
+							<SubTitleItemJob>{props.data?.type}</SubTitleItemJob>
+							<TitleItemJob>Application deadline</TitleItemJob>
+							<SubTitleItemJob sx={{
+								borderBottom: '0 !important',
+								'@media (max-width: 767px)': {
+									marginBottom: 0
+								}
+							}}>{props.data?.time}</SubTitleItemJob>
+							<Box onClick={() => setStatusFormApply(true)}>
+							<ButtonBase title='Apply now' style={{
+								width: '100%'
+							}} />
+						</Box>
+						</Box>)}
+					</Box>
+					<Box sx={{
+						padding: '24px',
+						background: '#EEE9F6',
+						borderRadius: '8px'
+					}}>
+						<Typography sx={{
+							...TEXT_STYLE(16, 600, '#5A6178'),
+							marginBottom: '16px',
+							'@media (min-width: 768px)': {
+								marginBottom: '24px',
+							}
+						}}>Need more information? Contact us</Typography>
+						<TitleContact><img src="/assets/icons/sms.svg" />hr@versehub.io </TitleContact>
+						<TitleContact><img src="/assets/icons/call.svg" />+84 967 913 863</TitleContact>
+					</Box>
+				</Box>
+			</Box>
+		</Container>
+	</Box>
 }
 
-function Overview({
-	desc,
-	responsibilities,
-	needRequirements,
-	loveRequirements,
-	offers,
-	handleClick,
-}: any) {
-	return (
-		<Stack spacing={7.5} mt={7.5}>
-			<Typography fontSize={16} lineHeight={"24px"}>
-				{desc}
-			</Typography>
-			<Stack spacing={4}>
-				<OverviewH bigger>RESPONSIBILITY</OverviewH>
-				<OverviewUl items={responsibilities} />
-			</Stack>
-			<Stack spacing={4}>
-				<OverviewH bigger>REQUIREMENT</OverviewH>
-				<OverviewH>What you&apos;ll definitely need:</OverviewH>
-				<OverviewUl items={needRequirements} />
-				<OverviewH>What we&apos;d love you to have:</OverviewH>
-				<OverviewUl items={loveRequirements} />
-				<OverviewH>What we offer:</OverviewH>
-				<OverviewUl items={offers} />
-			</Stack>
-			<Grid container justifyContent="center">
-				<Button
-					href="#apply"
-					onClick={handleClick}
-					sx={{
-						background: "#7000FF",
-						py: 3,
-						fontSize: "24px",
-						fontWeight: "bold",
-						width: "320px",
-					}}
-				>
-					Apply
-				</Button>
-			</Grid>
-		</Stack>
-	);
-}
-
-function OverviewH({ children, bigger }: any) {
-	return (
-		<Typography fontSize={bigger ? 24 : 16} fontWeight={700}>
-			{children}
-		</Typography>
-	);
-}
-
-function OverviewUl({ items }: any) {
-	return (
-		<Stack spacing={1}>
-			{items.map((el: string, idx: number) => (
-				<Stack direction={"row"} spacing={2} key={idx} pl={2}>
-					<Typography fontSize={16} lineHeight={"24px"}>
-						{"•"}
-					</Typography>
-					<Typography fontSize={16} lineHeight={"24px"}>
-						{el}
-					</Typography>
-				</Stack>
-			))}
-		</Stack>
-	);
-}
-
-function TabPanel({ children, value, index, ...other }: any) {
-	return (
-		<Box role="tabpanel" hidden={value !== index} {...other}>
-			{value === index && children}
-		</Box>
-	);
-}
+const TitleItemJob = styled(Typography)({
+	...TEXT_STYLE(20, 600, '#31373E'),
+	marginBottom: '8px'
+})
+const SubTitleItemJob = styled(Typography)({
+	...TEXT_STYLE(16, 500, '#5A6178'),
+	paddingBottom: '24px',
+	marginBottom: '16px',
+	borderBottom: '1px solid #E9EAEF',
+	'@media (min-width: 768px)': {
+		marginBottom: '24px',
+	}
+})
+const TitleContact = styled(Box)({
+	...TEXT_STYLE(16, 600, '#151515'),
+	display: 'flex',
+	alignItems: 'center',
+	marginBottom: '16px',
+	'&:last-of-type': {
+		marginBottom: 0,
+	},
+	'& img': {
+		marginRight: '8px'
+	},
+	'@media (min-width: 768px)': {
+		marginBottom: '24px',
+	}
+})

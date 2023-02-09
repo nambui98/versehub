@@ -1,19 +1,15 @@
 export const Anchors = {
 	Services: "services",
 	Products: "products",
-	// Partners: "partners",
-	Team: "team",
-	Jobs: "jobs",
+	// Jobs: "jobs",
 	Contact: "contact",
 };
 
 export const navigations = [
-	{ label: "Services", value: "#services" },
-	{ label: "Products", value: "#products" },
-	// { label: "Partners", value: "#partners" },
-	// { label: "Team", value: "#team" },
+	{ label: "Services", value: "/#services" },
+	{ label: "Products", value: "/#products" },
 	{ label: "Jobs", value: "/jobs" },
-	{ label: "Contact", value: "#contact" },
+	{ label: "Get in touch", value: "/#contact" },
 ];
 
 export const secondLayoutNavigation = [
@@ -24,27 +20,26 @@ export const secondLayoutNavigation = [
 
 export const FOOTER = {
 	location: {
-		icon: "/assets/footer/location.svg",
-		// desc: "71 Knighthead point, London, England, E14, BSS",
+		icon: "/assets/icons/location-footer.svg",
 		desc: "Hanoi, Vietnam",
 	},
-	mail: { icon: "/assets/footer/mail.svg", desc: "dungnv@versehub.io" },
-	phone: { icon: "/assets/footer/mail.svg", desc: "(+84) 866 174 689" },
+	mail: { icon: "/assets/icons/sms.svg", desc: "dungnv@versehub.io" },
+	phone: { icon: "/assets/icons/call.svg", desc: "(+84) 866 174 689" },
 	social: [
 		{
-			icon: "/assets/footer/linkedIn.svg",
-			href: "https://www.linkedin.com/company/versehub",
-		},
-		{
-			icon: "/assets/footer/twitter.svg",
-			href: "https://twitter.com/NextVerseOrg",
-		},
-		{
-			icon: "/assets/footer/facebook.svg",
+			icon: "/assets/icons/facebook.svg",
 			href: "https://www.facebook.com/nextverse.org",
 		},
 		{
-			icon: "/assets/footer/medium.svg",
+			icon: "/assets/icons/twitter.svg",
+			href: "https://twitter.com/NextVerseOrg",
+		},
+		{
+			icon: "/assets/icons/linkedIn.svg",
+			href: "https://www.linkedin.com/company/versehub",
+		},		
+		{
+			icon: "/assets/icons/medium.svg",
 			href: "https://medium.com/@nextverse.org",
 		},
 	],

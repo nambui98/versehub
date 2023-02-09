@@ -18,7 +18,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 	handleClick,
 }) => {
 	const router = useRouter();
-
+	console.log(activeState, 123)
 	if (type === "h") {
 		return (
 			<Box
@@ -35,16 +35,27 @@ export const Navigation: React.FC<NavigationProps> = ({
 								px: 3.25,
 								color:
 									value === activeState
-										? "#A89AFF"
-										: "rgba(255, 255, 255, 0.8)",
-								fontSize: 18,
-								lineHeight: "21.09px",
-								textDecoration:
-									value === activeState ? "underline #8470FF 3px" : "none",
-								textUnderlinePosition: "under",
+										? "#3C126D"
+										: "#5A6178",
+								fontSize: 16,
+								lineHeight: "20px",
+								fontWeight: '600',
+								position: 'relative',
+								// textDecoration:
+								// 	value === activeState ? "underline #8470FF 3px" : "none",
+								// textUnderlinePosition: "under",
 							}}
 						>
 							{label}
+							<Box sx={{
+								display: value === activeState ? 'block' : 'none',
+								position: "absolute",
+								width: "100%",
+								height: '4px',
+								background: '#5727A3',
+								left: 0,
+								bottom: '-30px'
+							}}></Box>
 						</MuiLink>
 					</Link>
 				))}

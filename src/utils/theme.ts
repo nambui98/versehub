@@ -18,15 +18,15 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Gilroy',
+    fontFamily: 'Montserrat',
     h1: {
       fontSize: 70,
-      fontFamily: 'Blackpast DEMO',
+      fontFamily: 'Montserrat',
       lineHeight: 1.193,
     },
     h2: {
       fontSize: 40,
-      fontFamily: 'Blackpast DEMO',
+      fontFamily: 'Montserrat',
       lineHeight: 1.193,
     },
     h3: {
@@ -34,7 +34,7 @@ const theme = createTheme({
       lineHeight: 1.23791666667,
     },
 		subtitle1: {
-			fontFamily: 'Blackpast DEMO',
+			fontFamily: 'Montserrat',
 			fontWeight: 400,
 			lineHeight: 1.193,
     },

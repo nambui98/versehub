@@ -19,9 +19,11 @@ import { Logo } from "..";
 
 import { CloseIcon, MenuIcon } from "@/assets/index";
 import { Navigation } from "./Navigation";
-export interface HeaderProps {}
+import Popover from "@mui/material/Popover";
+import { TEXT_STYLE } from "src/styles/common/textStyles";
+export interface HeaderProps { }
 
-const noop = () => {};
+const noop = () => { };
 
 function useThrottledOnScroll(callback: any, delay: number) {
 	const throttledCallback = React.useMemo(
@@ -71,8 +73,8 @@ export const Header: React.FC<HeaderProps> = () => {
 			if (
 				node &&
 				node.offsetTop <
-					document.documentElement.scrollTop +
-						document.documentElement.clientHeight / 8
+				document.documentElement.scrollTop +
+				document.documentElement.clientHeight / 8
 			) {
 				active = item.value;
 				break;
@@ -131,12 +133,9 @@ export const Header: React.FC<HeaderProps> = () => {
 		<>
 			<AppBar
 				sx={{
-					background: (theme) =>
-						trigger
-							? theme.palette.background.default
-							: // ? `linear-gradient(${theme.palette.background.default}, transparent)`
-							  "transparent",
-					transition: "background 0.2s ",
+					background: 'rgba(248, 249, 251, 0.5)',
+					backdropFilter: 'blur(12px)',
+					borderBottom: '1px solid #5727A3',
 				}}
 				color="transparent"
 				square
@@ -149,7 +148,7 @@ export const Header: React.FC<HeaderProps> = () => {
 						sx={{
 							// py: { xs: 2, md: 5 },
 							py: 0,
-							px: { xs: 5, lg: 10 },
+							px: { xs: 3, lg: 10 },
 							display: "flex",
 							justifyContent: "space-between",
 							// gap: 2,
@@ -163,20 +162,55 @@ export const Header: React.FC<HeaderProps> = () => {
 						/>
 
 						{/* <div style={{ width: 155.648 }} /> */}
-						<IconButton
-							color="inherit"
-							aria-label="open drawer"
-							edge="end"
-							sx={{ display: { md: "none" } }}
-							onClick={() => setOpen(true)}
-						>
-							<MenuIcon />
-						</IconButton>
+					
+							<IconButton
+								color="inherit"
+								aria-label="open drawer"
+								edge="end"
+								sx={{ display: { md: "none" } }}
+								onClick={() => setOpen(true)}
+							>
+								<img src="/assets/icons/menu.svg" />
+							</IconButton>
+							<Popover
+								open={open}
+								onClose={() => setOpen(false)}
+								anchorOrigin={{
+									vertical: 'top',
+									horizontal: 'right',
+								}}
+								transformOrigin={{
+									vertical: 'top',
+									horizontal: 'right',
+								}}
+							>
+								<Box sx={{
+									background: '#F8F9FB',
+									boxShadow: '0px 0px 24px rgba(0, 0, 0, 0.1)',
+									borderRadius: '4px',
+									padding: '12px',
+									textAlign: 'right',
+								}}>
+									<Box mb={1} onClick={() => setOpen(false)}><img src="/assets/icons/close.svg" /></Box>
+									{items.map((item, index) => (
+										<Box key={index} sx={{
+											marginBottom: index < items.length - 1 ? '24px' : 0,
+											'& a': {
+												textDecoration: 'none',
+												...TEXT_STYLE(16, 600, '#5A6178')
+											}
+										}}>
+											<a href={item.value}>{item.label}</a>
+										</Box>
+									))}
+								</Box>
+							</Popover>
+					
 					</Container>
 				</Toolbar>
 			</AppBar>
 
-			<Drawer
+			{/* <Drawer
 				variant="temporary"
 				open={mobile && open}
 				onClose={handleDrawerToggle}
@@ -225,7 +259,7 @@ export const Header: React.FC<HeaderProps> = () => {
 						type="v"
 					/>
 				</Container>
-			</Drawer>
+			</Drawer> */}
 		</>
 	);
 };

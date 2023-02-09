@@ -1,190 +1,120 @@
 import React from "react";
 import Link from "next/link";
-import { Grid, Box, Container, Typography, Stack } from "@mui/material";
+import { Grid, Box, Container, Typography, Stack, styled, useMediaQuery } from "@mui/material";
 import { FOOTER } from "@/constants/index";
 import { Logo } from "@/components/index";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
+import { TEXT_STYLE } from "src/styles/common/textStyles";
+import { useRouter } from "next/router";
 
-export interface FooterProps {}
+export interface FooterProps { }
 
 export const Footer: React.FC<FooterProps> = () => {
+	const router = useRouter()
+	const isHomepage = router.pathname === '/'
+	const width767 = useMediaQuery('(max-width: 767px)')
+
 	return (
-		<Box component="footer" mt={15}>
-			<Container>
-				<Grid container spacing={2}>
-					<Grid item xs={12} sm={7}>
-						<Stack alignItems={{ xs: "center", sm: "unset" }}>
-							<Logo colored />
-							<Grid
-								container
-								justifyContent={{ xs: "center", sm: "unset" }}
-								alignItems="center"
-								mt={4}
-							>
-								<img src={FOOTER.location.icon} alt="location" />
-								<Typography fontSize={14} ml={1}>
-									{FOOTER.location.desc}
-								</Typography>
-							</Grid>
-							<Grid
-								container
-								justifyContent={{ xs: "center", sm: "unset" }}
-								alignItems="center"
-								mt={1}
-							>
-								<img src={FOOTER.mail.icon} alt="mail" />
-								<Typography fontSize={14} ml={1}>
-									{FOOTER.mail.desc}
-								</Typography>
-							</Grid>
-							<Grid
-								container
-								justifyContent={{ xs: "center", sm: "unset" }}
-								alignItems="center"
-								mt={1}
-							>
-								<PhoneOutlinedIcon
-									sx={{
-										color: "#7B4BE1",
-										fontSize: { xs: 12, sm: "1.3rem" },
-									}}
-								/>
-								<Typography fontSize={14} ml={1}>
-									{FOOTER.phone.desc}
-								</Typography>
-							</Grid>
-						</Stack>
-					</Grid>
-					<Grid item xs={12} sm={5}>
-						<Box
-							sx={{
-								height: "100%",
-								display: "flex",
-								flexDirection: "column",
-								justifyContent: { xs: "center", sm: "end" },
-								alignItems: { xs: "center", sm: "end" },
-							}}
-						>
-							<Stack direction="row" spacing={1}>
-								{FOOTER.social.map(({ icon, href }, idx) => (
-									<Link key={idx} href={href} passHref>
-										<img src={icon} alt={href} style={{ cursor: "pointer" }} />
-									</Link>
-								))}
-							</Stack>
-						</Box>
-					</Grid>
-				</Grid>
+		<Box component="footer" mt={{lg: 15, xs: 0}}>
+			<Container sx={{
+				padding: `40px 0 40px`,
+				position: 'relative',
+				'@media (min-width: 768px)': {
+					padding: `${isHomepage ? '80px' : 0} 0 80px`,
+				}
+			}}>
+				{(isHomepage || width767) && <Box sx={{
+					position: 'absolute',
+					top: 0,
+					left: '50%',
+					transform: 'translateX(-50%)',
+					width: '100%',
+					maxWidth: '1120px',
+					height: '4px',
+					background: '#5727A3',
+					'@media (max-width: 767px)': {
+						width: 'calc(100% - 32px)'
+					}
+				}}></Box>}
+				<Logo colored logoFooter={true} />
+				<Box sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					margin: '24px 0 16px',
+					flexDirection: 'column',
+					alignItems: 'center',
+					'@media (min-width: 768px)': {
+						flexDirection: 'row',
+						margin: '40px 0 48px',
+					}
+				}}>
+					<Item>
+						<img src={FOOTER.location.icon} alt="location" />
+						<TextItem fontSize={14} ml={1}>
+							{FOOTER.location.desc}
+						</TextItem>
+					</Item>
+					<Item>
+						<img src={FOOTER.mail.icon} alt="mail" />
+						<TextItem fontSize={14} ml={1}>
+							{FOOTER.mail.desc}
+						</TextItem>
+					</Item>
+					<Item sx={{
+						marginRight: '0 !important'
+					}}>
+						<img src={FOOTER.phone.icon} alt="phone" />
+						<TextItem fontSize={14} ml={1}>
+							{FOOTER.phone.desc}
+						</TextItem>
+					</Item>
+				</Box>
+				<Box
+					sx={{
+						height: "100%",
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginBottom: '40px'
+					}}	
+				>
+					<Stack alignItems={'center'} direction="row" spacing={1}>
+						{FOOTER.social.map(({ icon, href }, idx) => (
+							<Link key={idx} href={href} passHref>
+								<Box sx={{
+									padding: '0 20px'
+								}}>
+									<img src={icon} alt={href} style={{ cursor: "pointer" }} />
+								</Box>
+							</Link>
+						))}
+					</Stack>
+				</Box>
+				<Box>
+					<Typography sx={{
+						textAlign: "center",
+						...TEXT_STYLE(16, 600, '#5727A3')
+					}}>
+						© VerseHub, 2023
+					</Typography>
+				</Box>
 			</Container>
-			<Box
-				sx={{
-					width: "100%",
-					height: "1px",
-					background: "#431269",
-					mt: 4,
-					mb: 2,
-				}}
-			/>
-			<Container>
-				<Grid container mb={2}>
-					<Grid item xs={12} sm={4}>
-						<Typography
-							fontSize={14}
-							color="#58487B"
-							textAlign={{ xs: "center", sm: "left" }}
-						>
-							© VerseHub, 2022
-						</Typography>
-					</Grid>
-					<Grid item xs={12} sm={8}>
-						<Grid container justifyContent={{ xs: "center", sm: "end" }}>
-							{/* <Typography fontSize={14} color="#8D6FCF">
-								{FOOTER.links.map((el) => el.desc).join(" | ")}
-							</Typography> */}
-						</Grid>
-					</Grid>
-				</Grid>
-			</Container>
-			{/* <Container sx={{ py: 5 }}>
-        <Grid container justifyContent="space-between" spacing={6.5}>
-          <Grid item>
-            <Logo sx={{ mb: 6.5 }} />
-
-            <Box
-              display="flex"
-              sx={{
-                wordBreak: 'break-word',
-                flexDirection: { md: 'row', xs: 'column' },
-                gap: { md: 6.5, xs: 2 },
-              }}
-            >
-              {[
-                [
-                  LocationIcon,
-                  '71 Knighthead point, London, England, E14, BSS',
-                ],
-                [MailOutlineIcon, 'info@versehub.io'],
-              ].map(([icon, txt], key) => (
-                <Typography
-                  key={key}
-                  component="div"
-                  sx={{
-                    fontSize: 18,
-                    lineHeight: '21px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 1.5,
-                  }}
-                >
-                  <div>{React.createElement(icon)}</div>
-                  {txt}
-                </Typography>
-              ))}
-            </Box>
-          </Grid>
-
-          <Grid item>
-            <Box sx={{ display: 'flex', gap: 2 }}>
-              {[Linkedln, Twitter, FacebookIcon, Medium].map((Icon, key) => (
-                <a key={key} href="#">
-                  <Icon />
-                </a>
-              ))}
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
-
-      <Box bgcolor="primary.main">
-        <Container
-          sx={{
-            py: 3,
-            color: '#fff',
-            display: 'flex',
-            gap: 6.5,
-            justifyContent: 'space-between',
-            flexDirection: { md: 'row', xs: 'column-reverse' },
-          }}
-        >
-          <Typography>© Versehub, 2021</Typography>
-
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { md: 'row', xs: 'column' },
-              gap: { md: 6.5, xs: 3 },
-            }}
-          >
-            {['Privacy Policy', 'Terms & Conditions', 'Cookie Policy'].map(
-              (txt, key) => (
-                <Link color="inherit" href="#" key={key}>
-                  {txt}
-                </Link>
-              )
-            )}
-          </Box>
-        </Container>
-      </Box> */}
 		</Box>
 	);
 };
+
+const Item = styled(Box)({
+	display: 'flex',
+	alignItems: 'center',
+	marginBottom: 24,
+	
+	'@media(min-width: 768px)': {
+		marginRight: 80,
+		marginBottom: 0
+	}
+})
+
+const TextItem = styled(Typography)({
+	...TEXT_STYLE(16, 600, '#31373E')
+})

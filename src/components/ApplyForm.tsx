@@ -1,27 +1,16 @@
-import React, { useState } from "react";
-import {
-	Box,
-	Button,
-	Container,
-	Stack,
-	TextField,
-	Snackbar,
-	Alert,
-	Grid,
-	InputBase,
-	InputLabel,
-	InputAdornment,
-	OutlinedInput,
-	IconButton,
-	Backdrop,
-	CircularProgress,
-	styled,
-} from "@mui/material";
 import AttachFileOutlinedIcon from "@mui/icons-material/AttachFileOutlined";
-import DownloadDoneOutlinedIcon from "@mui/icons-material/DownloadDoneOutlined";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
-import RemoveCircleOutlinedIcon from "@mui/icons-material/RemoveCircleOutlined";
+import DownloadDoneOutlinedIcon from "@mui/icons-material/DownloadDoneOutlined";
+import {
+	Backdrop, Box,
+	Button, CircularProgress, InputAdornment, InputBase,
+	InputLabel, OutlinedInput, Stack, styled
+} from "@mui/material";
+import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
+import { TEXT_STYLE } from "src/styles/common/textStyles";
 import { ApplyDialog } from "./ApplyDialog";
+import { ButtonBase } from "./Button";
 
 const LIMIT_UPLOAD_SIZE = 25; // MB
 
@@ -41,35 +30,18 @@ const CustomLabel = ({ children }: any) => (
 
 const CustomInput = styled(InputBase)({
 	"& .MuiInputBase-input": {
-		fontSize: 24,
-		fontWeight: 700,
-		color: "#FFF",
-		padding: "25px 50px",
+		...TEXT_STYLE(16, 600, '#31373E'),
+		padding: "20px 24px",
 		borderRadius: "5px",
-		border: "2px solid rgba(138, 171, 255, 0.2)",
-		"&:focus": {
-			borderColor: "#28223F",
-			background: "#28223F",
-		},
-		"@media (max-width: 600px)": {
-			fontSize: 18,
-			padding: "25px 30px",
-		},
+		border: "1px solid #E9EAEF",
+		maxWidth: '368px',
+		marginBottom: '10px'
 	},
 });
 
 const CustomInputFile = styled(OutlinedInput)({
-	border: "2px solid rgba(138, 171, 255, 0.2)",
-	borderRadius: "5px",
 	"& .MuiInputBase-input": {
-		fontSize: 24,
-		fontWeight: 700,
-		color: "#FFF",
-		padding: "25px 50px",
-		"@media (max-width: 600px)": {
-			fontSize: 18,
-			padding: "25px 30px",
-		},
+		...TEXT_STYLE(14, 600, '#55C8FC'),
 	},
 	"& fieldset": {
 		border: "none",
@@ -91,7 +63,7 @@ const CustomHelperText = ({ children }: any) => (
 );
 
 const CustomTextField = ({
-	label,
+	placeholder,
 	value,
 	onChange,
 	error,
@@ -99,15 +71,15 @@ const CustomTextField = ({
 }: any) => {
 	return (
 		<Stack spacing={0}>
-			<CustomLabel>{label}</CustomLabel>
 			<CustomInput
 				fullWidth
 				required
 				value={value}
 				onChange={onChange}
 				inputProps={{ ...InputProps }}
+				placeholder={placeholder}
 			/>
-			<CustomHelperText>{error}&nbsp;</CustomHelperText>
+			{error && <CustomHelperText>{error}&nbsp;</CustomHelperText>}
 		</Stack>
 	);
 };
@@ -160,7 +132,7 @@ function isSupportedFile(file: any) {
 	);
 }
 
-export const ApplyForm = ({ jobName }: any) => {
+export const ApplyForm = ({ jobName, back, setStatusSubmitForm }: any) => {
 	const [showSnack, setShowSnack] = useState(false);
 	const [showBackdrop, setShowBackdrop] = useState(false);
 
@@ -170,10 +142,7 @@ export const ApplyForm = ({ jobName }: any) => {
 	const [textPhone, setTextPhone] = useState("");
 	const [textLocation, setTextLocation] = useState("");
 	const [textAttachment, setTextAttachment] = useState("");
-
-	// const [fileResume, setFileResume] = useState<any>(null);
 	const [attachFiles, setAttachFiles] = useState<any>([]);
-	// const [fileNames, setFileNames] = useState("");
 
 	const [errorFirst, setErrorFirst] = useState(false);
 	const [errorLast, setErrorLast] = useState(false);
@@ -243,11 +212,6 @@ export const ApplyForm = ({ jobName }: any) => {
 			setTimeout(() => setErrorPhone(false), 2000);
 			return;
 		}
-		if (!textLocation) {
-			setErrorLocation(true);
-			setTimeout(() => setErrorLocation(false), 2000);
-			return;
-		}
 		if (!attachFiles || !attachFiles.length || attachFiles.length <= 0) {
 			setErrorResume("Empty");
 			setTimeout(() => setErrorResume(""), 2000);
@@ -260,7 +224,7 @@ export const ApplyForm = ({ jobName }: any) => {
 		formData.append("lastName", textLast);
 		formData.append("email", textEmail);
 		formData.append("phone", textPhone);
-		formData.append("location", textLocation);
+		formData.append("location", 'VietNam');
 		formData.append("attachUrl", textAttachment);
 		// formData.append("resume", fileResume, fileResume.name);
 		for (let i = 0; i < attachFiles.length; i++) {
@@ -271,7 +235,7 @@ export const ApplyForm = ({ jobName }: any) => {
 			body: formData,
 		});
 		setShowBackdrop(false);
-		setShowSnack(true);
+		setStatusSubmitForm(true)
 		setTextFirst("");
 		setTextLast("");
 		setTextEmail("");
@@ -283,14 +247,22 @@ export const ApplyForm = ({ jobName }: any) => {
 	};
 
 	return (
-		<Stack py={5}>
+		<Stack>
 			<Backdrop
 				sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
 				open={showBackdrop}
 			>
 				<CircularProgress color="inherit" />
 			</Backdrop>
-			<ApplyDialog open={showSnack} onClose={() => setShowSnack(false)} />
+			{/* <ApplyDialog open={showSnack} onClose={() => setShowSnack(false)} /> */}
+			<Box sx={{
+				marginBottom: '24px',
+				cursor: 'pointer'
+			}} onClick={back}><img src="/assets/icons/arrow-left-gray.svg" /></Box>
+			<Typography sx={{
+				...TEXT_STYLE(16, 600, '#5A6178'),
+				marginBottom: '16px'
+			}}>Let us know about you.</Typography>
 			<Box
 				component="form"
 				autoComplete="off"
@@ -303,86 +275,83 @@ export const ApplyForm = ({ jobName }: any) => {
 				}}
 			>
 				<CustomTextField
-					label="First name"
+					placeholder="First name"
 					value={textFirst}
 					onChange={(e: any) => setTextFirst(e.target.value)}
 					error={errorFirst && "Incorrect first name"}
 				/>
 				<CustomTextField
-					label="Last name"
+					placeholder="Last name"
 					value={textLast}
 					onChange={(e: any) => setTextLast(e.target.value)}
 					error={errorLast && "Incorrect last name"}
 				/>
 				<CustomTextField
-					label="Email"
+					placeholder="Email"
 					value={textEmail}
 					onChange={(e: any) => setTextEmail(e.target.value)}
 					error={errorEmail && "Incorrect email"}
 				/>
 				<CustomTextField
-					label="Phone"
+					placeholder="Phone"
 					value={textPhone}
 					onChange={(e: any) => setTextPhone(e.target.value)}
 					error={errorPhone && "Incorrect phone"}
 				/>
-				<CustomTextField
-					label="Location"
-					value={textLocation}
-					onChange={(e: any) => setTextLocation(e.target.value)}
-					error={errorLocation && "Incorrect location"}
-				/>
-				<CustomFileField
-					label="Attachment"
+				{/* <CustomFileField
+					placeholder="Attachment"
 					value={textAttachment}
 					onChange={(e: any) => setTextAttachment(e.target.value)}
 					onFileChange={handleFileChange}
 					error={errorResume}
-				/>
+				/> */}
+				<Button
+					variant="text"
+					component="label"
+					sx={{
+						...TEXT_STYLE(14, 600, '#55C8FC'),
+						padding: 0,
+						display: 'flex',
+						justifyContent: 'flex-start',
+						backgroundColor: '#ffffff !important',
+						'& img': {
+							marginRight: '8px'
+						}
+					}}
+				>
+					<img src="/assets/icons/document-upload.svg" />
+					Upload your CV
+					<input
+						type="file"
+						hidden
+						multiple
+						accept="image/*,.pdf,.doc,.docx,video/mp4,video/x-m4v,video/*"
+						onChange={handleFileChange}
+					/>
+				</Button>
+				{errorResume && <CustomHelperText>Empty</CustomHelperText>}
 				<Stack spacing={1}>
 					{attachFiles.map((el: any, idx: number) => (
-						<CustomInputFile
-							key={idx}
-							value={el.name}
-							startAdornment={
-								<InputAdornment position="start">
-									<DownloadDoneOutlinedIcon
-										sx={{ fontSize: { xs: 32, sm: 42 } }}
-									/>
-								</InputAdornment>
-							}
-							endAdornment={
-								<InputAdornment position="end">
-									<Button
-										variant="text"
-										component="label"
-										sx={{ height: "100%", color: "#28223F" }}
-										onClick={() => handleRemoveFile(idx)}
-									>
-										<CancelOutlinedIcon sx={{ fontSize: { xs: 32, sm: 42 } }} />
-									</Button>
-								</InputAdornment>
-							}
-						/>
+						<Box sx={{
+							display: 'flex',
+							alignItems: 'center'
+						}}>
+							<Typography sx={{
+								...TEXT_STYLE(14, 600, '#55C8FC')
+							}}>{el.name}</Typography>
+							<Box sx={{
+								lineHeight: 0,
+								marginLeft: '8px',
+								cursor: 'pointer'
+							}} onClick={() => handleRemoveFile(idx)}>
+								<img src="/assets/icons/close-2.svg" />
+							</Box>
+						</Box>
 					))}
 				</Stack>
-				<Grid container justifyContent="center" mt={5}>
-					<Button
-						type="submit"
-						sx={{
-							background: "#7000FF",
-							py: 3,
-							fontSize: "24px",
-							fontWeight: "bold",
-							width: "320px",
-							"&:focus": {
-								background: "#7000FF",
-							},
-						}}
-					>
-						Apply
-					</Button>
-				</Grid>
+				<ButtonBase title="Apply" style={{
+					marginTop: '20px'
+				}} />
 			</Box>
 		</Stack>
 	);

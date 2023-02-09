@@ -49,11 +49,11 @@ function Header() {
 	return (
 		<>
 			<AppBar
-				sx={{
-					backgroundColor: (theme) =>
-						trigger ? theme.palette.background.default : "transparent",
-					transition: "background 0.2s ",
-				}}
+				// sx={{
+				// 	backgroundColor: (theme) =>
+				// 		trigger ? theme.palette.background.default : "transparent",
+				// 	transition: "background 0.2s ",
+				// }}
 				color="transparent"
 				square
 				elevation={0}

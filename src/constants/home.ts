@@ -35,46 +35,30 @@ export const SERVICE = {
 };
 
 export const PRODUCT = {
-	title: "release",
+	title: "PROducts",
+	subtitle: 'our',
 	items: [
 		{
-			src: "/assets/products/logo-text-white.png",
-			title: "beFITTER",
-			active: true,
-			width: "40%",
+			src: "/assets/logo/logo-befitter.png",
 			url: 'https://befitter.io/'
 		},
 		{
-			src: "/assets/products/nextverse-logo.png",
-			title: "Nextverse",
-			active: true,
-			width: "20%",
+			src: "/assets/logo/logo-nv.png",
 			url: "http://nextverse.org"
 		},
 		{
-			src: "/assets/ciu/logo_ciu_white.png",
-			title: "Cow it up",
-			active: true,
+			src: "/assets/logo/logo-cowitup.png",
+			url: "/cowItUp"
+		},
+		{
+			src: "/assets/logo/logo-scan.png",
 			width: "40%",
 			url: "/cowItUp"
 		},
 		{
-			src: "/assets/products/city.png",
-			title: "Coming soon",
-			active: false,
+			src: "/assets/logo/logo-bridge.png",
 			width: "40%",
-		},
-		{
-			src: "/assets/products/city.png",
-			title: "Coming soon",
-			active: false,
-			width: "40%",
-		},
-		{
-			src: "/assets/products/city.png",
-			title: "Coming soon",
-			active: false,
-			width: "40%",
+			url: "/cowItUp"
 		},
 	],
 };
@@ -223,15 +207,15 @@ export const TEAM = {
 };
 
 export const OFFICE = {
-	title: "our offices",
+	title: "OFFICE",
+	subtitle: 'OUR',
 	items: [
 		{
-			src: "/assets/offices/office1.png",
+			src: "/assets/india.png",
 			title: "St Vincent and the Grenadines",
 			subtitle: "Headquarter",
 		},
-		{ src: "/assets/offices/office2.png", title: "UK", subtitle: "London" },
-		{ src: "/assets/offices/office4.png", title: "Vietnam", subtitle: "Hanoi" },
+		{ src: "/assets/vn.png", title: "Vietnam", subtitle: "Hanoi" },
 	],
 };
 
@@ -242,3 +226,26 @@ export const JOB = {
 		"Excellent products need excellent people. Our pioneering team is looking for new members to join the fleet.",
 	desc: "VerseHub is powered by people with long term perspectives and big ideas, it is a diverse group of problem solvers and innovators who share the same desire of building great products. Come join us and become who you would want to be, contribute to the belonging and inclusive company culture while together working on the mission of bringing cutting-edge technologies such as Virtual Reality, Web3.0 into individual lives and businesses.",
 };
+
+export const SERVICE_NEW = {
+	title: 'PROVIDE',
+	subtitle: 'WHAT WE',
+	items: [
+		{
+			title: 'Game NFT & Metaverse',
+			body: 'The first true metaverse game on blockchain which have the ecosystem and experience as close as possible to real life but still providing the unlimited creativity.'
+		},
+		{
+			title: 'Decentralized Financial Solution',
+			body: 'Communication, managing assets, sharing ideas and information... Everything about crypto in one place, ready for exploring.'
+		},
+		{
+			title: 'Web3',
+			body: 'We believe that Web3 is <something big> and we are working hard to research and contribute to the development of web3 technology.'
+		},
+		{
+			title: 'Incubation & Advisory',
+			body: 'Provide strategic advice, technical and financial support, ease researching and development for small or new teams/projects, help them get into the blockchain industry faster and get better results.'
+		}
+	]
+}
