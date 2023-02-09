@@ -335,7 +335,7 @@ export const ApplyForm = ({ jobName, back, setStatusSubmitForm }: any) => {
 						<Box sx={{
 							display: 'flex',
 							alignItems: 'center'
-						}}>
+						}} key={idx}>
 							<Typography sx={{
 								...TEXT_STYLE(14, 600, '#55C8FC')
 							}}>{el.name}</Typography>

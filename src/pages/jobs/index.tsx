@@ -271,7 +271,7 @@ const Cta = () => {
 				'@media (min-width: 768px)': {
 					...TEXT_STYLE(40, 600, '#FFFFFF'),
 				}
-			}}>"A global team with metaversal mission"</Typography>
+			}}>&quot;A global team with metaversal mission&quot;</Typography>
 		</Container>
 	</Box>
 }
