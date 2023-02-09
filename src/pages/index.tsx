@@ -285,7 +285,7 @@ function ProductsPartners({ data }: any) {
 				>
 					{data.items.map((item: any, index: number) => (
 						<Grid item xs={2} sm={4} md={4} key={index}>
-							<a href={item.url} target='_blank' style={{
+							<a href={item.url} target='_blank' rel="noreferrer" style={{
 								minHeight: '117px',
 								display: 'flex',
 								justifyContent: 'center',
@@ -373,7 +373,7 @@ const JoinOur = () => {
 			background: 'radial-gradient(85.49% 58.61% at 50% 90.72%, #3C12A0 48.44%, #3C126D 100%)',
 		}
 	}}>
-		<StackWrapper bookmark={Anchors.Jobs} noPading={true}>
+		<StackWrapper noPading={true}>
 			<Typography sx={{
 				...TEXT_STYLE(40, 600, '#FFFFFF'),
 				marginBottom: '24px',
