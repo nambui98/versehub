@@ -28,20 +28,12 @@ export const FOOTER = {
 	social: [
 		{
 			icon: "/assets/icons/facebook.svg",
-			href: "https://www.facebook.com/nextverse.org",
-		},
-		{
-			icon: "/assets/icons/twitter.svg",
-			href: "https://twitter.com/NextVerseOrg",
+			href: "https://www.facebook.com/Versehub.io/",
 		},
 		{
 			icon: "/assets/icons/linkedIn.svg",
-			href: "https://www.linkedin.com/company/versehub",
+			href: "https://www.linkedin.com/company/versehub/",
 		},		
-		{
-			icon: "/assets/icons/medium.svg",
-			href: "https://medium.com/@nextverse.org",
-		},
 	],
 	links: [
 		{ desc: "Privacy Policy", href: "#" },
