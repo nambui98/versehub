@@ -30,7 +30,7 @@ export const VALUES = {
 			],
 		},
 		{
-			title: "Our service",
+			title: "Our services",
 			image: "/assets/icons/value3.png",
 			content: [
 				"We pride ourselves on delivering a proactive service designed to ensure we meet our customers, clients and partners' expectation consistently. Becoming our member means your work will help businesses and communities achieve their most ambitious business plans, solve their biggest challenges and harness incredible success in this metaverse transformation.",
@@ -65,7 +65,7 @@ export const JOB = {
 			title: 'Frontend Developer (Fresher Unreal)',
 			id: 1,
 			type: 'Engineer',
-			time: '15/01/2023 - 15/02/2023',
+			time: '5/2/2023 - 15/3/2023',
 			body: <>
 				<Typography variant="h3">Address:</Typography>
 				<Typography>VERSEHUB TECHNOLOGY JOINT STOCK COMPANY</Typography>
