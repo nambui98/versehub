@@ -18,7 +18,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 	handleClick,
 }) => {
 	const router = useRouter();
-	console.log(activeState, 123)
+	console.log(router)
 	if (type === "h") {
 		return (
 			<Box
@@ -48,7 +48,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 						>
 							{label}
 							<Box sx={{
-								display: value === activeState ? 'block' : 'none',
+								display: value === router.asPath ? 'block' : 'none',
 								position: "absolute",
 								width: "100%",
 								height: '4px',

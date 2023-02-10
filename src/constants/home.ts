@@ -52,13 +52,18 @@ export const PRODUCT = {
 		},
 		{
 			src: "/assets/logo/logo-scan.png",
-			width: "40%",
-			url: "/cowItUp"
+			url: "/",
+			comingSoon: true
 		},
 		{
 			src: "/assets/logo/logo-bridge.png",
-			width: "40%",
-			url: "/cowItUp"
+			url: "/",
+			comingSoon: true
+		},
+		{
+			src: "/assets/logo/penpal.png",
+			url: "/",
+			comingSoon: true
 		},
 	],
 };

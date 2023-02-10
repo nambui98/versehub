@@ -177,7 +177,8 @@ const BodyJob = (props: any) => {
 					<Box sx={{
 						padding: '24px',
 						background: '#EEE9F6',
-						borderRadius: '8px'
+						borderRadius: '8px',
+						textTransform: 'uppercase',
 					}}>
 						<Typography sx={{
 							...TEXT_STYLE(16, 600, '#5A6178'),

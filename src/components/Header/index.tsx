@@ -194,12 +194,14 @@ export const Header: React.FC<HeaderProps> = () => {
 									<Box mb={1} onClick={() => setOpen(false)}><img src="/assets/icons/close.svg" /></Box>
 									{items.map((item, index) => (
 										<Box key={index} sx={{
-											marginBottom: index < items.length - 1 ? '24px' : 0,
 											'& a': {
+												display: 'inline-block',
 												textDecoration: 'none',
-												...TEXT_STYLE(16, 600, '#5A6178')
+												...TEXT_STYLE(16, 600, '#5A6178'),
+												padding: index < items.length - 1 ? '10px' : 0,
+												paddingTop: index === 0 ? '0' : '10px',
 											}
-										}}>
+										}} onClick={() => setOpen(false)}>
 											<a href={item.value}>{item.label}</a>
 										</Box>
 									))}

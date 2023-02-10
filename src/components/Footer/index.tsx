@@ -19,6 +19,7 @@ export const Footer: React.FC<FooterProps> = () => {
 			<Container sx={{
 				padding: `40px 0 40px`,
 				position: 'relative',
+				textTransform: 'uppercase',
 				'@media (min-width: 768px)': {
 					padding: `${isHomepage ? '80px' : 0} 0 80px`,
 				}
@@ -96,7 +97,7 @@ export const Footer: React.FC<FooterProps> = () => {
 						textAlign: "center",
 						...TEXT_STYLE(16, 600, '#5727A3')
 					}}>
-						© VerseHub, 2023
+						© VerseHub, 2022
 					</Typography>
 				</Box>
 			</Container>
