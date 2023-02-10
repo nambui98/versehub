@@ -97,7 +97,7 @@ export const Footer: React.FC<FooterProps> = () => {
 						textAlign: "center",
 						...TEXT_STYLE(16, 600, '#5727A3')
 					}}>
-						VerseHub @ 2023
+						VerseHub © 2023
 					</Typography>
 				</Box>
 			</Container>

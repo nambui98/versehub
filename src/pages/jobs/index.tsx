@@ -349,7 +349,10 @@ const OpeningJobs = () => {
 									alignItems: 'center',
 								}} onClick={() => setCurrentItem(item.title)}>
 									<Checkbox inputProps={{ 'aria-label': 'all' }} checked={currentItem === item.title} sx={{
-										color: '#5A6178',
+										color: '#5727A3',
+										'&.Mui-checked': {
+											color: '#5727A3',
+										},
 										'@media (max-width: 767px)': {
 											padding: 0,
 											marginRight: '16px'
