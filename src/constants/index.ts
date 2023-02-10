@@ -23,8 +23,8 @@ export const FOOTER = {
 		icon: "/assets/icons/location-footer.svg",
 		desc: "Hanoi, Vietnam",
 	},
-	mail: { icon: "/assets/icons/sms.svg", desc: "dungnv@versehub.io" },
-	phone: { icon: "/assets/icons/call.svg", desc: "(+84) 866 174 689" },
+	mail: { icon: "/assets/icons/sms.svg", desc: "hr@versehub.io" },
+	phone: { icon: "/assets/icons/call.svg", desc: "(+84) 967 913 863" },
 	social: [
 		{
 			icon: "/assets/icons/facebook.svg",
