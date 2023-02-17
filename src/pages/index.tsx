@@ -23,6 +23,8 @@ import {
 import OutlinedInput from '@mui/material/OutlinedInput';
 import type { NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { TEXT_STYLE } from "src/styles/common/textStyles";
 import { Anchors } from "../constants";
 
@@ -30,31 +32,8 @@ const HomePage: NextPage = () => {
 	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 	useSmoothScroll();
 
-	// const [openProfile, setOpenProfile] = useState(false);
-	// const [profile, setProfile] = useState({
-	// 	name: "",
-	// 	title: "",
-	// 	desc: [],
-	// });
-
-	// const handleClickProfile = (data: any) => {
-	// 	if (data && data.name && data.title && data.desc) {
-	// 		setProfile(data);
-	// 		setOpenProfile(true);
-	// 	}
-	// };
-
-	// const handleCloseProfile = () => {
-	// 	setOpenProfile(false);
-	// };
-
 	return (
 		<BasicLayout>
-			{/* <ProfileDialog
-				open={openProfile}
-				onClose={handleCloseProfile}
-				data={profile}
-			/> */}
 			<Banner />
 			<Stack spacing={{ xs: 0, sm: 15 }}>
 				<Services />
@@ -161,9 +140,6 @@ function Banner() {
 }
 
 function StackWrapper({ children, bookmark, styles, noPading }: any) {
-	// const match1200 = useMediaQuery("(min-width:1200px)");
-	// const match1440 = useMediaQuery("(min-width:1440px)");
-
 	return (
 		<Box
 			id={(bookmark) || ""}
@@ -174,9 +150,9 @@ function StackWrapper({ children, bookmark, styles, noPading }: any) {
 					justifyContent: "center",
 					alignItems: "center",
 					'@media (min-width: 600px)': {
-						paddingTop: !noPading ? '120px !important' : 'auto',
-						marginTop: !noPading ? '0 !important' : 'auto',
-					}
+						marginTop: !noPading ? '0 !important' : '-30px',
+						paddingTop: !noPading ? '120px !important' : '30px'
+					},				
 				},
 			]}
 		// style={match1440 ? { ...styles } : null}
@@ -205,7 +181,7 @@ function Services() {
 					backgroundImage: 'none',
 					paddingBottom: 0,
 					marginBottom: 0
-				}
+				},
 			}}>
 				<Box sx={{
 					width: "100%",

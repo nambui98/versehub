@@ -82,13 +82,13 @@ export const Footer: React.FC<FooterProps> = () => {
 				>
 					<Stack alignItems={'center'} direction="row" spacing={1}>
 						{FOOTER.social.map(({ icon, href }, idx) => (
-							<Link key={idx} href={href} passHref>
+							<a key={idx} href={href} target={'_blank'}>
 								<Box sx={{
 									padding: '0 20px'
 								}}>
 									<img src={icon} alt={href} style={{ cursor: "pointer" }} />
 								</Box>
-							</Link>
+							</a>
 						))}
 					</Stack>
 				</Box>

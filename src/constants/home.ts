@@ -212,7 +212,7 @@ export const TEAM = {
 };
 
 export const OFFICE = {
-	title: "OFFICE",
+	title: "OFFICES",
 	subtitle: 'OUR',
 	items: [
 		{
@@ -236,6 +236,10 @@ export const SERVICE_NEW = {
 	title: 'PROVIDE',
 	subtitle: 'WHAT WE',
 	items: [
+		{
+			title: 'Software outsourcing service',
+			body: 'Our software solution is tailored specifically to your demand, which is applicable for both traditional and blockchain practices.'
+		},
 		{
 			title: 'Game NFT & Metaverse',
 			body: 'The first true metaverse game on blockchain which have the ecosystem and experience as close as possible to real life but still providing the unlimited creativity.'
