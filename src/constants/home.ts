@@ -52,8 +52,7 @@ export const PRODUCT = {
 		},
 		{
 			src: "/assets/logo/logo-scan.png",
-			url: "/",
-			comingSoon: true
+			url: "https://blockscout.versehub.io/",
 		},
 		{
 			src: "/assets/logo/logo-bridge.png",
