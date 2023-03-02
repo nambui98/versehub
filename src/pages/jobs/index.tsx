@@ -282,12 +282,12 @@ const OpeningJobs = () => {
 	const [data, setData] = useState([
 		{
 			title: 'All',
-			number: 1,
+			number: 5,
 			checked: true
 		},
 		{
 			title: 'Engineer',
-			number: 1,
+			number: 5,
 			checked: false
 		}
 	])

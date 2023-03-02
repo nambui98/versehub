@@ -64,47 +64,49 @@ export const JOB = {
 		{
 			title: 'Frontend Developer (Fresher Unreal)',
 			id: 1,
-			type: 'Engineer',
-			time: '15/01/2023 - 15/02/2023',
+			type: 'Fresher',
+			time: null,
 			body: <>
-				<Typography variant="h3">Địa điểm làm việc:</Typography>
-				<Typography>CÔNG TY CỔ PHẦN CÔNG NGHỆ VERSEHUB VIỆT NAM</Typography>
-				<Typography>Tòa ADG, số 37 Lê Văn Thiêm, Nhân Chính, Thanh Xuân, Hà Nội.</Typography>
+				<Typography variant="h3">Working place:</Typography>
+				<Typography>VERSEHUB TECHNOLOGY JOINT STOCK COMPANY VIETNAM</Typography>
+				<Typography>ADG Tower, 37 Le Van Thiem Street, Nhan Chinh Ward, Thanh Xuan Dist, Ha Noi.</Typography>
 				<br></br>
-				<Typography variant="h3">Thời gian làm việc:</Typography>
+				<Typography variant="h3">Working hour:</Typography>
 				<ul>
-					<li>Sáng: 9h00-12h00</li>
-					<li>Chiều: 13h00-18h00</li>
-					<li>Nghỉ Thứ 7 và Chủ nhật hàng tuần.</li>
+					<li>From Monday to Friday</li>
+					<li>Morning: 9h00-12h00</li>
+					<li>Afternoon: 13h00-18h00</li>
 				</ul>
-				<Typography variant="h3">Mô tả công việc:</Typography>
+				<Typography variant="h3">JOB DESCRIPTION:</Typography>
 				<ul>
-					<li>Phát triển các tính năng sử dụng Unreal Engine 4</li>
-					<li>Hỗ trợ các team khác trong việc phân tích và xây dựng sản phẩm.</li>
+					<li>Developing features using Unreal Engine 4.</li>
+					<li>Supporting other teams in analyzing and building products.</li>
 				</ul>
-				<Typography variant="h3">Yêu cầu:</Typography>
+				<Typography variant="h3">REQUIREMENT:</Typography>
 				<ul>
-					<li>Kiến thức cơ bản về Unreal.</li>
-					<li>Tư duy lập trình, tư duy logic hệ thống</li>
-					<li>Ham học hỏi & có khả năng thích nghi với Ngôn ngữ lập trình và Công nghệ mới</li>
-					<li>Tinh thần tự giác, làm việc cẩn thận, trách nhiệm</li>
-					<li>(Không bắt buộc) Kiến thức cơ bản về kiến trúc hệ thống là điểm cộng</li>
-					<li>Ưu tiên sinh viên mới ra trường.</li>
+					<li>Basic knowledge of Unreal.</li>
+					<li>Programming mindset and system logic thinking</li>
+					<li>Willingness to learn and adapt to new programming languages and technologies</li>
+					<li>Self-motivated, careful and responsible work attitud</li>
+					<li>(Not mandatory) Basic knowledge of system architecture is a plus</li>
+					<li>Priority given to recent graduates.</li>
 				</ul>
-				<Typography variant="h3">Đãi ngộ:</Typography>
+
+				<Typography variant="h3">What we offer:</Typography>
 				<ul>
-					<li>Mức lương 8-12tr</li>
-					<li>Đánh giá lương 2 lần/năm.</li>
-					<li>Học hỏi với những người có 10 năm làm việc trong nghề</li>
-					<li>Môi trường làm việc mở</li>
-					<li>Du lịch với công ty 2 lần 1 năm</li>
-					<li>Tham gia các hoạt động team building, kickoff dự án</li>
+					<li>Salary range of 8-12 million VND</li>
+					<li>Salary review twice a year.</li>
+					<li>Learning from professionals with 10 years of experience in the field</li>
+					<li>Open work environment</li>
+					<li>Company trip twice a year</li>
+					<li>Participation in team building and project kickoff activities</li>
 				</ul>
-				<Typography variant="h3">Liên hệ</Typography>
+				<Typography variant="h3">Contact</Typography>
 				<ul>
 					<li>Zalo/Telegram: 0967.913.863</li>
 					<li>Mail: hr@versehub.io</li>
 					<li>Skype: teasun1802</li>
+					<li>Web: https://versehub.io/</li>
 				</ul>
 			</>
 		},
@@ -178,7 +180,7 @@ export const JOB = {
 			</>
 		},
 		{
-			title: 'Unity 9',
+			title: 'Unity Developer',
 			id: 3,
 			type: 'Junior',
 			time: null,
@@ -239,7 +241,7 @@ export const JOB = {
 			</>
 		},
 		{
-			title: 'Java',
+			title: 'Backend Engineering (Java)',
 			id: 4,
 			type: 'Mid',
 			time: null,
@@ -299,7 +301,7 @@ export const JOB = {
 			</>
 		},
 		{
-			title: 'Flutter',
+			title: 'Flutter Developer',
 			id: 5,
 			type: 'Junior/Mid/Senior',
 			time: null,
