@@ -23,6 +23,8 @@ import {
 import OutlinedInput from '@mui/material/OutlinedInput';
 import type { NextPage } from "next";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { TEXT_STYLE } from "src/styles/common/textStyles";
 import { Anchors } from "../constants";
 
@@ -30,31 +32,8 @@ const HomePage: NextPage = () => {
 	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
 	useSmoothScroll();
 
-	// const [openProfile, setOpenProfile] = useState(false);
-	// const [profile, setProfile] = useState({
-	// 	name: "",
-	// 	title: "",
-	// 	desc: [],
-	// });
-
-	// const handleClickProfile = (data: any) => {
-	// 	if (data && data.name && data.title && data.desc) {
-	// 		setProfile(data);
-	// 		setOpenProfile(true);
-	// 	}
-	// };
-
-	// const handleCloseProfile = () => {
-	// 	setOpenProfile(false);
-	// };
-
 	return (
 		<BasicLayout>
-			{/* <ProfileDialog
-				open={openProfile}
-				onClose={handleCloseProfile}
-				data={profile}
-			/> */}
 			<Banner />
 			<Stack spacing={{ xs: 0, sm: 15 }}>
 				<Services />
@@ -138,7 +117,7 @@ function Banner() {
 				}}>Bring <b>blockchain technology</b> <br></br> into individual lives and businesses.</Typography>
 				<a style={{
 					textDecoration: 'none',
-				}} href="#contact"><ButtonBase title='Start your project' style={{
+				}} href="/#contact"><ButtonBase title='Start your project' style={{
 					'@media (max-width: 767px)': {
 						...TEXT_STYLE(16, 600, '#FFFFFF'),
 						padding: '16px 20px'
@@ -161,9 +140,6 @@ function Banner() {
 }
 
 function StackWrapper({ children, bookmark, styles, noPading }: any) {
-	// const match1200 = useMediaQuery("(min-width:1200px)");
-	// const match1440 = useMediaQuery("(min-width:1440px)");
-
 	return (
 		<Box
 			id={(bookmark) || ""}
@@ -174,9 +150,9 @@ function StackWrapper({ children, bookmark, styles, noPading }: any) {
 					justifyContent: "center",
 					alignItems: "center",
 					'@media (min-width: 600px)': {
-						paddingTop: !noPading ? '120px !important' : 'auto',
-						marginTop: !noPading ? '0 !important' : 'auto',
-					}
+						marginTop: !noPading ? '0 !important' : '-30px',
+						paddingTop: !noPading ? '120px !important' : '30px'
+					},				
 				},
 			]}
 		// style={match1440 ? { ...styles } : null}
@@ -188,7 +164,7 @@ function StackWrapper({ children, bookmark, styles, noPading }: any) {
 
 function Services() {
 	return (
-		<StackWrapper bookmark={Anchors.Services}>
+		<StackWrapper bookmark={Anchors.Services} noPading={true}>
 			<Box sx={{
 				backgroundImage: 'url(/assets/provide.png)',
 				position: 'relative',
@@ -205,7 +181,7 @@ function Services() {
 					backgroundImage: 'none',
 					paddingBottom: 0,
 					marginBottom: 0
-				}
+				},
 			}}>
 				<Box sx={{
 					width: "100%",
@@ -235,7 +211,8 @@ function Services() {
 						}}>
 							<Box sx={{
 								...TEXT_STYLE(24, 600, '#31373E'),
-								marginBottom: '8px'
+								marginBottom: '8px',
+								textTransform: 'uppercase',
 							}}>{item.title}</Box>
 							<Box sx={{
 								...TEXT_STYLE(14, 500, '#898E9E')
@@ -248,9 +225,12 @@ function Services() {
 					top: 0,
 					left: '50%',
 					transform: 'translateX(-50%)',
-					width: 'calc(100% - 246px)',
+					width: '100%',
 					height: '4px',
 					background: '#5727A3',
+					'@media (min-width: 768px)': {
+						width: 'calc(100% - 246px)',
+					}
 				}}></Box>
 			</Box>
 		</StackWrapper>
@@ -284,7 +264,32 @@ function ProductsPartners({ data }: any) {
 					}}
 				>
 					{data.items.map((item: any, index: number) => (
-						<Grid item xs={2} sm={4} md={4} key={index}>
+						<Grid item xs={2} sm={4} md={4} key={index} position={'relative'} sx={{
+							'&:hover': {
+								'.bg-logo': {
+									opacity: '1 !important'
+								}
+							}
+						}}>
+							{item.comingSoon && <Box className="bg-logo" sx={{
+								position: 'absolute',
+								width: 'calc(100% - 16px)',
+								height: 'calc(100% - 16px)',
+								bottom: 0,
+								right: 0,
+								background: '#5727a3b0',	
+								opacity: 0,
+								transition: '.4s',
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+								...TEXT_STYLE(16, 600, '#FFFFFF'),
+								textTransform: 'uppercase',
+								'@media (min-width: 960px)': {
+									width: 'calc(100% - 24px)',
+									height: 'calc(100% - 24px)',
+								}				
+							}}>Coming soon</Box>}
 							<a href={item.url} target='_blank' rel="noreferrer" style={{
 								minHeight: '117px',
 								display: 'flex',
@@ -292,6 +297,7 @@ function ProductsPartners({ data }: any) {
 								alignItems: 'center',
 								background: '#ffffff',
 								padding: '10px',
+								pointerEvents: item.comingSoon ? 'none' : 'auto'
 							}}><Box key={index} sx={{
 								lineHeight: 0,
 								'& img': {
@@ -348,7 +354,8 @@ function Offices() {
 								marginTop: '18px'
 							}}>{item.title}</Typography>
 							<Typography sx={{
-								...TEXT_STYLE(16, 500, '#A7ACB8')
+								...TEXT_STYLE(16, 500, '#A7ACB8'),
+								textTransform: 'capitalize',
 							}}>{item.subtitle}</Typography>
 						</Box>
 					))}

@@ -19,6 +19,7 @@ export const Footer: React.FC<FooterProps> = () => {
 			<Container sx={{
 				padding: `40px 0 40px`,
 				position: 'relative',
+				textTransform: 'uppercase',
 				'@media (min-width: 768px)': {
 					padding: `${isHomepage ? '80px' : 0} 0 80px`,
 				}
@@ -81,13 +82,13 @@ export const Footer: React.FC<FooterProps> = () => {
 				>
 					<Stack alignItems={'center'} direction="row" spacing={1}>
 						{FOOTER.social.map(({ icon, href }, idx) => (
-							<Link key={idx} href={href} passHref>
+							<a key={idx} href={href} target={'_blank'} rel="noreferrer">
 								<Box sx={{
 									padding: '0 20px'
 								}}>
 									<img src={icon} alt={href} style={{ cursor: "pointer" }} />
 								</Box>
-							</Link>
+							</a>
 						))}
 					</Stack>
 				</Box>
@@ -96,7 +97,7 @@ export const Footer: React.FC<FooterProps> = () => {
 						textAlign: "center",
 						...TEXT_STYLE(16, 600, '#5727A3')
 					}}>
-						© VerseHub, 2023
+						VerseHub © 2023
 					</Typography>
 				</Box>
 			</Container>

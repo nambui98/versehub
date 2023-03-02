@@ -18,7 +18,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 	handleClick,
 }) => {
 	const router = useRouter();
-	console.log(activeState, 123)
+	console.log(router)
 	if (type === "h") {
 		return (
 			<Box
@@ -30,6 +30,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 				{items.map(({ label, value }) => (
 					<Link key={value} href={value} passHref>
 						<MuiLink
+							target={value === '/jobs' ? '_blank' : '_self'}
 							onClick={handleClick(value)}
 							sx={{
 								px: 3.25,
@@ -48,7 +49,7 @@ export const Navigation: React.FC<NavigationProps> = ({
 						>
 							{label}
 							<Box sx={{
-								display: value === activeState ? 'block' : 'none',
+								display: (value === router.asPath || (router.pathname === '/jobs/[id]' && `${value}/1` === router.asPath)) ? 'block' : 'none',
 								position: "absolute",
 								width: "100%",
 								height: '4px',

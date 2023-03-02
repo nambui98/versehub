@@ -30,7 +30,7 @@ export const VALUES = {
 			],
 		},
 		{
-			title: "Our service",
+			title: "Our services",
 			image: "/assets/icons/value3.png",
 			content: [
 				"We pride ourselves on delivering a proactive service designed to ensure we meet our customers, clients and partners' expectation consistently. Becoming our member means your work will help businesses and communities achieve their most ambitious business plans, solve their biggest challenges and harness incredible success in this metaverse transformation.",
@@ -52,7 +52,7 @@ export const BENEFIT = {
 		{ src: "/assets/icons/value5.svg", desc: `Salary review twice a year` },
 		{
 			src: "/assets/icons/value3.svg",
-			desc: `Flexible working hours\n(9am - 6pm)`,
+			desc: `Flexible working hours`,
 		},
 		{ src: "/assets/icons/value7.svg", desc: `Learning and development` },
 	],

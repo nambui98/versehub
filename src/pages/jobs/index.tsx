@@ -43,7 +43,7 @@ const OurMission = () => {
 		margin: '80px 0',
 		position: 'relative',
 		'@media (min-width: 768px)': {
-			padding: '200px 0 0',
+			padding: '80px 0 0',
 		}
 	}}>
 		<Box sx={{
@@ -168,7 +168,7 @@ const CoreValue = () => {
 						}
 					}}><img src={data.image} /></Box>
 					<Box sx={{
-						...TEXT_STYLE(14, 500, '#5A6178'),
+						
 						maxWidth: '736px',
 						textAlign: 'center',
 						lineHeight: '28px',
@@ -177,7 +177,7 @@ const CoreValue = () => {
 							marginLeft: '55px',
 							textAlign: 'left',
 						}
-					}}>{data.content}</Box>
+					}}>{data.content.map((item, index) => <Typography key={index} sx={{...TEXT_STYLE(14, 500, '#5A6178'), lineHeight: '24px'}}>{item}</Typography>)}</Box>
 				</Box>
 			</Box>
 		</Container>
@@ -259,7 +259,7 @@ const Cta = () => {
 		'@media (max-width: 767px)': {
 			backgroundPosition: 'center',
 			padding: '40px 0',
-			marginBottom: '80px'
+			marginBottom: '40px'
 		}
 	}}>
 		<Container sx={{
@@ -294,7 +294,10 @@ const OpeningJobs = () => {
 
 	return <Box>
 		<Container sx={{
-			maxWidth: '1160px !important'
+			maxWidth: '1160px !important',
+			'@media (min-width: 768px)': {
+				marginBottom: '84px'
+			}
 		}}>
 			<Typography variant="h2" sx={{
 				...TEXT_STYLE(40, 600, '#5727A3'),
@@ -346,7 +349,10 @@ const OpeningJobs = () => {
 									alignItems: 'center',
 								}} onClick={() => setCurrentItem(item.title)}>
 									<Checkbox inputProps={{ 'aria-label': 'all' }} checked={currentItem === item.title} sx={{
-										color: '#5A6178',
+										color: '#5727A3',
+										'&.Mui-checked': {
+											color: '#5727A3',
+										},
 										'@media (max-width: 767px)': {
 											padding: 0,
 											marginRight: '16px'

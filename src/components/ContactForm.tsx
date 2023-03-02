@@ -28,8 +28,9 @@ export const ContactForm = () => {
 	const [errorMessage, setErrorMessage] = useState(false);
 	const [showSnack, setShowSnack] = useState(false);
 	const [showBackdrop, setShowBackdrop] = useState(false);
-
+	console.log(textMessage.length, 321)
 	const handleSubmit = async (event: any) => {
+		
 		event.preventDefault();
 		if (!textName) {
 			setErrorName(true);
