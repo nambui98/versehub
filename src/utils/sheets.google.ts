@@ -20,15 +20,28 @@ export async function getJobList() {
 	try {
 		const response = await sheets.spreadsheets.values.get({
 			spreadsheetId: serverRuntimeConfig.SPREADSHEET_ID,
-			range: `${SHEET.JOBS}!A2:C100`,
+			range: `${SHEET.JOBS}!A2:J100`,
 		});
 		const rows = response.data.values || [];
 		if (rows.length && rows.length > 0) {
 			return rows.map((row, idx) => ({
 				href: `/jobs/${idx + 2}`,
-				name: row[0],
-				department: row[1],
-				location: row[2],
+				name: row[0] ?? null,
+				department: row[1] ?? null,
+				level: row[2] ?? null,
+				location: row[3] ?? null,
+				description: row[4] ?? null,
+				offers: row[5] ?? null,
+				responsibility: row[6] ?? null,
+				requirement_definitely_need: row[7] ?? null,
+				requirement_love_you_have: row[8] ?? null,
+				personal_nature: row[9] ?? null,
+				contact: [
+					'Zalo/Telegram: 0967.913.863',
+					'Mail: hr@versehub.io',
+					'Skype: teasun1802',
+					'Web: https://versehub.io/'
+				]
 			}));
 		}
 	} catch (err) {
@@ -62,14 +75,23 @@ export async function getJobById(id: number) {
 		const rows = response.data.values || [];
 		if (rows.length && rows.length > 0) {
 			return rows.map((row, idx) => ({
-				name: row[0],
-				department: row[1],
-				location: row[2],
-				description: row[3],
-				offers: cleanTexts(row[4] || ""),
-				responsibilities: cleanTexts(row[5] || ""),
-				needRequirements: cleanTexts(row[6] || ""),
-				loveRequirements: cleanTexts(row[7] || ""),
+				href: `/jobs/${idx + 2}`,
+				name: row[0] ?? null,
+				department: row[1] ?? null,
+				level: row[2] ?? null,
+				location: row[3] ?? null,
+				description: row[4] ?? null,
+				offers: row[5] ?? null,
+				responsibility: row[6] ?? null,
+				requirement_definitely_need: row[7] ?? null,
+				requirement_love_you_have: row[8] ?? null,
+				personal_nature: row[9] ?? null,
+				contact: [
+					'Zalo/Telegram: 0967.913.863',
+					'Mail: hr@versehub.io',
+					'Skype: teasun1802',
+					'Web: https://versehub.io/'
+				]
 			}))[0];
 		}
 	} catch (err) {

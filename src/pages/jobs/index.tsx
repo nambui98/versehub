@@ -23,13 +23,14 @@ export async function getStaticProps() {
 
 const JobsPage: NextPage = ({ jobs }: any) => {
 	const mobile = useMediaQuery((theme: Theme) => theme.breakpoints.down("md"));
+	console.log(jobs);
 
 	return (
 		<BasicLayout>
 			<OurMission />
 			<CoreValue />
 			<Benefits />
-			<OpeningJobs />
+			<OpeningJobs jobs={jobs} />
 			<Cta />
 		</BasicLayout>
 	);
@@ -43,7 +44,7 @@ const OurMission = () => {
 		margin: '80px 0',
 		position: 'relative',
 		'@media (min-width: 768px)': {
-			padding: '80px 0 0',
+			padding: '200px 0 0',
 		}
 	}}>
 		<Box sx={{
@@ -168,7 +169,7 @@ const CoreValue = () => {
 						}
 					}}><img src={data.image} /></Box>
 					<Box sx={{
-						
+						...TEXT_STYLE(14, 500, '#5A6178'),
 						maxWidth: '736px',
 						textAlign: 'center',
 						lineHeight: '28px',
@@ -177,7 +178,7 @@ const CoreValue = () => {
 							marginLeft: '55px',
 							textAlign: 'left',
 						}
-					}}>{data.content.map((item, index) => <Typography key={index} sx={{...TEXT_STYLE(14, 500, '#5A6178'), lineHeight: '24px'}}>{item}</Typography>)}</Box>
+					}}>{data.content}</Box>
 				</Box>
 			</Box>
 		</Container>
@@ -259,7 +260,7 @@ const Cta = () => {
 		'@media (max-width: 767px)': {
 			backgroundPosition: 'center',
 			padding: '40px 0',
-			marginBottom: '40px'
+			marginBottom: '80px'
 		}
 	}}>
 		<Container sx={{
@@ -276,28 +277,32 @@ const Cta = () => {
 	</Box>
 }
 
-const OpeningJobs = () => {
+const OpeningJobs = ({ jobs }: any) => {
 	const width767 = useMediaQuery('(max-width: 767px)')
 	const [currentItem, setCurrentItem] = useState('All')
+	const types = new Set(jobs.map((job: any) => job.department))
+	console.log(types);
+
 	const [data, setData] = useState([
 		{
 			title: 'All',
-			number: 5,
+			number: jobs.length,
 			checked: true
 		},
-		{
-			title: 'Engineer',
-			number: 5,
-			checked: false
+		...Array.from(types).map((type: any) => {
+			return {
+				title: type,
+				number: jobs.filter((job: any) => job.department === type).length,
+				checked: false
+			}
 		}
+		)
+
 	])
 
 	return <Box>
 		<Container sx={{
-			maxWidth: '1160px !important',
-			'@media (min-width: 768px)': {
-				marginBottom: '84px'
-			}
+			maxWidth: '1160px !important'
 		}}>
 			<Typography variant="h2" sx={{
 				...TEXT_STYLE(40, 600, '#5727A3'),
@@ -349,10 +354,7 @@ const OpeningJobs = () => {
 									alignItems: 'center',
 								}} onClick={() => setCurrentItem(item.title)}>
 									<Checkbox inputProps={{ 'aria-label': 'all' }} checked={currentItem === item.title} sx={{
-										color: '#5727A3',
-										'&.Mui-checked': {
-											color: '#5727A3',
-										},
+										color: '#5A6178',
 										'@media (max-width: 767px)': {
 											padding: 0,
 											marginRight: '16px'
@@ -380,7 +382,15 @@ const OpeningJobs = () => {
 							marginBottom: '40px',
 						}
 					}}>Features Roles</Typography>
-					{JOB.items.map((item, index) => (
+					{jobs.filter((job: any) => {
+						if (currentItem === "All") {
+							return true;
+						} else {
+							return job.department === currentItem;
+						}
+
+					}
+					).map((item: any, index: number) => (
 						<Box key={index} sx={{
 							paddingBottom: '12px',
 							borderBottom: '1px solid #E9EAEF',
@@ -400,23 +410,23 @@ const OpeningJobs = () => {
 							}
 						}}>
 							<Box>
-								<a href={`/jobs/${item.id}`}>
+								<a href={item.href}>
 									<Typography sx={{
 										...TEXT_STYLE(24, 600, '#1B0044'),
 										marginBottom: '12px'
-									}}>{item.title}</Typography>
+									}}>{item.name}</Typography>
 								</a>
 								<Typography sx={{
 									...TEXT_STYLE(14, 500, '#31373E'),
 									marginBottom: '12px'
-								}}>{item.type}</Typography>
-								<Time><img src="/assets/icons/location.svg" /> Hanoi, Vietnam</Time>
+								}}>{item.level}</Typography>
+								<Time><img src="/assets/icons/location.svg" />{item.location}</Time>
 								{item.time &&
 
 									<Time><img src="/assets/icons/clock.svg" /> {item.time}</Time>
 								}
 							</Box>
-							{!width767 && <a href={`/jobs/${item.id}`}>
+							{!width767 && <a href={item.href}>
 								<ButtonBase title="Apply now" style={{
 									...TEXT_STYLE(16, 600, '#5727A3'),
 									padding: '12px',
@@ -445,4 +455,5 @@ const Time = styled(Box)({
 	'& img': {
 		marginRight: '8px'
 	}
+
 })
