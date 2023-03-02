@@ -405,7 +405,10 @@ const OpeningJobs = () => {
 									marginBottom: '12px'
 								}}>{item.type}</Typography>
 								<Time><img src="/assets/icons/location.svg" /> Hanoi, Vietnam</Time>
-								<Time><img src="/assets/icons/clock.svg" /> {item.time}</Time>
+								{item.time &&
+
+									<Time><img src="/assets/icons/clock.svg" /> {item.time}</Time>
+								}
 							</Box>
 							{!width767 && <a href={`/jobs/${item.id}`}>
 								<ButtonBase title="Apply now" style={{
