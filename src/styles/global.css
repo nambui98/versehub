@@ -304,3 +304,9 @@ body{
 		transform: translateY(42px);
 	}
 }
+.link{
+	font-family: 'Montserrat';
+	font-size: 16px;
+	color: #5727A3;
+	text-underline-offset: 2px;
+}

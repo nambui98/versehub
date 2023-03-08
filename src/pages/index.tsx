@@ -63,7 +63,7 @@ function Banner() {
 				marginTop: '79px',
 				'@media (min-width: 768px)': {
 					height: "calc(100vh - 79px)",
-					
+
 				}
 			}}
 		>
@@ -152,7 +152,7 @@ function StackWrapper({ children, bookmark, styles, noPading }: any) {
 					'@media (min-width: 600px)': {
 						marginTop: !noPading ? '0 !important' : '-30px',
 						paddingTop: !noPading ? '120px !important' : '30px'
-					},				
+					},
 				},
 			]}
 		// style={match1440 ? { ...styles } : null}
@@ -194,7 +194,7 @@ function Services() {
 						backgroundImage: 'url(/assets/provide.png)',
 					}
 				}}>
-					<SectionTitle						
+					<SectionTitle
 						title={SERVICE_NEW.title}
 						subTitle={SERVICE_NEW.subtitle}
 					/>
@@ -207,16 +207,16 @@ function Services() {
 				}}>
 					{SERVICE_NEW.items.map((item, index) => (
 						<Box key={index} sx={{
-							marginBottom: index < 3 ? '40px' : 0,
+							marginBottom: '40px',
 						}}>
 							<Box sx={{
 								...TEXT_STYLE(24, 600, '#31373E'),
 								marginBottom: '8px',
 								textTransform: 'uppercase',
 							}}>{item.title}</Box>
-							<Box sx={{
+							<Box dangerouslySetInnerHTML={{ __html: item.body }} sx={{
 								...TEXT_STYLE(14, 500, '#898E9E')
-							}}>{item.body}</Box>
+							}}></Box>
 						</Box>
 					))}
 				</Box>
@@ -240,9 +240,9 @@ function Services() {
 function ProductsPartners({ data }: any) {
 	return (
 		<StackWrapper bookmark={data.anchor} >
-			<Box sx={{							
+			<Box sx={{
 				'@media (min-width: 768px)': {
-					padding: '0 123px',			
+					padding: '0 123px',
 				}
 			}}>
 				<SectionTitle
@@ -259,7 +259,7 @@ function ProductsPartners({ data }: any) {
 					sx={{
 						marginTop: '35px !important',
 						'@media (min-width: 768px)': {
-							
+
 						}
 					}}
 				>
@@ -277,7 +277,7 @@ function ProductsPartners({ data }: any) {
 								height: 'calc(100% - 16px)',
 								bottom: 0,
 								right: 0,
-								background: '#5727a3b0',	
+								background: '#5727a3b0',
 								opacity: 0,
 								transition: '.4s',
 								display: 'flex',
@@ -288,7 +288,7 @@ function ProductsPartners({ data }: any) {
 								'@media (min-width: 960px)': {
 									width: 'calc(100% - 24px)',
 									height: 'calc(100% - 24px)',
-								}				
+								}
 							}}>Coming soon</Box>}
 							<a href={item.url} target='_blank' rel="noreferrer" style={{
 								minHeight: '117px',
@@ -324,7 +324,7 @@ function Offices() {
 			}}>
 				<SectionTitle align="center" title={OFFICE.title} subTitle={OFFICE.subtitle} typeSmall={true} />
 				<Box sx={{
-					
+
 					justifyContent: 'space-between',
 					margin: '40px 0',
 					'@media (min-width: 768px)': {
@@ -338,7 +338,7 @@ function Offices() {
 						<Box key={index} sx={{
 							textTransform: 'uppercase',
 							textAlign: 'center',
-							marginBottom: '24px',							
+							marginBottom: '24px',
 							'& img': {
 								maxWidth: '100%',
 							},
@@ -366,12 +366,12 @@ function Offices() {
 }
 
 const JoinOur = () => {
-	return <Box sx={{		
+	return <Box sx={{
 		padding: '40px 0',
 		textAlign: 'center',
 		textTransform: 'uppercase',
 		backgroundRepeat: 'no-repeat',
-		backgroundSize: 'cover',		
+		backgroundSize: 'cover',
 		'@media (min-width: 768px)': {
 			padding: '80px 0',
 			backgroundImage: 'url(/assets/join-our.png)',
@@ -422,7 +422,7 @@ const ContactUs = () => {
 				marginBottom: '80px'
 			}
 		}}>
-			<ContactForm/>
+			<ContactForm />
 			{/* <Typography variant="h2" sx={{
 				...TEXT_STYLE(64, 600, '#1B0044'),
 				fontSize: '40px !important',

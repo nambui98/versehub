@@ -237,7 +237,7 @@ export const SERVICE_NEW = {
 	items: [
 		{
 			title: 'Software outsourcing service',
-			body: 'Our software solution is tailored specifically to your demand, which is applicable for both traditional and blockchain practices.'
+			body: 'Our software solution is tailored specifically to your demand, which is applicable for both traditional and blockchain practices. <a class="link" target="_blank" href="software-outsourcing">View our Portfolio</a>'
 		},
 		{
 			title: 'Game NFT & Metaverse',
