@@ -1,7 +1,11 @@
 import { ArImg, AwsImg, BlockchainImg, CocosImg, Code, DigitalOceanImg, ElasticImg, FlutterImg, GolangImg, GoogleCloundImg, GrafandImg, JavaImg, KotlinImg, MysqlImg, NextjsImg, NodejsImg, ObjCImg, PostgreSQLImg, ReactjsImg, UnityImg, UnrealImg, VRImg, VultrImg } from '@/assets/index';
+import { ButtonBase } from '@/components/Button';
 import Title from '@/components/SectionTitle/Title';
-import { Box, Container, Grid, Stack, TableCell, Typography, styled } from '@mui/material';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import { Grid, List, ListItemProps, Stack, TableCell, Typography, styled, ListItem, ListItemText, Collapse, Container, Box } from '@mui/material';
 import Image from 'next/image';
+import { useState } from 'react';
+import { TEXT_STYLE } from 'src/styles/common/textStyles';
 
 type Props = {}
 
@@ -66,7 +70,18 @@ const dataTech = [
 	},
 ]
 const OurTeam = (props: Props) => {
+	const [indexCollapseOpen, setIndexCollapseOpen] = useState<number | null>(null);
 
+	const handleChangeCollapse = (index: number | null) => {
+		setIndexCollapseOpen((prev) => {
+			if (prev === index) {
+				return null;
+			} else {
+				return index;
+			}
+		});
+
+	};
 	return (
 
 		<Box position={'relative'}>
@@ -110,7 +125,7 @@ const OurTeam = (props: Props) => {
 							)
 						}
 					</Grid>
-					<Box overflow={"auto"}>
+					<Box overflow={"auto"} display={{ xs: 'none', sm: 'block' }}>
 						<Grid
 							marginTop={{ xs: 3, sm: 5 }}
 							minWidth={1000}
@@ -133,10 +148,66 @@ const OurTeam = (props: Props) => {
 						</Grid>
 
 					</Box>
+					<Box>
+						<Box
+							sx={{
+								mt: 1,
+							}}
+							component="nav"
+						>
+							<List>
+								{
+									dataTech.map((row, index) =>
+										<Box border={"1px solid #E9EAEF"} mt={1} key={row.type + index} borderRadius='8px'>
+											<ListItemLink name={row.type} open={indexCollapseOpen === index} onClick={() => { handleChangeCollapse(index) }} />
+											<Collapse component="li" in={indexCollapseOpen === index} timeout="auto" unmountOnExit>
+												<List disablePadding>
+													<Box display="flex" alignItems={"center"} columnGap={4} flexWrap={'wrap'} mx={2} mb={2} >
+														{row.images.map((image, index2) =>
+															<Box mt={2} key={row.type + index2 * 2}>
+																<Image objectFit='contain' src={image} />
+															</Box>
+														)}
+													</Box>
+												</List>
+											</Collapse>
+										</Box>
+									)
+								}
+							</List>
+						</Box>
+					</Box>
 				</Box>
 			</Container >
 		</Box >
 	)
 }
+interface ListItemLinkProps extends ListItemProps {
+	name: string;
+	open?: boolean;
+}
+function ListItemLink(props: ListItemLinkProps) {
+	const { name, open, ...other } = props;
 
+	let icon = null;
+	if (open != null) {
+		icon = open ? <ExpandLess /> : <ExpandMore />;
+	}
+
+	return (
+		<li>
+			<ListItem  {...other}  >
+				<ListItemText sx={{
+					color: '#000',
+					textTransform: "uppercase",
+					'& span': {
+						...TEXT_STYLE(16, 700),
+					}
+				}} primary={name} />
+
+				{icon}
+			</ListItem>
+		</li>
+	);
+}
 export default OurTeam
