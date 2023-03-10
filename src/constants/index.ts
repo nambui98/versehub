@@ -33,7 +33,7 @@ export const FOOTER = {
 		{
 			icon: "/assets/icons/linkedIn.svg",
 			href: "https://www.linkedin.com/company/versehub/",
-		},		
+		},
 	],
 	links: [
 		{ desc: "Privacy Policy", href: "#" },
@@ -41,3 +41,7 @@ export const FOOTER = {
 		{ desc: "Cookie Policy", href: "#" },
 	],
 };
+
+export const Colors = {
+	dark100: '#31373E'
+}

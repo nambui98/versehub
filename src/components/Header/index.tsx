@@ -135,7 +135,11 @@ export const Header: React.FC<HeaderProps> = () => {
 				sx={{
 					background: 'rgba(248, 249, 251, 0.5)',
 					backdropFilter: 'blur(12px)',
-					borderBottom: '1px solid #5727A3',
+					borderBottom: '1px solid transparent',
+					'@media (min-width: 768px)': {
+						borderColor: '#5727A3',
+					}
+
 				}}
 				color="transparent"
 				square
@@ -162,52 +166,52 @@ export const Header: React.FC<HeaderProps> = () => {
 						/>
 
 						{/* <div style={{ width: 155.648 }} /> */}
-					
-							<IconButton
-								color="inherit"
-								aria-label="open drawer"
-								edge="end"
-								sx={{ display: { md: "none" } }}
-								onClick={() => setOpen(true)}
-							>
-								<img src="/assets/icons/menu.svg" />
-							</IconButton>
-							<Popover
-								open={open}
-								onClose={() => setOpen(false)}
-								anchorOrigin={{
-									vertical: 'top',
-									horizontal: 'right',
-								}}
-								transformOrigin={{
-									vertical: 'top',
-									horizontal: 'right',
-								}}
-							>
-								<Box sx={{
-									background: '#F8F9FB',
-									boxShadow: '0px 0px 24px rgba(0, 0, 0, 0.1)',
-									borderRadius: '4px',
-									padding: '12px',
-									textAlign: 'right',
-								}}>
-									<Box mb={1} onClick={() => setOpen(false)}><img src="/assets/icons/close.svg" /></Box>
-									{items.map((item, index) => (
-										<Box key={index} sx={{
-											'& a': {
-												display: 'inline-block',
-												textDecoration: 'none',
-												...TEXT_STYLE(16, 600, '#5A6178'),
-												padding: index < items.length - 1 ? '10px' : 0,
-												paddingTop: index === 0 ? '0' : '10px',
-											}
-										}} onClick={() => setOpen(false)}>
-											<a href={item.value}>{item.label}</a>
-										</Box>
-									))}
-								</Box>
-							</Popover>
-					
+
+						<IconButton
+							color="inherit"
+							aria-label="open drawer"
+							edge="end"
+							sx={{ display: { md: "none" } }}
+							onClick={() => setOpen(true)}
+						>
+							<img src="/assets/icons/menu.svg" />
+						</IconButton>
+						<Popover
+							open={open}
+							onClose={() => setOpen(false)}
+							anchorOrigin={{
+								vertical: 'top',
+								horizontal: 'right',
+							}}
+							transformOrigin={{
+								vertical: 'top',
+								horizontal: 'right',
+							}}
+						>
+							<Box sx={{
+								background: '#F8F9FB',
+								boxShadow: '0px 0px 24px rgba(0, 0, 0, 0.1)',
+								borderRadius: '4px',
+								padding: '12px',
+								textAlign: 'right',
+							}}>
+								<Box mb={1} onClick={() => setOpen(false)}><img src="/assets/icons/close.svg" /></Box>
+								{items.map((item, index) => (
+									<Box key={index} sx={{
+										'& a': {
+											display: 'inline-block',
+											textDecoration: 'none',
+											...TEXT_STYLE(16, 600, '#5A6178'),
+											padding: index < items.length - 1 ? '10px' : 0,
+											paddingTop: index === 0 ? '0' : '10px',
+										}
+									}} onClick={() => setOpen(false)}>
+										<a href={item.value}>{item.label}</a>
+									</Box>
+								))}
+							</Box>
+						</Popover>
+
 					</Container>
 				</Toolbar>
 			</AppBar>

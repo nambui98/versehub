@@ -310,3 +310,9 @@ body{
 	color: #5727A3;
 	text-underline-offset: 2px;
 }
+.centerPosition{
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
