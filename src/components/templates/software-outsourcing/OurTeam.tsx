@@ -148,7 +148,7 @@ const OurTeam = (props: Props) => {
 						</Grid>
 
 					</Box>
-					<Box>
+					<Box display={{ xs: 'block', sm: 'none' }}>
 						<Box
 							sx={{
 								mt: 1,
