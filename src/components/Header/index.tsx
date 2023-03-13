@@ -84,7 +84,7 @@ export const Header: React.FC<HeaderProps> = () => {
 		if (activeState !== active) {
 			setActiveState(active);
 		}
-	}, [activeState, items]);
+	}, [activeState]);
 
 	// Corresponds to 10 frames at 60 Hz
 	useThrottledOnScroll(findActiveIndex, 166);
@@ -174,7 +174,7 @@ export const Header: React.FC<HeaderProps> = () => {
 							sx={{ display: { md: "none" } }}
 							onClick={() => setOpen(true)}
 						>
-							<img src="/assets/icons/menu.svg" />
+							<img alt="" src="/assets/icons/menu.svg" />
 						</IconButton>
 						<Popover
 							open={open}
@@ -195,7 +195,7 @@ export const Header: React.FC<HeaderProps> = () => {
 								padding: '12px',
 								textAlign: 'right',
 							}}>
-								<Box mb={1} onClick={() => setOpen(false)}><img src="/assets/icons/close.svg" /></Box>
+								<Box mb={1} onClick={() => setOpen(false)}><img alt="" src="/assets/icons/close.svg" /></Box>
 								{items.map((item, index) => (
 									<Box key={index} sx={{
 										'& a': {

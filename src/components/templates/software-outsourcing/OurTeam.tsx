@@ -139,7 +139,7 @@ const OurTeam = (props: Props) => {
 										</Box>
 										<Box width={{ xs: "80px", sm: "100%" }} margin={"16px auto 0 auto"} display={'block'}>
 											{row.images.map((image, index) => <Stack key={row.type + index * 2} marginTop={index > 0 ? 3 : 0} alignItems={'center'}>
-												<Image objectFit='contain' src={image} />
+												<Image alt="" objectFit='contain' src={image} />
 											</Stack>)}
 										</Box>
 									</Grid>
@@ -165,7 +165,7 @@ const OurTeam = (props: Props) => {
 													<Box display="flex" alignItems={"center"} columnGap={4} flexWrap={'wrap'} mx={2} mb={2} >
 														{row.images.map((image, index2) =>
 															<Box mt={2} key={row.type + index2 * 2}>
-																<Image objectFit='contain' src={image} />
+																<Image alt="" objectFit='contain' src={image} />
 															</Box>
 														)}
 													</Box>

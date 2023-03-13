@@ -132,7 +132,7 @@ function Banner() {
 				}}
 			>
 				<Link href="#services" passHref>
-					<img src="/assets/icons/mouse.png" />
+					<img alt="" src="/assets/icons/mouse.png" />
 				</Link>
 			</Box>}
 		</Box>
@@ -303,7 +303,7 @@ function ProductsPartners({ data }: any) {
 								'& img': {
 									maxWidth: '100%',
 								},
-							}}><img src={item.src} /></Box></a>
+							}}><img alt="" src={item.src} /></Box></a>
 						</Grid>
 					))}
 				</Grid>
@@ -347,7 +347,7 @@ function Offices() {
 								marginBottom: 0
 							}
 						}}>
-							<img src={item.src} />
+							<img alt="" src={item.src} />
 							<Typography sx={{
 								...TEXT_STYLE(20, 500, '#31373E'),
 								marginBottom: '17px',

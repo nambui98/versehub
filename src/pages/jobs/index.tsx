@@ -62,7 +62,7 @@ const OurMission = () => {
 					objectFit: 'cover'
 				},
 			}
-		}}><img src="/assets/missions/bg-our-mission.png" /></Box>
+		}}><img alt="" src="/assets/missions/bg-our-mission.png" /></Box>
 		<Container sx={{
 			maxWidth: '1160px !important'
 		}}>
@@ -167,7 +167,7 @@ const CoreValue = () => {
 								maxWidth: '57px'
 							}
 						}
-					}}><img src={data.image} /></Box>
+					}}><img alt="" src={data.image} /></Box>
 					<Box sx={{
 						...TEXT_STYLE(14, 500, '#5A6178'),
 						maxWidth: '736px',
@@ -234,7 +234,7 @@ const Benefits = () => {
 								},
 							}
 						}}>
-							<img src={item.src} />
+							<img alt="" src={item.src} />
 							<Typography sx={{
 								...TEXT_STYLE(16, 600, '#31373E'),
 								marginTop: '24px',
@@ -420,10 +420,10 @@ const OpeningJobs = ({ jobs }: any) => {
 									...TEXT_STYLE(14, 500, '#31373E'),
 									marginBottom: '12px'
 								}}>{item.level}</Typography>
-								<Time><img src="/assets/icons/location.svg" />{item.location}</Time>
+								<Time><img alt="" src="/assets/icons/location.svg" />{item.location}</Time>
 								{item.time &&
 
-									<Time><img src="/assets/icons/clock.svg" /> {item.time}</Time>
+									<Time><img alt="" src="/assets/icons/clock.svg" /> {item.time}</Time>
 								}
 							</Box>
 							{!width767 && <a href={item.href}>

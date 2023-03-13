@@ -90,7 +90,7 @@ const Back = () => {
 				maxWidth: "1160px !important",
 			}}
 		>
-			<Link href="/jobs">
+			<Link passHref href="/jobs">
 				<Box
 					sx={{
 						display: "flex",
@@ -102,7 +102,7 @@ const Back = () => {
 						},
 					}}
 				>
-					<img src="/assets/icons/arrow-left.svg" />
+					<img alt="" src="/assets/icons/arrow-left.svg" />
 					Back to Jobs
 				</Box>
 			</Link>
@@ -267,7 +267,7 @@ const BodyJob = (props: any) => {
 										textAlign: "center",
 									}}
 								>
-									<img src="/assets/icons/tick-circle.svg" />
+									<img alt="" src="/assets/icons/tick-circle.svg" />
 									<Typography
 										sx={{
 											...TEXT_STYLE(24, 600, "#5A6178"),
@@ -340,11 +340,11 @@ const BodyJob = (props: any) => {
 								Need more information? Contact us
 							</Typography>
 							<TitleContact>
-								<img src="/assets/icons/sms.svg" />
+								<img alt="" src="/assets/icons/sms.svg" />
 								hr@versehub.io{" "}
 							</TitleContact>
 							<TitleContact>
-								<img src="/assets/icons/call.svg" />
+								<img alt="" src="/assets/icons/call.svg" />
 								+84 967 913 863
 							</TitleContact>
 						</Box>

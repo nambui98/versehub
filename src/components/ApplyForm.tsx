@@ -258,7 +258,7 @@ export const ApplyForm = ({ jobName, back, setStatusSubmitForm }: any) => {
 			<Box sx={{
 				marginBottom: '24px',
 				cursor: 'pointer'
-			}} onClick={back}><img src="/assets/icons/arrow-left-gray.svg" /></Box>
+			}} onClick={back}><img alt="" src="/assets/icons/arrow-left-gray.svg" /></Box>
 			<Typography sx={{
 				...TEXT_STYLE(16, 600, '#5A6178'),
 				marginBottom: '16px'
@@ -319,7 +319,7 @@ export const ApplyForm = ({ jobName, back, setStatusSubmitForm }: any) => {
 						}
 					}}
 				>
-					<img src="/assets/icons/document-upload.svg" />
+					<img alt="" src="/assets/icons/document-upload.svg" />
 					Upload your CV
 					<input
 						type="file"
@@ -344,7 +344,7 @@ export const ApplyForm = ({ jobName, back, setStatusSubmitForm }: any) => {
 								marginLeft: '8px',
 								cursor: 'pointer'
 							}} onClick={() => handleRemoveFile(idx)}>
-								<img src="/assets/icons/close-2.svg" />
+								<img alt="" src="/assets/icons/close-2.svg" />
 							</Box>
 						</Box>
 					))}
